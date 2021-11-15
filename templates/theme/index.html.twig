@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Theme
+{% endblock %}
+
+{% block body %}
+	<h2>Give your feedback!</h2>
+    
+	{% for theme in themes %}
+		<h4>{{ theme }}</h4>
+	{% endfor %}
+{% endblock %}
