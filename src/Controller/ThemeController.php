@@ -33,12 +33,13 @@ class ThemeController extends AbstractController
     /**
      * @Route("/theme/{id}", name="theme")
      */
-    public function show(Request $request, Theme $theme, CommentRepository $commentRepository)
+    public function show(Request $request, Theme $theme, CommentRepository $commentRepository, ThemeRepository $themeRepository)
     {
         $offset = max(0, $request->query->getInt('offset', 0));
         $paginator = $commentRepository->getCommentPaginator($theme, $offset);
 
         return new Response($this->twig->render('theme/show.html.twig', [
+            'themes' => $themeRepository->findAll(),
             'theme' => $theme,
             'comments' => $paginator,
             'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
