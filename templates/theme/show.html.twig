@@ -22,12 +22,16 @@
 		{% endfor %}
 
         {% if previous >= 0 %}
-            <a href="{{ path('theme', { id: theme.id, offset: previous }) }}">Previous</a>
+            <a href="{{ path('theme', { slug: theme.slug, offset: previous }) }}">Previous</a>
         {% endif %}
         {% if next < comments|length %}
-            <a href="{{ path('theme', { id: theme.id, offset: next }) }}">Next</a>
+            <a href="{{ path('theme', { slug: theme.slug, offset: next }) }}">Next</a>
         {% endif %}
 	{% else %}
 		<div>No comments have been posted yet for this theme.</div>
 	{% endif %}
+
+	<h2>Add your own feedback</h2>
+
+	{{ form(comment_form) }}
 {% endblock %}

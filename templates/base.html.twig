@@ -19,12 +19,12 @@
 	<body>
 		<header>
 			<h1>
-				<a href="{{ path('homepage') }}">Guestbook</a>
+				<a href="{{ path('homepage') }}">Theme Site</a>
 			</h1>
 			<ul>
 				{% for theme in themes %}
 					<li>
-						<a href="{{ path('theme', { id: theme.id }) }}">{{ theme }}</a>
+						<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
 					</li>
 				{% endfor %}
 			</ul>
