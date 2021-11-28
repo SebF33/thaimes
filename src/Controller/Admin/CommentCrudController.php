@@ -37,6 +37,7 @@ class CommentCrudController extends AbstractCrudController
             TextField::new('author'),
             TextareaField::new('text')->hideOnIndex(), // Removing ->hideOnIndex() will display a link to a text modal
             EmailField::new('email'),
+            TextField::new('state'),
             DateTimeField::new('createdAt')->hideOnForm(),
             ImageField::new('photoFilename', 'Photo')->setBasePath('/uploads/photos')->hideOnForm(),
             AssociationField::new('theme')

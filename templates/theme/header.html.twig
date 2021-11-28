@@ -1,0 +1,5 @@
+{% for theme in themes %}
+	<a class="nav-theme" href="{{ path('theme', { slug: theme.slug }) }}">
+		{{ theme }}
+	</a>
+{% endfor %}

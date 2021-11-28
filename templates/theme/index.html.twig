@@ -1,14 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Theme{% endblock %}
+{% block title %}Thaimes
+{% endblock %}
 
 {% block body %}
-	<h2>Give your feedback!</h2>
+	<h2 class="mb-5">
+		Give your feedback!
+	</h2>
 
-	{% for theme in themes %}
-		<h4>{{ theme }}</h4>
-        <p>
-            <a href="{{ path('theme', { slug: theme.slug }) }}">View</a>
-        </p>
+	{% for row in themes|batch(4) %}
+		<div class="row">
+			{% for theme in row %}
+				<div class="col-12 col-md-6 col-lg-3 mb-4">
+					<div class="card border shadow lift">
+						<div class="card-body">
+							<div class="card-title">
+								<h4 class="font-weight-light">
+									{{ theme }}
+								</h4>
+							</div>
+
+							<a href="{{ path('theme', { slug: theme.slug }) }}" class="btn btn-sm btn-blue stretched-link">
+								View
+							</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	{% endfor %}
 {% endblock %}
