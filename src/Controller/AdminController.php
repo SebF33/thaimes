@@ -19,8 +19,7 @@ class AdminController extends AbstractController
     private $entityManager;
     private $bus;
 
-    public function __construct(Environment $twig, EntityManagerInterface
-    $entityManager, MessageBusInterface $bus)
+    public function __construct(Environment $twig, EntityManagerInterface $entityManager, MessageBusInterface $bus)
     {
         $this->twig = $twig;
         $this->entityManager = $entityManager;
@@ -30,8 +29,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/comment/review/{id}", name="review_comment")
      */
-    public function reviewComment(Request $request, Comment $comment, Registry
-    $registry)
+    public function reviewComment(Request $request, Comment $comment, Registry $registry)
     {
         $accepted = !$request->query->get('reject');
         $machine = $registry->get($comment);
