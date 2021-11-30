@@ -40,11 +40,14 @@ class AdminController extends AbstractController
         } else {
             return new Response('Comment already reviewed or not in the right state.');
         }
+
         $machine->apply($comment, $transition);
         $this->entityManager->flush();
+
         if ($accepted) {
             $this->bus->dispatch(new CommentMessage($comment->getId()));
         }
+        
         return $this->render('admin/review.html.twig', [
             'transition' => $transition,
             'comment' => $comment,
