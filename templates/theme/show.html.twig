@@ -40,9 +40,7 @@
 						</div>
 					</div>
 				{% endfor %}
-				<div>
-          There are {{ comments|length }} comments.
-        </div>
+				<div>{{ 'nb_of_comments'|trans({count: comments|length})}}</div>
 				{% if previous >= 0 %}
 					<a href="{{ path('theme', { slug: theme.slug, offset: previous }) }}">Previous</a>
 				{% endif %}

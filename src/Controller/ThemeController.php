@@ -31,7 +31,15 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/")
+     */
+    public function indexNoLocale()
+    {
+        return $this->redirectToRoute('homepage', ['_locale' => 'en']);
+    }
+
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/", name="homepage")
      */
     public function index(ThemeRepository $themeRepository)
     {
@@ -41,7 +49,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/theme/{slug}", name="theme")
+     * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}", name="theme")
      */
     public function show(Request $request, Theme $theme, CommentRepository $commentRepository, ThemeRepository $themeRepository, string $photoDir)
     {
@@ -69,7 +77,7 @@ class ThemeController extends AbstractController
                 'referrer' => $request->headers->get('referer'),
                 'permalink' => $request->getUri(),
             ];
-            
+
             $this->bus->dispatch(new CommentMessage($comment->getId(), $context));
 
             return $this->redirectToRoute('theme', ['slug' => $theme->getSlug()]);
