@@ -28,9 +28,24 @@ class Theme
     private $category;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $tag;
+
+    /**
      * @ORM\Column(type="string", length=4)
      */
     private $year;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $text;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     /**
      * @ORM\Column(type="boolean")
@@ -47,14 +62,22 @@ class Theme
      */
     private $slug;
 
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picture;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
+     * @Doctrine\ORM\Mapping\Column(type="datetime")
+     */
+    private $createdAt;
 
     public function __toString(): string
     {
-        return $this->category.' '.$this->year;
+        return $this->category . ' (' . $this->year . ')';
     }
 
     public function getId(): ?int
@@ -81,6 +104,18 @@ class Theme
         return $this;
     }
 
+    public function getTag(): ?string
+    {
+        return $this->tag;
+    }
+
+    public function setTag(?string $tag): self
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
     public function getYear(): ?string
     {
         return $this->year;
@@ -89,6 +124,18 @@ class Theme
     public function setYear(string $year): self
     {
         $this->year = $year;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): self
+    {
+        $this->text = $text;
 
         return $this;
     }
@@ -150,5 +197,37 @@ class Theme
         $this->slug = $slug;
 
         return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
     }
 }

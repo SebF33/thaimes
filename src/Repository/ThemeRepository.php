@@ -21,7 +21,7 @@ class ThemeRepository extends ServiceEntityRepository
 
     public function findAll()
     {
-        return $this->findBy([], ['year' => 'ASC', 'category' => 'ASC']);
+        return $this->findBy([], ['createdAt' => 'DESC']);
     }
 
     // /**

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
+{% block title %}
+	{{'Log in!'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -11,16 +12,16 @@
 
 		{% if app.user %}
 			<div class="mb-3">
-				You are logged in as
+				{{'You are logged in as'|trans }}
 				{{ app.user.username }},
 				<a href="{{ path('app_logout') }}">Logout</a>
 			</div>
 		{% endif %}
 
-		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-		<label for="inputUsername">Username</label>
+		<h1 class="h3 mb-3 font-weight-normal">{{'Please sign in'|trans }}</h1>
+		<label for="inputUsername">{{'Username'|trans }}</label>
 		<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-		<label for="inputPassword">Password</label>
+		<label for="inputPassword">{{'Password'|trans }}</label>
 		<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
 		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -36,6 +37,6 @@
 		        </div>
 		    #}
 
-		<button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+		<button class="btn btn-lg btn-primary" type="submit">{{'Sign in'|trans }}</button>
 	</form>
 {% endblock %}

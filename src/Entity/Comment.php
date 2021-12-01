@@ -39,14 +39,6 @@ class Comment
     private $email;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime")
-     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
-     * @Doctrine\ORM\Mapping\Column(type="datetime")
-     */
-    private $createdAt;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Theme::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -56,6 +48,14 @@ class Comment
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photoFilename;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
+     * @Doctrine\ORM\Mapping\Column(type="datetime")
+     */
+    private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": "submitted"})
@@ -103,26 +103,6 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        $this->createdAt = new \DateTime();
-    }
-
     public function getTheme(): ?Theme
     {
         return $this->theme;
@@ -145,6 +125,26 @@ class Comment
         $this->photoFilename = $photoFilename;
 
         return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
     }
 
     public function getState(): ?string

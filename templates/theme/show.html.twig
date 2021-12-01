@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Thaimes -
+{% block title %}
+	Thaimes -
 	{{ theme }}
 {% endblock %}
 
 {% block body %}
 	<h2 class="mb-5">
 		{{ theme }}
-		Theme
 	</h2>
 
 	<div class="row">
@@ -18,7 +18,7 @@
 						<div class="comment-img mr-3">
 							{% if comment.photofilename %}
 								<a href="{{ asset('uploads/photos/' ~ comment.photofilename) }}" target="_blank">
-									<img src="{{ asset('uploads/photos/' ~ comment.photofilename) }}"/>
+									<img src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
 								</a>
 							{% endif %}
 						</div>
@@ -49,16 +49,15 @@
 				{% endif %}
 			{% else %}
 				<div class="text-center">
-					No comments have been posted yet for this theme.
+					{{'No comments have been posted yet for this theme.'|trans }}
 				</div>
 			{% endif %}
 		</div>
 		<div class="col-12 col-lg-4">
 			<div class="bg-light shadow border rounded-lg p-4">
 				<h3 class="font-weight-light">
-					Add your own feedback
+					{{'Add your own feedback'|trans }}
 				</h3>
-
 				{{ form(comment_form) }}
 				</div>
 			</div>
