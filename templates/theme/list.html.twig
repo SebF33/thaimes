@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	TAGS
+{% endblock %}
+
+{% block body %}
+	<h2 class="mb-5">
+		{{ 'Liste'|trans }}
+	</h2>
+
+	<section class="dark">
+		{% for row in themes|batch(4) %}
+			<div class="container py-4">
+				{% for theme in row %}
+							<h4>{{ tag }}</h4>
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</section>
+{% endblock %}

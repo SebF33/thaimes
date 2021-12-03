@@ -7,6 +7,7 @@ use App\Entity\Theme;
 use App\Form\CommentFormType;
 use App\Message\CommentMessage;
 use App\Repository\CommentRepository;
+use App\Repository\TagRepository;
 use App\Repository\ThemeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,6 +46,16 @@ class ThemeController extends AbstractController
     {
         return new Response($this->twig->render('theme/index.html.twig', [
             'themes' => $themeRepository->findAll(),
+        ]));
+    }
+
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/list", name="list")
+     */
+    public function tagList(TagRepository $tagRepository)
+    {
+        return new Response($this->twig->render('theme/list.html.twig', [
+            'tags' => $tagRepository->findAll(),
         ]));
     }
 

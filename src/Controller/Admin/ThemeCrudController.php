@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Theme;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -24,16 +24,6 @@ class ThemeCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             Field::new('category'),
-            ChoiceField::new('tag')
-                ->autocomplete()
-                ->setChoices(
-                    [
-                        'Cinéma' => 'Cinéma',
-                        'Site' => 'Site',
-                        'Cartes' => 'Cartes',
-                        'Dessin' => 'Dessin'
-                    ]
-                ),
             Field::new('text')->hideOnIndex(),
             ImageField::new('picture')
                 ->setBasePath('uploads/theme')
@@ -42,6 +32,7 @@ class ThemeCrudController extends AbstractCrudController
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
             Field::new('year'),
+            AssociationField::new('tags'),
             BooleanField::new('isInternational'),
             IntegerField::new('commentCount', 'Comments')->hideOnForm()
         ];

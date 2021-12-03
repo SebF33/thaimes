@@ -12,7 +12,7 @@ $gray-900: #212529;
 $black: #000;
 $blue: #175fc9;
 $pink: #ff737c;
-$red: #d9534f;
+$red: #bd150b;
 $yellow: #fcee60;
 $orange: #ffae73;
 $green: #02B875;
@@ -24,9 +24,8 @@ $success: $green;
 $info: $cyan;
 $warning: $yellow;
 $danger: $red;
-$light: $gray-100;
+$light: #e1e5ea;
 $dark: $gray-800;
-
 $background: #252130;
 
 $theme-colors: ("blue": $blue,
@@ -38,7 +37,6 @@ $theme-colors: ("blue": $blue,
   "teal": $teal,
   "cyan": $cyan,
 );
-
 $yiq-contrasted-threshold: 190;
 $text-muted: #999;
 
@@ -86,7 +84,7 @@ $headings-color: $gray-900;
 
 // Navbar
 $navbar-light-brand-color: $black;
-$navbar-light-brand-hover-color: $primary;
+$navbar-light-brand-hover-color: $red;
 $navbar-light-hover-color: $primary;
 
 // Dropdown

@@ -23,14 +23,9 @@ class Theme
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $category;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $tag;
 
     /**
      * @ORM\Column(type="string", length=4)
@@ -45,6 +40,7 @@ class Theme
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -75,6 +71,11 @@ class Theme
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="themes")
+     */
+    private $tags;
+
     public function __toString(): string
     {
         return $this->category . ' (' . $this->year . ')';
@@ -100,18 +101,6 @@ class Theme
     public function setCategory(string $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getTag(): ?string
-    {
-        return $this->tag;
-    }
-
-    public function setTag(?string $tag): self
-    {
-        $this->tag = $tag;
 
         return $this;
     }
@@ -229,5 +218,29 @@ class Theme
     public function setCreatedAtValue()
     {
         $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        $this->tags->removeElement($tag);
+
+        return $this;
     }
 }

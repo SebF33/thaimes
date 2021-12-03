@@ -1,6 +1,10 @@
 @import './variables';
 @import '~bootstrap/scss/bootstrap';
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
 body {
   background: $background;
@@ -10,14 +14,22 @@ body {
   font-weight: initial;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   color: $light;
 }
 
 a,
 a:hover {
+  color: $red;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
+}
+
+i {
+  margin-right: 8px
 }
 
 // Darken buttons
@@ -28,6 +40,7 @@ $value in $theme-colors {
   }
 }
 
+// Navbar
 .navbar-brand {
   font-family: $font-family-title;
   font-weight: $font-weight-normal;
@@ -42,7 +55,7 @@ $value in $theme-colors {
 .nav-theme {
   display: inline-block;
   padding: 5px 10px;
-  color: #666;
+  color: $gray-700;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.8rem;
@@ -74,9 +87,8 @@ $value in $theme-colors {
 }
 
 footer {
-  background: #0e0d13;
+  background: $gray-900;
 }
-
 
 /* Theme cards */
 .postcard {
@@ -87,13 +99,13 @@ footer {
   margin: 0 0 2rem 0;
   overflow: hidden;
   position: relative;
-  color: #ffffff;
+  color: $white;
 
   a {
     color: inherit;
   }
 
-   h1,
+  h1,
   .h1 {
     margin-bottom: 0.5rem;
     font-weight: 500;
@@ -210,7 +222,7 @@ footer {
       content: "";
       position: absolute;
       display: block;
-      background: #252130;
+      background: $background;
       top: -20%;
       height: 130%;
       width: 55px;
@@ -256,20 +268,20 @@ footer {
 
   .postcard.dark {
     .postcard__text:before {
-      background: #252130;
+      background: $background;
     }
   }
 
   .postcard.light {
     .postcard__text:before {
-      background: #e1e5ea;
+      background: $light;
     }
   }
 }
 
 .postcard .postcard__tagbox .green.play:hover {
   background: $main-green;
-  color: black;
+  color: $black;
 }
 
 .green .postcard__title:hover {
@@ -332,7 +344,7 @@ footer {
 
 .postcard .postcard__tagbox .yellow.play:hover {
   background: $main-yellow;
-  color: black;
+  color: $black;
 }
 
 .yellow .postcard__title:hover {
