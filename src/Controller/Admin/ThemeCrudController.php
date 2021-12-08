@@ -23,18 +23,18 @@ class ThemeCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            Field::new('category'),
+            Field::new('title'),
+            Field::new('year'),
             Field::new('text')->hideOnIndex(),
+            AssociationField::new('tags'),
             ImageField::new('picture')
                 ->setBasePath('uploads/theme')
                 ->setUploadDir('public/uploads/theme')
                 ->setFormType(FileUploadType::class)
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
-            Field::new('year'),
-            AssociationField::new('tags'),
-            BooleanField::new('isInternational'),
-            IntegerField::new('commentCount', 'Comments')->hideOnForm()
+            IntegerField::new('commentCount', 'Comments')->hideOnForm(),
+            BooleanField::new('display')
         ];
     }
 }

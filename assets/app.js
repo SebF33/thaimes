@@ -7,12 +7,10 @@
 
 // Styles
 import './styles/app.scss';
-
-// jQuery
-const $ = require('jquery');
-
-// Stimulus
-import './bootstrap';
+import './styles/footer.scss';
+import './styles/neon.scss';
+import './styles/search.scss';
+import './styles/show.scss';
 
 // Bootstrap
 import 'bootstrap';
@@ -22,3 +20,6 @@ bsCustomFileInput.init();
 // Font Awesome
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
+
+// Stimulus
+import './bootstrap';

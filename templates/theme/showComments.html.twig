@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Thaimes -
+	{{ theme }}
+{% endblock %}
+
+{% block body %}
+	<div class="page">
+		<h1>{{ theme }}</h1>
+		<div class="archive">
+			<article class="article">
+				{% if theme.picture %}
+					<img class="image" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
+				{% endif %}
+				<div class="mt-3 text-left">
+					{{ theme.text }}
+				</div>
+			</article>
+
+			{% if comments|length > 0 %}
+				{% for comment in comments %}
+					<article class="article">
+						<div class="mt-2 text-left">
+							<p class="bold">{{ comment.author }}
+								<br>
+								<span class="italic">{{ comment.createdAt|format_datetime('medium', 'short') }}</span>
+							</p>
+						</div>
+						{% if comment.photofilename %}
+							<a href="{{ asset('uploads/photos/' ~ comment.photofilename) }}" target="_blank">
+								<img class="image" src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
+							</a>
+						{% endif %}
+						<div class="mt-2 text-left">
+							{{ comment.text|nl2br }}
+						</div>
+					</article>
+				{% endfor %}
+
+				<div>{{ 'nb_of_comments'|trans({count: comments|length})}}</div>
+				{% if previous >= 0 %}
+					<a href="{{ path('theme', { slug: theme.slug, offset: previous }) }}">Previous</a>
+				{% endif %}
+				{% if next < comments|length %}
+					<a href="{{ path('theme', { slug: theme.slug, offset: next }) }}">Next</a>
+				{% endif %}
+
+			{% else %}
+				<article class="article">
+					<div class="text-left">
+						{{'No comments have been posted yet for this theme.'|trans }}
+					</div>
+				</article>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="col-12 col-lg-4">
+		<div class="bg-light shadow border rounded-lg p-4">
+			<h3 class="font-weight-light">
+				{{'Add your own feedback'|trans }}
+			</h3>
+			{{ form(comment_form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

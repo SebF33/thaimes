@@ -16,25 +16,24 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class CommentRepository extends ServiceEntityRepository
 {
-    public const PAGINATOR_PER_PAGE = 2;
+    public const PAGINATOR_PER_PAGE = 16;
 
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Comment::class);
     }
 
-    public function getCommentPaginator(Theme $theme, int $offset):Paginator
+    public function getCommentPaginator(Theme $theme, int $offset): Paginator
     {
         $query = $this->createQueryBuilder('t')
-        ->andWhere('t.theme = :theme')
-        ->andWhere('t.state = :state')
-        ->setParameter('theme', $theme)
-        ->setParameter('state', 'published')
-        ->orderBy('t.createdAt', 'DESC')
-        ->setMaxResults(self::PAGINATOR_PER_PAGE)
-        ->setFirstResult($offset)
-        ->getQuery()
-        ;
+            ->andWhere('t.theme = :theme')
+            ->andWhere('t.state = :state')
+            ->setParameter('theme', $theme)
+            ->setParameter('state', 'published')
+            ->orderBy('t.createdAt', 'DESC')
+            ->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->getQuery();
 
         return new Paginator($query);
     }

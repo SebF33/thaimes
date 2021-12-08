@@ -25,7 +25,7 @@ class Theme
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $category;
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=4)
@@ -46,7 +46,7 @@ class Theme
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isInternational;
+    private $display;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="theme", orphanRemoval=true)
@@ -78,7 +78,7 @@ class Theme
 
     public function __toString(): string
     {
-        return $this->category . ' (' . $this->year . ')';
+        return $this->title . ' (' . $this->year . ')';
     }
 
     public function getId(): ?int
@@ -93,14 +93,14 @@ class Theme
         }
     }
 
-    public function getCategory(): ?string
+    public function getTitle(): ?string
     {
-        return $this->category;
+        return $this->title;
     }
 
-    public function setCategory(string $category): self
+    public function setTitle(string $title): self
     {
-        $this->category = $category;
+        $this->title = $title;
 
         return $this;
     }
@@ -129,14 +129,14 @@ class Theme
         return $this;
     }
 
-    public function getIsInternational(): ?bool
+    public function getDisplay(): ?bool
     {
-        return $this->isInternational;
+        return $this->display;
     }
 
-    public function setIsInternational(bool $isInternational): self
+    public function setDisplay(bool $display): self
     {
-        $this->isInternational = $isInternational;
+        $this->display = $display;
 
         return $this;
     }

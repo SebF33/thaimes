@@ -18,7 +18,9 @@ $orange: #ffae73;
 $green: #02B875;
 $teal: #55e7cc;
 $cyan: #8ce6ff;
-$primary: $blue;
+
+/* App */
+$primary: $red;
 $secondary: #666;
 $success: $green;
 $info: $cyan;
@@ -26,8 +28,8 @@ $warning: $yellow;
 $danger: $red;
 $light: #e1e5ea;
 $dark: $gray-800;
-$background: #252130;
-
+$background: #1b2431;
+$symfony: #131313;
 $theme-colors: ("blue": $blue,
   "soft-blue": rgba(23, 95, 201, 0.15),
   "pink": $pink,
@@ -40,12 +42,12 @@ $theme-colors: ("blue": $blue,
 $yiq-contrasted-threshold: 190;
 $text-muted: #999;
 
-// Theme card colors
+// Theme card
 $main-green: #79dd09 !default;
 $main-green-rgb-015: rgba(121, 221, 9, 0.1) !default;
 $main-yellow: #bdbb49 !default;
 $main-yellow-rgb-015: rgba(189, 187, 73, 0.1) !default;
-$main-red: #bd150b !default;
+$main-red: $red !default;
 $main-red-rgb-015: rgba(189, 21, 11, 0.1) !default;
 $main-blue: #0076bd !default;
 $main-blue-rgb-015: rgba(0, 118, 189, 0.1) !default;
@@ -71,7 +73,6 @@ $font-family-title: Georgia,
 Times,
 'New Roman',
 serif;
-
 $font-size-base: 1rem;
 $font-weight-normal: 400;
 $font-weight-medium: 500;

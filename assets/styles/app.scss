@@ -1,10 +1,20 @@
 @import './variables';
 @import '~bootstrap/scss/bootstrap';
+@import '~flag-icon-css/sass/flag-icons';
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+
+
+html {
+  position: relative;
+  min-height: 100%;
+  /* Scrollbar FireFox */
+  scrollbar-width: thin;
+  scrollbar-color: $symfony $background;
+}
 
 body {
   background: $background;
@@ -14,22 +24,62 @@ body {
   font-weight: initial;
 }
 
+/* Scrollbar personnalisée pour Chrome, Edge, Safari et Opera */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $symfony;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $background;
+  border-radius: 6px;
+}
+
+/* Surligner un texte sélectionné en couleur */
+::selection {
+  background-color: $red;
+}
+
+a,
+button,
 h1,
 h2,
 h3,
-h4 {
-  color: $light;
+h4,
+h5 {
+  color: $light !important;
 }
 
 a,
 a:hover {
-  color: $red;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
 
-i {
-  margin-right: 8px
+a:hover {
+  color: $red !important;
+}
+
+.bold {
+  font-weight: $font-weight-bold;
+}
+
+.italic {
+  font-style: italic;
+  font-weight: $font-weight-medium;
+  font-size: 14px
+}
+
+.hide {
+  display: none;
+}
+
+.svg-inline--fa {
+  margin-right: 4px
 }
 
 // Darken buttons
@@ -81,13 +131,9 @@ $value in $theme-colors {
   }
 }
 
-.comment-text {
-  font-size: 12px;
-  line-height: 15px;
-}
-
-footer {
-  background: $gray-900;
+.form-control:focus {
+  border-color: $main-red;
+  box-shadow: 0 0 0 2px $main-red-rgb-015;
 }
 
 /* Theme cards */

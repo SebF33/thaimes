@@ -1,0 +1,87 @@
+@import './variables';
+
+
+hr {
+  height: 6px;
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+hr:last-child {
+  margin-right: 60%;
+}
+
+.page {
+  line-height: 1.15;
+  color: #777;
+  padding: 2em;
+  background: $background;
+  max-width: 1100px;
+}
+
+.archive {
+  display: grid;
+  color: $light !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-gap: 1em;
+  grid-auto-flow: dense;
+}
+
+.image {
+  display: block;
+  text-align: center;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.article {
+  padding: 1em;
+  background: $symfony;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.article:nth-child(1) {
+  grid-column: 1 / -1;
+  background: $symfony
+}
+
+.article:nth-child(1)>hr:first-child {
+  padding-bottom: 30%
+}
+
+.article:nth-child(1)>hr:last-child {
+  margin-right: 20%;
+  height: 28px
+}
+
+.article:nth-child(8) {
+  grid-column: -3 / -1;
+  background: rgba(255, 200, 255, 0.3)
+}
+
+.article:nth-child(12) {
+  grid-column: 1 / -2;
+  background: rgba(255, 200, 255, 0.3)
+}
+
+.article:nth-child(12)>hr:first-child {
+  padding-bottom: 30%
+}
+
+.article:after {
+  color: #808;
+  font-weight: bold;
+  font-family: courier;
+}
+
+@media (max-width: 680px) {
+  .archive {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article {
+    margin-bottom: 1em;
+  }
+}

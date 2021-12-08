@@ -20,21 +20,28 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        $themes = $this->getDoctrine()->getRepository(Theme::class)->count([]);
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->count([]);
+
+        return $this->render('admin/dashboard.html.twig', [
+            'themes' => $themes,
+            'comments' => $comments,
+        ]);
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Theme');
+            ->setTitle('Thaimes');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoRoute('Back to the website', 'fa fa-home', 'homepage');
-        yield MenuItem::linkToCrud('Themes', 'fa fa-map-marker', Theme::class);
+        yield MenuItem::linktoRoute('Dashboard', 'fa fa-home', 'admin');
+        yield MenuItem::linktoRoute('Website', 'fa fa-map-marker', 'homepage');
+        yield MenuItem::linkToCrud('Themes', 'fa fa-pen-fancy', Theme::class);
         yield MenuItem::linkToCrud('Comments', 'fa fa-comments', Comment::class);
-        yield MenuItem::linkToCrud('Tags', 'fas fa-tag', Tag::class);
+        yield MenuItem::linkToCrud('Tags', 'fa fa-tag', Tag::class);
         // yield MenuItem::linkToCrud('The Label', 'icon class', EntityClass::class);
     }
 

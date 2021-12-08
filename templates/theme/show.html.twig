@@ -40,6 +40,7 @@
 						</div>
 					</div>
 				{% endfor %}
+
 				<div>{{ 'nb_of_comments'|trans({count: comments|length})}}</div>
 				{% if previous >= 0 %}
 					<a href="{{ path('theme', { slug: theme.slug, offset: previous }) }}">Previous</a>
@@ -47,6 +48,7 @@
 				{% if next < comments|length %}
 					<a href="{{ path('theme', { slug: theme.slug, offset: next }) }}">Next</a>
 				{% endif %}
+
 			{% else %}
 				<div class="text-center">
 					{{'No comments have been posted yet for this theme.'|trans }}
@@ -62,4 +64,5 @@
 				</div>
 			</div>
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}

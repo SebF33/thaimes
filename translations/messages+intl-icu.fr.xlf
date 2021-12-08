@@ -5,53 +5,9 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="Q64yZbm" resname="Themes">
-        <source>Themes</source>
-        <target>Thèmes</target>
-      </trans-unit>
-      <trans-unit id="LNAVleg" resname="Give your feedback!">
-        <source>Give your feedback!</source>
-        <target>Donnez votre avis !</target>
-      </trans-unit>
-      <trans-unit id="3Mg5pAF" resname="View">
-        <source>View</source>
-        <target>Voir</target>
-      </trans-unit>
       <trans-unit id="maMQz7W" resname="nb_of_comments">
         <source>nb_of_comments</source>
         <target>{count, plural, =0 {Aucun commentaire.} =1 {1 commentaire.} other {# commentaires.}}</target>
-      </trans-unit>
-      <trans-unit id="yKeA0.P" resname="Log in!">
-        <source>Log in!</source>
-        <target>__Log in!</target>
-      </trans-unit>
-      <trans-unit id="acVpEs4" resname="You are logged in as">
-        <source>You are logged in as</source>
-        <target>__You are logged in as</target>
-      </trans-unit>
-      <trans-unit id="dDUw20Q" resname="Please sign in">
-        <source>Please sign in</source>
-        <target>__Please sign in</target>
-      </trans-unit>
-      <trans-unit id="47ienTP" resname="Username">
-        <source>Username</source>
-        <target>__Username</target>
-      </trans-unit>
-      <trans-unit id="588_9PF" resname="Password">
-        <source>Password</source>
-        <target>__Password</target>
-      </trans-unit>
-      <trans-unit id="v9QCsvb" resname="Sign in">
-        <source>Sign in</source>
-        <target>__Sign in</target>
-      </trans-unit>
-      <trans-unit id="0mwU_rp" resname="No comments have been posted yet for this theme.">
-        <source>No comments have been posted yet for this theme.</source>
-        <target>__No comments have been posted yet for this theme.</target>
-      </trans-unit>
-      <trans-unit id="ilFYXWP" resname="Add your own feedback">
-        <source>Add your own feedback</source>
-        <target>__Add your own feedback</target>
       </trans-unit>
     </body>
   </file>

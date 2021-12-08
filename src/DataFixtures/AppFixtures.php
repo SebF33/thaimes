@@ -21,15 +21,15 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $amsterdam = new Theme();
-        $amsterdam->setCategory('Amsterdam');
+        $amsterdam->setTitle('Amsterdam');
         $amsterdam->setYear('2019');
-        $amsterdam->setIsInternational(true);
+        $amsterdam->setDisplay(true);
         $manager->persist($amsterdam);
 
         $paris = new Theme();
-        $paris->setCategory('Paris');
+        $paris->setTitle('Paris');
         $paris->setYear('2020');
-        $paris->setIsInternational(false);
+        $paris->setDisplay(false);
         $manager->persist($paris);
 
         $comment1 = new Comment();

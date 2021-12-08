@@ -45,14 +45,14 @@ class ThemeController extends AbstractController
     public function index(ThemeRepository $themeRepository)
     {
         return new Response($this->twig->render('theme/index.html.twig', [
-            'themes' => $themeRepository->findAll(),
+            'themes' => $themeRepository->findAllDisplayThemes(),
         ]));
     }
 
     /**
      * @Route("/{_locale<%app.supported_locales%>}/list", name="list")
      */
-    public function tagList(TagRepository $tagRepository)
+    public function showTagList(TagRepository $tagRepository)
     {
         return new Response($this->twig->render('theme/list.html.twig', [
             'tags' => $tagRepository->findAll(),
@@ -74,7 +74,7 @@ class ThemeController extends AbstractController
                 try {
                     $photo->move($photoDir, $filename);
                 } catch (FileException $e) {
-                    // unable to upload the photo, give up
+                    "Unable to upload the photo.";
                 }
                 $comment->setPhotoFilename($filename);
             }
@@ -97,7 +97,7 @@ class ThemeController extends AbstractController
         $offset = max(0, $request->query->getInt('offset', 0));
         $paginator = $commentRepository->getCommentPaginator($theme, $offset);
 
-        return new Response($this->twig->render('theme/show.html.twig', [
+        return new Response($this->twig->render('theme/showComments.html.twig', [
             'themes' => $themeRepository->findAll(),
             'theme' => $theme,
             'comments' => $paginator,

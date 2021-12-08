@@ -5,41 +5,58 @@
 {% endblock %}
 
 {% block body %}
-	<h2 class="mb-5">
-		{{ 'Give your feedback!'|trans }}
-	</h2>
+	<div class="container d-flex justify-content-md-between">
+		<h1 class="mb-5 hide">{{ 'What\'s new?'|trans }}</h1>
+		<div class="neon-text">
+			<span class="letter">W</span>
+			<span class="letter">h</span>
+			<span class="letter letter-2">a</span>
+			<span class="letter">t</span>
+			<span class="letter">'</span>
+			<span class="letter">s</span>
+			<span class="letter"></span>
+			<span class="letter">n</span>
+			<span class="letter">e</span>
+			<span class="letter">w</span>
+			<span class="letter letter-3">?</span>
+		</div>
+		{# Bloc de recherche #}
+		<div class="container-box align-self-center">
+			{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
+		</div>
+	</div>
 
-	<section class="dark">
-		{% for row in themes|batch(4) %}
-			<div class="container py-4">
-				{% for theme in row %}
-					{# Cartes de thème #}
-					<article class="postcard dark red">
-						<a class="postcard__img_link" href="{{ path('theme', { slug: theme.slug }) }}">
-							{% if theme.picture %}
-								<img class="postcard__img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
-							{% endif %}
-						</a>
-						<div class="postcard__text">
-							<h4 class="postcard__title red">
-								<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
-							</h4>
-							<div class="postcard__subtitle small">
-								<time datetime="2020-05-25 12:00:00">
-									<i class="fas fa-calendar-alt"></i>{{ theme.createdAt|format_datetime(pattern="EEEE dd MMMM YYYY", locale="fr") }}
-								</time>
-							</div>
-							<div class="postcard__bar"></div>
-							<div class="postcard__preview-txt">{{ theme.text }}</div>
-							<ul class="postcard__tagbox">
-								<li class="tag__item">
-									<i class="fas fa-tag"></i>tag
-								</li>
-							</ul>
+	{% for row in themes|batch(4) %}
+		<div class="container py-4">
+			{% for theme in row %}
+				{# Cartes de thème #}
+				<article class="postcard dark red">
+					<a class="postcard__img_link" href="{{ path('theme', { slug: theme.slug }) }}">
+						{% if theme.picture %}
+							<img class="postcard__img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
+						{% endif %}
+					</a>
+					<div class="postcard__text">
+						<h4 class="postcard__title red">
+							<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
+						</h4>
+						<div class="postcard__subtitle small">
+							<i class="fas fa-calendar-alt"></i>
+							{{ theme.createdAt|format_datetime(pattern="EEEE dd MMMM YYYY", locale="fr") }}
 						</div>
-					</article>
-				{% endfor %}
-			</div>
-		{% endfor %}
-	</section>
+						<div class="postcard__bar"></div>
+						<div class="postcard__preview-txt">{{ theme.text }}</div>
+						<ul class="postcard__tagbox">
+							{% for theme in theme.getTags() %}
+								<li class="tag__item">
+									<i class="fas fa-tag"></i>
+									{{ theme.name }}
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+	{% endfor %}
 {% endblock %}

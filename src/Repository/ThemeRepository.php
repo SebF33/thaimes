@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Theme;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,9 +15,23 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ThemeRepository extends ServiceEntityRepository
 {
+    public const PAGINATOR_PER_PAGE = 2;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Theme::class);
+    }
+
+    public function getThemePaginator(int $offset): Paginator
+    {
+        $query = $this->createQueryBuilder('t')
+            ->setParameter('state', 'published')
+            ->orderBy('t.createdAt', 'DESC')
+            ->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->getQuery();
+
+        return new Paginator($query);
     }
 
     public function findAll()
@@ -24,22 +39,34 @@ class ThemeRepository extends ServiceEntityRepository
         return $this->findBy([], ['createdAt' => 'DESC']);
     }
 
-    // /**
-    //  * @return Theme[] Returns an array of Theme objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllDisplayThemes()
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->where('t.display = :val')
+            ->setParameter('val', TRUE)
+            ->orderBy('t.createdAt', 'DESC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+
+    public function findThemesByTitle(string $query)
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->like('LOWER(t.title)', 'LOWER(:query)'),
+                    $qb->expr()->isNotNull('t.createdAt')
+                )
+            )
+            ->andWhere($qb->expr()->eq('t.display', ':val'))
+            ->setParameter('query', '%' . $query . '%')
+            ->setParameter('val', TRUE);
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 
     /*
     public function findOneBySomeField($value): ?Theme
