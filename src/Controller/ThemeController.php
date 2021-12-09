@@ -50,11 +50,11 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/list", name="list")
+     * @Route("/{_locale<%app.supported_locales%>}/categories", name="categories")
      */
     public function showTagList(TagRepository $tagRepository)
     {
-        return new Response($this->twig->render('theme/list.html.twig', [
+        return new Response($this->twig->render('theme/categories.html.twig', [
             'tags' => $tagRepository->findAll(),
         ]));
     }

@@ -6,68 +6,84 @@
 {% endblock %}
 
 {% block body %}
-	<div class="page">
-		<h1 class="headline">{{ theme }}</h1>
-		<h2 class="subhead">
-			The next generation of catch
-		</h2>
-		<div class="archive">
-			<article class="article">
-				{% if theme.picture %}
-					<figure>
-						<img class="neon-img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
-						<figcaption>Image by</figcaption>
-					</figure>
-				{% endif %}
-				<div class="mt-4 text-left">
-					{{ theme.text }}
-				</div>
-			</article>
-
-			{% if comments|length > 0 %}
-				{% for comment in comments %}
-					<article class="article">
-						<div class="mt-2 text-left">
-							<p class="bold">{{ comment.author }}
-								<br>
-								<span class="italic">{{ comment.createdAt|format_datetime('medium', 'short') }}</span>
-							</p>
-						</div>
-						{% if comment.photofilename %}
-							<a href="{{ asset('uploads/photos/' ~ comment.photofilename) }}" target="_blank">
-								<img class="comment-img" src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
-							</a>
-						{% endif %}
-						<div class="mt-2 text-left">
-							{{ comment.text|nl2br }}
-						</div>
-					</article>
-				{% endfor %}
-
-				<div>{{ 'nb_of_comments'|trans({count: comments|length})}}</div>
-				{% if previous >= 0 %}
-					<a href="{{ path('theme', { slug: theme.slug, offset: previous }) }}">Previous</a>
-				{% endif %}
-				{% if next < comments|length %}
-					<a href="{{ path('theme', { slug: theme.slug, offset: next }) }}">Next</a>
-				{% endif %}
-
-			{% else %}
+	<div class="container d-flex">
+		<div class="page d-inline-block">
+			<h1 class="headline">{{ theme }}</h1>
+			<h2 class="subhead">
+				The next generation of catch
+			</h2>
+			<div class="archive">
 				<article class="article">
-					<div class="text-left">
-						{{'No comments have been posted yet for this theme.'|trans }}
+					{% if theme.picture %}
+						<figure>
+							<img class="neon-img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
+							<figcaption>Image by</figcaption>
+						</figure>
+					{% endif %}
+					<div class="mt-4 text-left">
+						{{ theme.text }}
 					</div>
 				</article>
-			{% endif %}
-		</div>
-	</div>
 
-	<div class="col-12 col-lg-4">
-		<div class="bg-light shadow border rounded-lg p-4">
-			<h3 class="font-weight-light">
-				{{'Add your own feedback'|trans }}
-			</h3>
-			{{ form(comment_form) }}
+				{% if comments|length > 0 %}
+					{% for comment in comments %}
+						<article class="article">
+							<div class="mt-2 text-left">
+								<p class="bold">{{ comment.author }}
+									<br>
+									<span class="italic">{{ comment.createdAt|format_datetime('medium', 'short') }}</span>
+								</p>
+							</div>
+							{% if comment.photofilename %}
+								<a href="{{ asset('uploads/photos/' ~ comment.photofilename) }}" target="_blank">
+									<img class="comment-img" src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
+								</a>
+							{% endif %}
+							<div class="mt-2 text-left">
+								{{ comment.text|nl2br }}
+							</div>
+						</article>
+					{% endfor %}
+					{% if previous >= 0 %}
+						<a href="{{ path('theme', { slug: theme.slug, offset: previous }) }}">Previous</a>
+					{% endif %}
+					{% if next < comments|length %}
+						<a href="{{ path('theme', { slug: theme.slug, offset: next }) }}">Next</a>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="page d-inline-block">
+			<p>
+				{% if comments|length > 0 %}
+					{{ 'nb_of_comments'|trans({count: comments|length})}}
+				{% else %}
+					{{'No comments have been posted yet for this theme.'|trans }}
+				</div>
+			{% endif %}
+		</p>
+		<div class="comment-form col-12">
+			<div class="box-form bg-light rounded-lg p-4">
+				<h3 class="font-weight-light hide">
+					{{'Participate!'|trans }}
+				</h3>
+				<div class="neon-text h3 mb-3">
+					<span class="letter">P</span>
+					<span class="letter">a</span>
+					<span class="letter">r</span>
+					<span class="letter letter-2">t</span>
+					<span class="letter">i</span>
+					<span class="letter">c</span>
+					<span class="letter">i</span>
+					<span class="letter">p</span>
+					<span class="letter">a</span>
+					<span class="letter">t</span>
+					<span class="letter">e</span>
+					<span class="letter letter-3">!</span>
+				</div>
+				{{ form(comment_form) }}
+				</div>
 			</div>
 		</div>
 	</div>

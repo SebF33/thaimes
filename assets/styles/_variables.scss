@@ -40,7 +40,9 @@ $theme-colors: ("blue": $blue,
   "cyan": $cyan,
 );
 $neonlight: $light;
-$neonred: $red;;
+$neonred: $red;
+$neonlightred: #e44d45;
+$neonred-muted: #550e2a;
 $neonblue: #001eff;
 $neonlightblue: #4deeea;
 $neonyellow: #ffe700;
@@ -74,12 +76,12 @@ $spacers: (0: 0,
   7: ($spacer * 6));
 
 /* 📝 Fonts */
-$font-family-base: "Baloo 2",
-cursive;
 $font-family-title: Georgia,
 Times,
 'New Roman',
 serif;
+$font-family-base: "Baloo 2",
+cursive;
 $font-size-base: 1rem;
 $font-weight-normal: 400;
 $font-weight-medium: 500;

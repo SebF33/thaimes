@@ -1,4 +1,5 @@
 @import './variables';
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
 
 /* Neon effects */
@@ -59,10 +60,10 @@ figure {
   .neon-img {
     object-fit: contain;
     width: 100%;
-    max-width: 1000px;
     height: auto;
+    max-width: 900px;
     border-radius: 0 0.5em 0.5em 0;
-    box-shadow: -0.5em 0.5em 0 $neonred;
+    box-shadow: -0.4em 0.4em 0 $neonred;
   }
 
   figcaption {
@@ -94,7 +95,7 @@ hr:last-child {
   color: $text-muted;
   padding: 2em;
   background: $background;
-  max-width: 1100px;
+  max-width: 1200px;
 }
 
 .archive {
@@ -161,5 +162,21 @@ hr:last-child {
 
   .article {
     margin-bottom: 1em;
+  }
+}
+
+/* Comment form */
+.comment-form {
+  background-color: $symfony !important;
+  max-width: 400px;
+
+  .box-form {
+    border: 1px solid $light !important;
+    box-shadow: 0 4px 8px 0 $light !important;
+  }
+
+  input,
+  textarea {
+    margin-bottom: 8px;
   }
 }
