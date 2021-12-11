@@ -8,6 +8,7 @@
 
 
 .sign {
+  user-select: none;
   background-image: radial-gradient(ellipse 40% 35% at 40% 40%,
       $neonred-muted,
       transparent);

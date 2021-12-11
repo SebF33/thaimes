@@ -2,21 +2,22 @@
 
 namespace App\Controller;
 
-use App\Entity\Comment;
+use App\Entity\Tag;
 use App\Entity\Theme;
+use Twig\Environment;
+use App\Entity\Comment;
 use App\Form\CommentFormType;
 use App\Message\CommentMessage;
-use App\Repository\CommentRepository;
 use App\Repository\TagRepository;
 use App\Repository\ThemeRepository;
+use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class ThemeController extends AbstractController
 {
@@ -55,7 +56,21 @@ class ThemeController extends AbstractController
     public function showTagList(TagRepository $tagRepository)
     {
         return new Response($this->twig->render('theme/categories.html.twig', [
-            'tags' => $tagRepository->findAll(),
+            'tags_by_letter' => $tagRepository->findAllByTagLetter(),
+        ]));
+    }
+
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/category/{name}", name="category")
+     */
+    public function showThemeByCategory(Request $request, ThemeRepository $themeRepository)
+    {
+        $request->attributes->get('name');
+        $em = $this->getDoctrine()->getManager();
+        $category = $em->getRepository(Tag::class)->findBy(array('name' => $request));
+
+        return new Response($this->twig->render('theme/category.html.twig', [
+            'themes' => $category->getTheme(),
         ]));
     }
 
@@ -98,7 +113,7 @@ class ThemeController extends AbstractController
         $paginator = $commentRepository->getCommentPaginator($theme, $offset);
 
         return new Response($this->twig->render('theme/showComments.html.twig', [
-            'themes' => $themeRepository->findAll(),
+            'themes' => $themeRepository->findAllDisplayThemes(),
             'theme' => $theme,
             'comments' => $paginator,
             'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,

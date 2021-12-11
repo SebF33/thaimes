@@ -24,6 +24,30 @@ class TagRepository extends ServiceEntityRepository
         return $this->findBy([], ['name' => 'ASC']);
     }
 
+    public function findAllByTagLetter()
+    {
+        $tags = $this->createQueryBuilder('t')
+            ->orderBy('t.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        $tags_by_letter = array();
+
+        // Sort tags by letter
+        foreach ($tags as $tag) {
+            $first_letter = substr($tag->getName(), 0, 1);
+
+            // Create array for letter if it doesn’t exist
+            if (!isset($tags_by_letter[$first_letter])) {
+                $tags_by_letter[$first_letter] = array();
+            }
+
+            $tags_by_letter[$first_letter][] = $tag;
+        }
+
+        return $context['tags_by_letter'] = $tags_by_letter;
+    }
+
     // /**
     //  * @return Tag[] Returns an array of Tag objects
     //  */

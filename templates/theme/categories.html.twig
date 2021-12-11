@@ -15,12 +15,20 @@
 		<span class="letter letter-3">s</span>
 	</div>
 
-		{% for row in tags|batch(8) %}
-			<div class="container py-4">
-				{% for tag in row %}
-					<h4>{{ tag.name }}</h4>
-				{% endfor %}
-			</div>
-		{% endfor %}
-
+	<div class="container my-5">
+		<dl class="row">
+			{% for letter, tags in tags_by_letter %}
+				<div class="col-4">
+					<dt class="mt-4">
+						<span class="sign h1">{{ letter }}</span>
+					</dt>
+					{% for tag in tags  %}
+						<dd class="ms-2">
+							<a class="h4" href="{{ path('category', { name: tag.name }) }}">{{ tag.name }}</a>
+						</dd>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</dl>
+	</div>
 {% endblock %}
