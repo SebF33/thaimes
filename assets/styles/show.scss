@@ -167,12 +167,16 @@ hr:last-child {
 
 /* Comment form */
 .comment-form {
-  background-color: $symfony !important;
   max-width: 400px;
 
   .box-form {
+    background-color: $symfony !important;
     border: 1px solid $light !important;
     box-shadow: 0 4px 8px 0 $light !important;
+
+    input, label {
+      color: $text-muted;
+    }
   }
 
   input,

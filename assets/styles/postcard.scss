@@ -87,6 +87,15 @@
         background: rgba(83, 83, 83, 0.8);
       }
     }
+
+    .tag__item_a {
+      display: block;
+      font-family: $font-family-base;
+
+      &:hover {
+        color: unset !important;
+      }
+    }
   }
 
   &:before {

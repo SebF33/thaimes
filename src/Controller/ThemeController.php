@@ -63,14 +63,17 @@ class ThemeController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/category/{name}", name="category")
      */
-    public function showThemeByCategory(Request $request, ThemeRepository $themeRepository)
+    public function showThemesByTag(Request $request, TagRepository $tagRepository)
     {
-        $request->attributes->get('name');
-        $em = $this->getDoctrine()->getManager();
-        $category = $em->getRepository(Tag::class)->findBy(array('name' => $request));
+        $query = $request->attributes->get('name');
+
+        $tag = $tagRepository->findOneBy(['name' => $query]);
+
+        $themes = $tag->getThemes();
 
         return new Response($this->twig->render('theme/category.html.twig', [
-            'themes' => $category->getTheme(),
+            'themes' => $themes,
+            'tag' => $tag,
         ]));
     }
 
@@ -113,7 +116,6 @@ class ThemeController extends AbstractController
         $paginator = $commentRepository->getCommentPaginator($theme, $offset);
 
         return new Response($this->twig->render('theme/showComments.html.twig', [
-            'themes' => $themeRepository->findAllDisplayThemes(),
             'theme' => $theme,
             'comments' => $paginator,
             'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,

@@ -49,8 +49,10 @@
 						<ul class="postcard__tagbox">
 							{% for theme in theme.getTags() %}
 								<li class="tag__item">
-									<i class="fas fa-tag"></i>
-									{{ theme.name }}
+									<a class="tag__item_a" href="{{ path('category', { name: theme.name }) }}">
+										<i class="fas fa-tag"></i>
+										{{ theme.name }}
+									</a>
 								</li>
 							{% endfor %}
 						</ul>
