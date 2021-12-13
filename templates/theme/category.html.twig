@@ -7,7 +7,9 @@
 
 {% block body %}
 	<div class="container d-flex justify-content-md-between">
-		<h2 class="h1 mb-5">{{ tag.name }}</h2>
+		<div class="neon-text normal">
+			<h2 class="letter letter-normal">{{ tag.name }}</h2>
+		</div>
 		{# Bloc de recherche #}
 		<div class="container-box align-self-center">
 			{{ render(controller('App\\Controller\\SearchController::searchBar')) }}

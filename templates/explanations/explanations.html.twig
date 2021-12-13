@@ -1,0 +1,34 @@
+{% if comments|length > 0 %}
+
+	<div class="page mx-auto">
+		<div class="archive">
+			{% for comment in comments %}
+				<article class="article">
+					<div class="text-left">
+						<p class="bold">{{ comment.author }}
+							<br>
+							<span class="italic">{{ comment.createdAt|format_datetime('medium', 'short') }}</span>
+						</p>
+					</div>
+					{% if comment.photofilename %}
+						<a href="{{ asset('uploads/photos/' ~ comment.photofilename) }}" target="_blank">
+							<img class="comment-img" src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
+						</a>
+					{% endif %}
+					<div class="mt-2 text-left">
+						{{ comment.text|nl2br }}
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+	</div>
+
+	{# Pagination #}
+	{% if previous >= 0 %}
+		<a href="{{ path('explanations', { slug: theme.slug, offset: previous }) }}">{{'Previous'|trans }}</a>
+	{% endif %}
+	{% if next < comments|length %}
+		<a href="{{ path('explanations', { slug: theme.slug, offset: next }) }}">{{'Next'|trans }}</a>
+	{% endif %}
+
+{% endif %}

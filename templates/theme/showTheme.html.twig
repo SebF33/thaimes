@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Thaimes -
+	{{ theme }}
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-sm-7">
+			<div class="head">
+				<h1 class="headline">{{ theme }}</h1>
+				<h2 class="subhead">
+					Phrase d'accroche
+				</h2>
+				<div class="article-meta">
+					<p class="article-tags">
+						<span class="tag">TAG</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="content">
+				<p>
+					{{ theme.text }}
+				</p>
+				<aside>
+					<p>Citation</p>
+				</aside>
+				{% if theme.picture %}
+					<figure>
+						<img class="neon-img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
+						<figcaption>Image by</figcaption>
+					</figure>
+				{% endif %}
+				<p>
+					TEXT 2
+				</p>
+
+				<h2>TITLE 2</h2>
+				<p>
+					TEXT 3
+				</p>
+				<figure>
+					<img class="neon-img" src="https://assets.codepen.io/t-1/cassidy-james-blaede-1lzJt360gkE-unsplash.jpg" alt="two people playing Guitar Hero Arcade. "/>
+					<figcaption>Photo by Cassidy James Blaede</figcaption>
+				</figure>
+				<p>
+					TEXT 4
+				</p>
+			</div>
+		</div>
+
+		<div class="col-sm mt-5">
+			{# Lien vers participations #}
+			<div class="row">
+				<p>
+					{% if comments|length > 0 %}
+						<a href="{{ path('explanations', { slug: theme.slug }) }}">
+							{{ 'nb_of_comments'|trans({count: comments|length})}}
+						</a>
+					{% else %}
+						{{'No explanations have been posted yet for this theme.'|trans }}
+					{% endif %}
+				</p>
+			</p>
+		</div>
+
+		{# Form de participation #}
+		<div class="comment-form row">
+			<div class="box-form bg-light rounded-lg p-4">
+				<h3 class="font-weight-light hide">
+					{{'Participate!'|trans }}
+				</h3>
+				<div class="neon-text h3 mb-3">
+					<span class="letter">P</span>
+					<span class="letter">a</span>
+					<span class="letter">r</span>
+					<span class="letter letter-2">t</span>
+					<span class="letter">i</span>
+					<span class="letter">c</span>
+					<span class="letter">i</span>
+					<span class="letter">p</span>
+					<span class="letter">a</span>
+					<span class="letter">t</span>
+					<span class="letter">e</span>
+					<span class="letter letter-3">!</span>
+				</div>
+				{{ form_start(comment_form, {'attr': {'onsubmit':'return submitForm();'}}) }}
+				{{ form_end(comment_form) }}
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

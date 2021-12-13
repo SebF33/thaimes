@@ -12,7 +12,8 @@ import './styles/footer.scss';
 import './styles/neon.scss';
 import './styles/postcard.scss';
 import './styles/search.scss';
-import './styles/show.scss';
+import './styles/show-explanations.scss';
+import './styles/show-theme.scss';
 
 // Bootstrap
 import 'bootstrap';
@@ -22,6 +23,10 @@ bsCustomFileInput.init();
 // Font Awesome
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
+
+// SweetAlert2
+const swal = require('sweetalert2')
+import './scripts/submit';
 
 // Stimulus
 import './bootstrap';

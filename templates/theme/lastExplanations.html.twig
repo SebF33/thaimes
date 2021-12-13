@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Thaimes -
+	{{ 'Last explanations'|trans }}
+{% endblock %}
+
+{% block body %}
+	<div class="container d-flex justify-content-md-between">
+		<h2 class="mb-5 hide">{{ 'Last explanations'|trans }}</h2>
+		<div class="neon-text h1">
+			<span class="letter">L</span>
+			<span class="letter">a</span>
+			<span class="letter">s</span>
+			<span class="letter letter-2">t</span>
+			<span class="letter">&nbsp;</span>
+			<span class="letter">e</span>
+			<span class="letter">x</span>
+			<span class="letter">p</span>
+			<span class="letter">l</span>
+			<span class="letter">a</span>
+			<span class="letter">n</span>
+			<span class="letter">a</span>
+			<span class="letter">t</span>
+			<span class="letter">i</span>
+			<span class="letter">o</span>
+			<span class="letter letter-3">n</span>
+			<span class="letter">s</span>
+		</div>
+		{# Bloc de recherche #}
+		<div class="container-box align-self-center">
+			{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
+		</div>
+	</div>
+
+	{% if comments|length > 0 %}
+		<div class="page mx-auto">
+			<div class="archive">
+				{% for comment in comments %}
+					<article class="article">
+						<div class="text-left">
+							<p class="bold">{{ comment.author }}
+								<br>
+								<span class="italic">{{ comment.createdAt|format_datetime('medium', 'short') }}</span>
+							</p>
+						</div>
+						{% if comment.photofilename %}
+							<a href="{{ asset('uploads/photos/' ~ comment.photofilename) }}" target="_blank">
+								<img class="comment-img" src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
+							</a>
+						{% endif %}
+						<div class="mt-2 text-left">
+							{{ comment.text|nl2br }}
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}

@@ -25,7 +25,9 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.11.0",
+        "@sweetalert2/themes": "^5.0.8",
         "apexcharts": "^3.31.0",
-        "sass": "^1.43.5"
+        "sass": "^1.43.5",
+        "sweetalert2": "^11.3.0"
     }
 }

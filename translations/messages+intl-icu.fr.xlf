@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="maMQz7W" resname="nb_of_comments">
         <source>nb_of_comments</source>
-        <target>{count, plural, =0 {Aucun commentaire.} =1 {1 commentaire.} other {# commentaires.}}</target>
+        <target>{count, plural, =0 {Aucun éclaircissement.} =1 {1 éclaircissement.} other {# éclaircissements.}}</target>
       </trans-unit>
     </body>
   </file>

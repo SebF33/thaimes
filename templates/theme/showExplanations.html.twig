@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Thaimes -
+	{{ theme }}
+	-
+	{{ 'Explanations'|trans }}
+{% endblock %}
+
+{% block body %}
+	{{ include('explanations/explanations.html.twig') }}
+{% endblock %}

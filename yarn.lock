@@ -946,6 +946,11 @@
   resolved "https://registry.yarnpkg.com/@stimulus/webpack-helpers/-/webpack-helpers-2.0.0.tgz#54296d2a2dffd4f962d2e802d99a3fdd84b8845f"
   integrity sha512-D6tJWsAC024MwGEIKlUVYU8Ln87mlrmiwHvYAjipg+s8H4eLxUMQ3PZkWyPevfipH+oR3leuHsjYsK1gN5ViQA==
 
+"@sweetalert2/themes@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/themes/-/themes-5.0.8.tgz#14bd38309ba543848002478143d5d481ae533a1b"
+  integrity sha512-z6AZwcAn2/DlmD8+HJx//SzPFiGQ3a9Ss7dvWDMaUpvrzd7pUxQ75rerk20elSGrl1APy5qY/Ry+faKmHSbdsw==
+
 "@symfony/stimulus-bridge@^2.0.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@symfony/stimulus-bridge/-/stimulus-bridge-2.1.0.tgz#d5cf8c29847fd42f40a8a6464e057a1def05ced9"
@@ -5231,6 +5236,11 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+sweetalert2@^11.3.0:
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.3.0.tgz#39be4b23a02be479f36441f3a5f16a5d6364aba3"
+  integrity sha512-C0TFp0VLxgx+PmhJ0mL8qzx+iYjnCLdDbvQHKY6KAGI+xwawMvLkStPgw2LmJl6itaDhR/qLQStPFIbr1VK9Ow==
 
 tapable@^2.1.1, tapable@^2.2.0:
   version "2.2.1"

@@ -194,7 +194,7 @@
 
 .neon-text {
   user-select: none;
-  font-family: 'Liberty';
+  font-family: 'Liberty' !important;
   font-weight: 100;
   flex-flow: row;
 
@@ -213,6 +213,10 @@
     letter-spacing: -10px;
   }
 
+  &.normal {
+    font-size: 2.8em !important;
+  }
+
   .letter {
     color: #ffd9e9;
     text-shadow: 0 0 2rem $primary;
@@ -225,6 +229,10 @@
 
     &.letter-3 {
       transform: translate(-2px, 4px) rotate(7deg);
+      animation: flicker2 3s ease-in-out infinite alternate;
+    }
+
+    &.letter-normal {
       animation: flicker2 3s ease-in-out infinite alternate;
     }
   }

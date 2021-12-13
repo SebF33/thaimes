@@ -80,7 +80,7 @@ class ThemeController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}", name="theme")
      */
-    public function show(Request $request, Theme $theme, CommentRepository $commentRepository, ThemeRepository $themeRepository, string $photoDir)
+    public function showTheme(Request $request, Theme $theme, CommentRepository $commentRepository, string $photoDir)
     {
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
@@ -112,15 +112,36 @@ class ThemeController extends AbstractController
             return $this->redirectToRoute('theme', ['slug' => $theme->getSlug()]);
         }
 
+        return new Response($this->twig->render('theme/showTheme.html.twig', [
+            'theme' => $theme,
+            'comments' =>  $commentRepository->findAllPublishedCommentsByTheme($theme),
+            'comment_form' => $form->createView(),
+        ]));
+    }
+
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}/explanations", name="explanations")
+     */
+    public function showExplanationsByTheme(Request $request, Theme $theme, CommentRepository $commentRepository)
+    {
         $offset = max(0, $request->query->getInt('offset', 0));
         $paginator = $commentRepository->getCommentPaginator($theme, $offset);
 
-        return new Response($this->twig->render('theme/showComments.html.twig', [
+        return new Response($this->twig->render('theme/showExplanations.html.twig', [
             'theme' => $theme,
             'comments' => $paginator,
             'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
             'next' => min(count($paginator), $offset + CommentRepository::PAGINATOR_PER_PAGE),
-            'comment_form' => $form->createView(),
+        ]));
+    }
+
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/last-explanations", name="last-explanations")
+     */
+    public function showLastExplanations(CommentRepository $commentRepository)
+    {
+        return new Response($this->twig->render('theme/lastExplanations.html.twig', [
+            'comments' =>  $commentRepository->findRecentPublishedComments(),
         ]));
     }
 }

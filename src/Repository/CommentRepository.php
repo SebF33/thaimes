@@ -23,6 +23,29 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+    public function findRecentPublishedComments()
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.state = :state')
+            ->setParameter('state', 'published')
+            ->setMaxResults(20)
+            ->orderBy('t.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllPublishedCommentsByTheme(Theme $theme)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.theme = :theme')
+            ->andWhere('t.state = :state')
+            ->setParameter('theme', $theme)
+            ->setParameter('state', 'published')
+            ->orderBy('t.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function getCommentPaginator(Theme $theme, int $offset): Paginator
     {
         $query = $this->createQueryBuilder('t')
