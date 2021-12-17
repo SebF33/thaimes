@@ -19,11 +19,20 @@ body {
 /* Taller footer on small screens */
 @media (max-width: 1024px) {
   body {
-    margin-bottom: 600px;
+    margin-bottom: 400px;
   }
 
   .footer {
-    height: 600px;
+    height: 400px;
+  }
+}
+@media (max-width: 767px) {
+  body {
+    margin-bottom: 700px;
+  }
+
+  .footer {
+    height: 700px;
   }
 }
 

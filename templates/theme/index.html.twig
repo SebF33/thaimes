@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container d-flex justify-content-md-between">
+	<div class="container row d-flex justify-content-md-between">
 		<h2 class="mb-5 hide">{{ 'What\'s new?'|trans }}</h2>
-		<div class="neon-text h1">
+		<div class="neon-text h1 col-8">
 			<span class="letter">W</span>
 			<span class="letter">h</span>
 			<span class="letter letter-2">a</span>
@@ -21,7 +21,7 @@
 			<span class="letter letter-3">?</span>
 		</div>
 		{# Bloc de recherche #}
-		<div class="container-box align-self-center">
+		<div class="container-box col-4 mt-4">
 			{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
 		</div>
 	</div>

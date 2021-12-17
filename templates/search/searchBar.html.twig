@@ -1,8 +1,10 @@
 {{ form_start(searchForm) }}
-<div class="search-box m-auto">
-	<button type="submit" id="form_search" class="btn-search" name="searchForm[search]">
-		<i class="fas fa-search"></i>
-	</button>
-	<input type="text" class="input-search" placeholder="Search..." name="searchForm[query]" required="required">
+<div class="container-box col-4 mt-4">
+	<div class="search-box m-auto">
+		<button type="submit" id="form_search" class="btn-search" name="searchForm[search]">
+			<i class="fas fa-search"></i>
+		</button>
+		<input type="text" class="input-search" placeholder="Search..." name="searchForm[query]" required="required">
+	</div>
 </div>
 {{ form_end(searchForm) }}

@@ -24,6 +24,9 @@ bsCustomFileInput.init();
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
 
+// Lottie
+import './scripts/lib/lottie-player';
+
 // SweetAlert2
 const swal = require('sweetalert2')
 import './scripts/submit';

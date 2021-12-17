@@ -15,8 +15,10 @@
 							<img class="comment-img" src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
 						</a>
 					{% endif %}
-					<div class="mt-2 text-left">
-						{{ comment.text|nl2br }}
+					<div class="mt-2">
+						<p class="text-wrap text-left">
+							{{ comment.text }}
+						</p>
 					</div>
 				</article>
 			{% endfor %}

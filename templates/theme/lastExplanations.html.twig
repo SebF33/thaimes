@@ -8,7 +8,7 @@
 {% block body %}
 	<div class="container d-flex justify-content-md-between">
 		<h2 class="mb-5 hide">{{ 'Last explanations'|trans }}</h2>
-		<div class="neon-text h1">
+		<div class="neon-text h1 col-8">
 			<span class="letter">L</span>
 			<span class="letter">a</span>
 			<span class="letter">s</span>
@@ -28,7 +28,7 @@
 			<span class="letter">s</span>
 		</div>
 		{# Bloc de recherche #}
-		<div class="container-box align-self-center">
+		<div class="container-box col-4 mt-4">
 			{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
 		</div>
 	</div>
@@ -49,8 +49,8 @@
 								<img class="comment-img" src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
 							</a>
 						{% endif %}
-						<div class="mt-2 text-left">
-							{{ comment.text|nl2br }}
+						<div class="mt-2 text-wrap">
+								{{ comment.text }}
 						</div>
 					</article>
 				{% endfor %}

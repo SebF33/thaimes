@@ -6,7 +6,7 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@sweetalert2/themes/dark/dark.scss';
-@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
 
 
 html {
@@ -117,9 +117,14 @@ $value in $theme-colors {
   }
 }
 
+.logoSite {
+  display: block;
+}
+
+
 .navbar-actions,
 .navbar-brand {
-  max-width: 140px;
+  max-width: 279px;
 }
 
 .navbar-brand {
