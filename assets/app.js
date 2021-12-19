@@ -28,8 +28,9 @@ require('@fortawesome/fontawesome-free/js/all.js');
 import './scripts/lib/lottie-player';
 
 // SweetAlert2
-const swal = require('sweetalert2')
-import './scripts/submit';
+import Swal from 'sweetalert2/src/sweetalert2.js'
+window.Swal = Swal;
+import './scripts/submit-comment';
 
 // Stimulus
 import './bootstrap';

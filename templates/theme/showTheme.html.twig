@@ -51,7 +51,8 @@
 			</div>
 		</div>
 
-		<div class="col-lg-4 mt-5">
+		<div
+			class="col-lg-4 mt-5">
 			{# Lien vers participations #}
 			<div class="row">
 				<p>
@@ -86,9 +87,9 @@
 					<span class="letter">e</span>
 					<span class="letter letter-3">!</span>
 				</div>
-				{{ form_start(comment_form, {'attr': {'onsubmit':'return submitForm();'}}) }}
+				{{ form_start(comment_form, {'attr': {'id': 'comment_form'}}) }}
 				{{ form_end(comment_form) }}
 			</div>
 		</div>
 	</div>
-</div>{% endblock %}
+{% endblock %}
