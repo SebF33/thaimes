@@ -5,8 +5,11 @@ $('#comment_form_submit').on('click', function (e) {
   if (form.get(0).reportValidity()) {
     Swal.fire({
       title: "Transmettre votre participation ?",
+      icon: "question",
       type: "warning",
       showCancelButton: true,
+      cancelButtonColor: "#bd150b",
+      cancelButtonText: "Non, pas encore",
       confirmButtonColor: "#0a8558",
       confirmButtonText: "Oui, allons-y !",
     }).then(function (result) {
@@ -25,7 +28,7 @@ window.onload = function () {
       toast: true,
       position: 'top',
       showConfirmButton: false,
-      timer: 2800,
+      timer: 3000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
