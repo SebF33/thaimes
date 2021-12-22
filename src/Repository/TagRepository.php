@@ -48,6 +48,16 @@ class TagRepository extends ServiceEntityRepository
         return $context['tags_by_letter'] = $tags_by_letter;
     }
 
+    public function getThemesCounts()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.name, COUNT(c.id) AS counter')
+            ->innerJoin('c.themes', 't')
+            ->groupBy('c')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Tag[] Returns an array of Tag objects
     //  */

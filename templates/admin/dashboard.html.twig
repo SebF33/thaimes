@@ -1,19 +1,17 @@
-{% extends '@EasyAdmin/layout.html.twig' %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	{{ encore_entry_link_tags('app') }}
-{% endblock %}
+{% extends '@!EasyAdmin/layout.html.twig' %}
 
 {% block main %}
-	You have
-	{{ themes }}
-	themes and
-	{{ comments }}
-	comments.
-{% endblock %}
-
-{% block javascripts %}
-	{{ parent() }}
-	{{ encore_entry_script_tags('app') }}
+	<div class="numbers">
+		You have
+		<span class="bold">{{ themes }}</span>
+		themes and
+		<span class="bold">{{ comments }}</span>
+		participations.
+	</div>
+	<div id="chart"></div>
+	<div id="donut"></div>
+	<script>
+		const commentLast30Days = {{ commentLast30Days|json_encode|raw }};
+		const themesCounts = {{ themesCounts|json_encode|raw }};
+	</script>
 {% endblock %}

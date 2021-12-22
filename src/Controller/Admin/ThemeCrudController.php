@@ -26,6 +26,7 @@ class ThemeCrudController extends AbstractCrudController
             Field::new('title'),
             Field::new('year'),
             Field::new('text')->hideOnIndex(),
+            Field::new('catch')->hideOnIndex(),
             AssociationField::new('tags'),
             ImageField::new('picture')
                 ->setBasePath('uploads/theme')

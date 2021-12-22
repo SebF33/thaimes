@@ -37,11 +37,10 @@ class Theme
      */
     private $text;
 
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-        $this->tags = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $catch;
 
     /**
      * @ORM\Column(type="boolean")
@@ -75,6 +74,12 @@ class Theme
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="themes")
      */
     private $tags;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->tags = new ArrayCollection();
+    }
 
     public function __toString(): string
     {
@@ -125,6 +130,18 @@ class Theme
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getCatch(): ?string
+    {
+        return $this->catch;
+    }
+
+    public function setCatch(string $catch): self
+    {
+        $this->catch = $catch;
 
         return $this;
     }

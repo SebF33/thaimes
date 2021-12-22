@@ -2,11 +2,11 @@
 
 namespace App\Repository;
 
-use App\Entity\Comment;
 use App\Entity\Theme;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Comment;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
@@ -59,6 +59,14 @@ class CommentRepository extends ServiceEntityRepository
             ->getQuery();
 
         return new Paginator($query);
+    }
+
+    public function getCommentLastDays()
+    {
+        $stmt  = $this->getEntityManager()->getConnection()->prepare('SELECT COUNT(id) num, DATE(created_at) d FROM comment GROUP BY DATE(created_at)');
+        $result = $stmt->executeQuery()->fetchAllAssociative();
+        
+        return $result;
     }
 
     // /**

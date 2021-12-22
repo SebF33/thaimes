@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+
+:root {
+  --body-bg: #1b2431;
+}
+
+body {
+  font-family: 'Baloo 2', cursive;
+}
+
+.numbers {
+  font-size: 2em;
+  color: #e1e5ea;
+}
+
+.bold {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+/* ApexCharts */
+#chart {
+  max-width: 600px;
+  margin: 35px auto;
+}
+
+#donut {
+  max-width: 400px;
+  margin: 35px auto;
+}
