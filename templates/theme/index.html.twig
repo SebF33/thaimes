@@ -8,18 +8,35 @@
 	<div class="container row d-flex justify-content-md-between">
 		<h2 class="mb-5 hide">{{ 'What\'s new?'|trans }}</h2>
 		<div class="neon-text h1 col-8">
-			<span class="letter">W</span>
-			<span class="letter">h</span>
-			<span class="letter letter-2">a</span>
-			<span class="letter">t</span>
-			<span class="letter">'</span>
-			<span class="letter">s</span>
-			<span class="letter">&nbsp;</span>
-			<span class="letter">n</span>
-			<span class="letter">e</span>
-			<span class="letter">w</span>
-			<span class="letter letter-3">?</span>
+			{% if app.request.locale=='en' %}
+				<span class="letter">W</span>
+				<span class="letter">h</span>
+				<span class="letter letter-2">a</span>
+				<span class="letter">t</span>
+				<span class="letter">'</span>
+				<span class="letter">s</span>
+				<span class="letter">&nbsp;</span>
+				<span class="letter">n</span>
+				<span class="letter">e</span>
+				<span class="letter">w</span>
+				<span class="letter letter-3">?</span>
+			{% elseif app.request.locale=='fr' %}
+				<span class="letter">Q</span>
+				<span class="letter">u</span>
+				<span class="letter">o</span>
+				<span class="letter">i</span>
+				<span class="letter">&nbsp;</span>
+				<span class="letter">d</span>
+				<span class="letter letter-2">e</span>
+				<span class="letter">&nbsp;</span>
+				<span class="letter">n</span>
+				<span class="letter">e</span>
+				<span class="letter">u</span>
+				<span class="letter">f</span>
+				<span class="letter letter-3">?</span>
+			{% endif %}
 		</div>
+
 		{# Bloc de recherche #}
 		<div class="container-box col-4 mt-4">
 			{{ render(controller('App\\Controller\\SearchController::searchBar')) }}

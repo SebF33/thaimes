@@ -80,9 +80,14 @@
 						<span class="letter">c</span>
 						<span class="letter">i</span>
 						<span class="letter">p</span>
-						<span class="letter">a</span>
-						<span class="letter">t</span>
+						{% if app.request.locale=='en' %}
+							<span class="letter">a</span>
+							<span class="letter">t</span>
+						{% endif %}
 						<span class="letter">e</span>
+						{% if app.request.locale=='fr' %}
+							<span class="letter">&nbsp;</span>
+						{% endif %}
 						<span class="letter letter-3">!</span>
 					</div>
 					{{ form_start(comment_form, {'attr': {'id': 'comment_form'}}) }}

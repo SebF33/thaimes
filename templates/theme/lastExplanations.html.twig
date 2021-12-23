@@ -9,23 +9,40 @@
 	<div class="container d-flex justify-content-md-between">
 		<h2 class="mb-5 hide">{{ 'Last explanations'|trans }}</h2>
 		<div class="neon-text h1 col-8">
-			<span class="letter">L</span>
-			<span class="letter">a</span>
-			<span class="letter">s</span>
-			<span class="letter letter-2">t</span>
-			<span class="letter">&nbsp;</span>
-			<span class="letter">e</span>
-			<span class="letter">x</span>
-			<span class="letter">p</span>
-			<span class="letter">l</span>
-			<span class="letter">a</span>
-			<span class="letter">n</span>
-			<span class="letter">a</span>
-			<span class="letter">t</span>
-			<span class="letter">i</span>
-			<span class="letter">o</span>
-			<span class="letter letter-3">n</span>
-			<span class="letter">s</span>
+			{% if app.request.locale=='en' %}
+				<span class="letter">L</span>
+				<span class="letter">a</span>
+				<span class="letter">s</span>
+				<span class="letter letter-2">t</span>
+				<span class="letter">&nbsp;</span>
+				<span class="letter">e</span>
+				<span class="letter">x</span>
+				<span class="letter">p</span>
+				<span class="letter">l</span>
+				<span class="letter">a</span>
+				<span class="letter">n</span>
+				<span class="letter">a</span>
+				<span class="letter">t</span>
+				<span class="letter">i</span>
+				<span class="letter">o</span>
+				<span class="letter letter-3">n</span>
+				<span class="letter">s</span>
+			{% elseif app.request.locale=='fr' %}
+				<span class="letter">D</span>
+				<span class="letter">e</span>
+				<span class="letter">r</span>
+				<span class="letter letter-2">n</span>
+				<span class="letter">i</span>
+				<span class="letter">e</span>
+				<span class="letter">r</span>
+				<span class="letter">s</span>
+				<span class="letter">&nbsp;</span>
+				<span class="letter">p</span>
+				<span class="letter">o</span>
+				<span class="letter">s</span>
+				<span class="letter letter-3">t</span>
+				<span class="letter">s</span>
+			{% endif %}
 		</div>
 		{# Bloc de recherche #}
 		<div class="container-box col-4 mt-4">
@@ -50,7 +67,7 @@
 							</a>
 						{% endif %}
 						<div class="mt-2 text-wrap">
-								{{ comment.text }}
+							{{ comment.text }}
 						</div>
 					</article>
 				{% endfor %}

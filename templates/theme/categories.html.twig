@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Thaimes - {{ 'Categories'|trans }}
+	Thaimes -
+	{{ 'Categories'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -10,7 +11,11 @@
 		<span class="letter">C</span>
 		<span class="letter">a</span>
 		<span class="letter letter-2">t</span>
-		<span class="letter">e</span>
+		{% if app.request.locale=='en' %}
+			<span class="letter">e</span>
+		{% elseif app.request.locale=='fr' %}
+			<span class="letter">é</span>
+		{% endif %}
 		<span class="letter">g</span>
 		<span class="letter">o</span>
 		<span class="letter">r</span>

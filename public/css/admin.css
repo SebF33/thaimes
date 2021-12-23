@@ -8,6 +8,7 @@
   --color-green: #0a8558;
 
   --body-bg: var(--color-dark);
+  --button-shadow: var(--color-light);
   --color-primary: var(--color-red);
   --form-label-color: var(--color-light);
   --link-color: var(--color-red);
@@ -22,9 +23,11 @@
   --table-cell-color: var(--color-light);
   --table-hover-cell-bg: var(--color-light);
   --table-thead-color: var(--color-light);
+  --table-thead-sorted-color: var(--color-light);
   --table-thead-marker-color: var(--color-light);
   --text-color: var(--color-light);
   --text-color-dark: var(--color-light);
+  --text-on-primary: var(--color-light);
   --user-name-color: var(--color-light);
 }
 
@@ -37,20 +40,11 @@ body {
   font-weight: 900;
 }
 
-.form-control {
+/* EasyAdmin */
+.btn-secondary,
+.btn-secondary.disabled,
+.btn-secondary[disabled] {
   background-color: var(--color-light);
-  border: 1px solid var(--color-light);
-  color: var(--color-dark);
-}
-
-.form-control:focus {
-  background-color: var(--color-light);
-  border-color: var(--color-light);
-  color: var(--color-dark);
-}
-
-.form-check-input:checked {
-  background-color: var(--color-green);
 }
 
 .content-top .content-search .content-search-icon,
@@ -61,6 +55,23 @@ body {
 .datagrid .ea-lightbox-thumbnail img,
 .basicLightbox__placeholder img {
   background: var(--color-light);
+}
+
+
+.form-check-input:checked {
+  background-color: var(--color-green);
+}
+
+.form-control {
+  background-color: var(--color-light);
+  border: 1px solid var(--color-light);
+  color: var(--color-dark);
+}
+
+.form-control:focus {
+  background-color: var(--color-light);
+  border-color: var(--color-light);
+  color: var(--color-dark);
 }
 
 tr:hover {
