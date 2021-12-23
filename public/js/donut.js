@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const values = Object.values(themesCounts);
 
   var options = {
-    colors: ['#bd150b', '#084bb1', '#0a8558', '#e4d52e'],
+    colors: ['#bd150b', '#084bb1', '#e4d52e', '#0a8558', '#9f2b68', '#d86b1d', '#55e7cc', '#ff737c'],
     series: values,
     chart: {
       fontFamily: 'Baloo 2',

@@ -24,7 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
     stroke: {
       curve: 'straight'
     },
-
+    tooltip: {
+      fillSeriesColor: true,
+      style: {
+        fontSize: '16px'
+      }
+    },
     title: {
       text: 'Participations (nb)',
       align: 'left',
