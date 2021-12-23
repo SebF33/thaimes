@@ -4,13 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const values = Object.values(commentLast30Days);
 
   var options = {
+    colors: ['#bd150b'],
     series: [{
-      name: "Participation(s)",
+      name: "Participations",
       data: values
     }],
     chart: {
+      fontFamily: 'Baloo 2',
+      foreColor: '#e1e5ea',
       type: 'area',
-      height: 350,
+      height: 420,
       zoom: {
         enabled: false
       }
@@ -23,12 +26,23 @@ document.addEventListener('DOMContentLoaded', function () {
     },
 
     title: {
-      text: 'Chart',
-      align: 'left'
+      text: 'Participations (nb)',
+      align: 'left',
+      style: {
+        fontSize: '20px',
+        fontWeight: 'bold',
+        fontFamily: 'Baloo 2',
+        color: '#e1e5ea'
+      }
     },
     subtitle: {
-      text: 'Participation(s) last 30 days',
-      align: 'left'
+      text: 'Last 30 days',
+      align: 'left',
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Baloo 2',
+        color: '#e1e5ea'
+      }
     },
     labels: dates,
     xaxis: {
@@ -42,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart"), options);
-  chart.render();
+  var area = new ApexCharts(document.querySelector("#area"), options);
+  area.render();
 
 }, false);

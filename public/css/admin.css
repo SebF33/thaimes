@@ -2,30 +2,58 @@
 
 
 :root {
-  --body-bg: #1b2431;
+  --color-dark: #1b2431;
+  --color-light: #e1e5ea;
+  --color-red: #bd150b;
+  --color-green: #0a8558;
+  --color-primary: var(--color-red);
+  --text-color-dark: var(--color-light);
+  --body-bg: var(--color-dark);
+  --sidebar-bg: var(--color-dark);
+  --text-color: var(--color-light);
+  --form-label-color: var(--color-light);
+  --sidebar-logo-color: var(--color-light);
+  --sidebar-menu-color: var(--color-light);
+  --resize-handler-hover-bg: var(--color-red);
+  --table-thead-color: var(--color-light);
+  --table-cell-color: var(--color-light);
+  --responsive-header-bg: var(--color-dark);
+  --responsive-header-logo-color: var(--color-light);
 }
 
 body {
   font-family: 'Baloo 2', cursive;
 }
 
-.numbers {
-  font-size: 2em;
-  color: #e1e5ea;
+.text-large {
+  font-size: 140%;
+  font-weight: 900;
 }
 
-.bold {
-  font-size: 1.4em;
-  font-weight: 600;
+.form-control {
+  background-color: var(--color-light);
+  border: 1px solid var(--color-light);
+  color: #1b2431;
+}
+
+.form-control:focus {
+  background-color: var(--color-light);
+  border-color: var(--color-light);
+  color: #1b2431;
+}
+
+.form-check-input:checked {
+  background-color: var(--color-green);
+}
+
+.datagrid .ea-lightbox-thumbnail img,
+.basicLightbox__placeholder img {
+  background: var(--color-light);
 }
 
 /* ApexCharts */
-#chart {
-  max-width: 600px;
-  margin: 35px auto;
-}
-
+#area,
 #donut {
-  max-width: 400px;
-  margin: 35px auto;
+  max-width: 600px;
+  margin: 0 auto;
 }

@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const categories = Object.keys(themesCounts);
   const values = Object.values(themesCounts);
 
-  console.log(categories);
-  console.log(values);
-
   var options = {
+    colors: ['#bd150b', '#084bb1', '#0a8558', '#e4d52e'],
     series: values,
     chart: {
-      width: 380,
+      fontFamily: 'Baloo 2',
+      foreColor: '#e1e5ea',
+      width: 520,
       type: 'donut',
       dropShadow: {
         enabled: true,
@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     labels: categories,
     dataLabels: {
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Baloo 2',
+        fontWeight: 500,
+      },
       dropShadow: {
         blur: 3,
         opacity: 0.8
@@ -49,7 +54,15 @@ document.addEventListener('DOMContentLoaded', function () {
       pattern: {
         enabled: true,
         style: ['verticalLines', 'squares', 'horizontalLines', 'circles', 'slantedLines'],
-      },
+      }
+    },
+    legend: {
+      fontSize: '14px',
+      fontFamily: 'Baloo 2',
+      fontWeight: 500,
+      labels: {
+        colors: '#e1e5ea'
+      }
     },
     states: {
       hover: {
@@ -60,10 +73,24 @@ document.addEventListener('DOMContentLoaded', function () {
       palette: 'palette2'
     },
     title: {
-      text: "Favourite Movie Type"
+      text: "Themes (%)",
+      style: {
+        fontSize: '20px',
+        fontWeight: 'bold',
+        fontFamily: 'Baloo 2',
+        color: '#e1e5ea'
+      }
+    },
+    subtitle: {
+      text: 'By tag',
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Baloo 2',
+        color: '#e1e5ea'
+      }
     },
     responsive: [{
-      breakpoint: 480,
+      breakpoint: 400,
       options: {
         chart: {
           width: 200

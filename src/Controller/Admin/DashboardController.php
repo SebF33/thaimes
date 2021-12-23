@@ -81,7 +81,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoRoute('Dashboard', 'fa fa-home', 'admin');
+        yield MenuItem::linktoRoute('Dashboard', 'fa fa-chart-line', 'admin');
         yield MenuItem::linktoRoute('Website', 'fa fa-map-marker', 'homepage');
         yield MenuItem::linkToCrud('Themes', 'fa fa-pen-fancy', Theme::class);
         yield MenuItem::linkToCrud('Comments', 'fa fa-comments', Comment::class);
@@ -100,7 +100,7 @@ class DashboardController extends AbstractDashboardController
         return Assets::new()
             ->addCssFile('css/admin.css')
             ->addJsFile('https://cdn.jsdelivr.net/npm/apexcharts')
-            ->addJsFile('js/chart.js')
+            ->addJsFile('js/area.js')
             ->addJsFile('js/donut.js');
     }
 }
