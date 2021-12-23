@@ -6,20 +6,26 @@
   --color-light: #e1e5ea;
   --color-red: #bd150b;
   --color-green: #0a8558;
-  --color-primary: var(--color-red);
-  --text-color-dark: var(--color-light);
+
   --body-bg: var(--color-dark);
-  --sidebar-bg: var(--color-dark);
-  --text-color: var(--color-light);
+  --color-primary: var(--color-red);
   --form-label-color: var(--color-light);
   --link-color: var(--color-red);
-  --sidebar-logo-color: var(--color-light);
-  --sidebar-menu-color: var(--color-light);
+  --pagination-color: var(--color-light);
   --resize-handler-hover-bg: var(--color-red);
-  --table-thead-color: var(--color-light);
-  --table-cell-color: var(--color-light);
   --responsive-header-bg: var(--color-dark);
   --responsive-header-logo-color: var(--color-light);
+  --sidebar-bg: var(--color-dark);
+  --sidebar-logo-color: var(--color-light);
+  --sidebar-menu-color: var(--color-light);
+  --sidebar-menu-icon-color: var(--color-light);
+  --table-cell-color: var(--color-light);
+  --table-hover-cell-bg: var(--color-light);
+  --table-thead-color: var(--color-light);
+  --table-thead-marker-color: var(--color-light);
+  --text-color: var(--color-light);
+  --text-color-dark: var(--color-light);
+  --user-name-color: var(--color-light);
 }
 
 body {
@@ -47,9 +53,18 @@ body {
   background-color: var(--color-green);
 }
 
+.content-top .content-search .content-search-icon,
+.page-item.disabled .page-link {
+  color: var(--color-light);
+}
+
 .datagrid .ea-lightbox-thumbnail img,
 .basicLightbox__placeholder img {
   background: var(--color-light);
+}
+
+tr:hover {
+  color: var(--color-dark);
 }
 
 /* ApexCharts */

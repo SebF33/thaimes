@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var options = {
     colors: ['#bd150b'],
     series: [{
-      name: "Participations",
+      name: "Participation(s)",
       data: values
     }],
     chart: {
