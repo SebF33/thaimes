@@ -49,6 +49,18 @@
   }
 }
 
+.article-tags {
+  margin-top: 2em;
+  padding: 0;
+
+  span {
+    padding: 0.5em 1em;
+    font-weight: $font-weight-bold;
+    background-color: $symfony;
+    border-radius: 0.8em;
+  }
+}
+
 figure {
   display: flex;
   position: relative;

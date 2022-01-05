@@ -7,7 +7,7 @@
 
 // Styles
 import './styles/app.scss';
-import './styles/admin.scss';
+import './styles/button.scss';
 import './styles/footer.scss';
 import './styles/neon.scss';
 import './styles/postcard.scss';

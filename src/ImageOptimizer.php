@@ -7,8 +7,8 @@ use Imagine\Image\Box;
 
 class ImageOptimizer
 {
-    private const MAX_WIDTH = 200;
-    private const MAX_HEIGHT = 150;
+    private const MAX_WIDTH = 600;
+    private const MAX_HEIGHT = 500;
     private $imagine;
 
     public function __construct()

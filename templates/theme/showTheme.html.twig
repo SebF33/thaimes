@@ -15,7 +15,9 @@
 				</h2>
 				<div class="article-meta">
 					<p class="article-tags">
-						<span class="tag">TAG</span>
+						{% for theme in theme.getTags() %}
+							<span class="tag">{{ theme.name }}</span>
+						{% endfor %}
 					</p>
 				</div>
 			</div>
@@ -51,7 +53,8 @@
 			</div>
 		</div>
 
-		<div class="col-lg-4 mt-5">
+		<div
+			class="col-lg-4 mt-5">
 			{# Lien vers participations #}
 			<div class="row text-left">
 				<p class="h5">
@@ -91,6 +94,11 @@
 						<span class="letter letter-3">!</span>
 					</div>
 					{{ form_start(comment_form, {'attr': {'id': 'comment_form'}}) }}
+					{{ form_row(comment_form.author, { 'label': 'Your name' }) }}
+					{{ form_row(comment_form.text, { 'label': 'Your text' }) }}
+					{{ form_row(comment_form.email, { 'label': 'Your email' }) }}
+					{{ form_row(comment_form.photo, { 'label': 'Your picture' }) }}
+					{{ form_row(comment_form.submit, {'attr': {'class': 'app-button'}}, { 'label': 'Submit' }) }}
 					{{ form_end(comment_form) }}
 				</div>
 			</div>
