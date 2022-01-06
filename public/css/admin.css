@@ -5,11 +5,15 @@
   --color-dark: #131313;
   --color-light: #e1e5ea;
   --color-red: #bd150b;
-  --color-green: #0a8558;
+  --color-blue: #084bb1;
 
   --body-bg: var(--color-dark);
   --button-shadow: var(--color-light);
   --color-primary: var(--color-red);
+  --form-input-border-color: var(--color-light);
+  --form-input-hover-border-color: var(--color-red);
+  --form-input-hover-shadow: var(--color-red);
+  --form-input-shadow: var(--color-light);
   --form-label-color: var(--color-light);
   --link-color: var(--color-red);
   --pagination-color: var(--color-light);
@@ -57,9 +61,12 @@ body {
   background: var(--color-light);
 }
 
-
 .form-check-input:checked {
-  background-color: var(--color-green);
+  background-color: var(--color-red);
+}
+
+.form-switch .form-check-input:checked {
+  border-color: var(--color-light);
 }
 
 .form-control {
@@ -72,6 +79,12 @@ body {
   background-color: var(--color-light);
   border-color: var(--color-light);
   color: var(--color-dark);
+}
+
+.page-item.active .page-link {
+  background-color: var(--color-blue);
+  border-color: var(--color-blue);
+  color: var(--color-light);
 }
 
 tr:hover {

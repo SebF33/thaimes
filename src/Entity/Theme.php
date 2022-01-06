@@ -43,6 +43,11 @@ class Theme
     private $catch;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $asideText;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $display;
@@ -61,6 +66,21 @@ class Theme
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pictureAuthor;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pictureAuthorLink;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $textTwo;
 
     /**
      * @var \DateTime
@@ -146,6 +166,18 @@ class Theme
         return $this;
     }
 
+    public function getAsideText(): ?string
+    {
+        return $this->asideText;
+    }
+
+    public function setAsideText(string $asideText): self
+    {
+        $this->asideText = $asideText;
+
+        return $this;
+    }
+
     public function getDisplay(): ?bool
     {
         return $this->display;
@@ -213,6 +245,42 @@ class Theme
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getPictureAuthor(): ?string
+    {
+        return $this->pictureAuthor;
+    }
+
+    public function setPictureAuthor(string $pictureAuthor): self
+    {
+        $this->pictureAuthor = $pictureAuthor;
+
+        return $this;
+    }
+
+    public function getPictureAuthorLink(): ?string
+    {
+        return $this->pictureAuthorLink;
+    }
+
+    public function setPictureAuthorLink(string $pictureAuthorLink): self
+    {
+        $this->pictureAuthorLink = $pictureAuthorLink;
+
+        return $this;
+    }
+
+    public function getTextTwo(): ?string
+    {
+        return $this->textTwo;
+    }
+
+    public function setTextTwo(string $textTwo): self
+    {
+        $this->textTwo = $textTwo;
 
         return $this;
     }

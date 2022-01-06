@@ -218,10 +218,12 @@ $value in $theme-colors {
   input {
     margin: 0 auto;
     max-width: 270px;
+    border: 3px solid;
+    box-shadow: 0 0 18px rgb(0, 0, 0, 1);
   }
 }
 
 .form-control:focus {
   border-color: $main-red;
-  box-shadow: 0 0 0 2px $main-red-rgb-015;
+  box-shadow: 0 0 18px rgb(0, 0, 0, 1);
 }

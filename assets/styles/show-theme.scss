@@ -80,7 +80,6 @@ figure {
 
   figcaption {
     position: absolute;
-    font-family: "Open Sans", sans-serif;
     padding: 0.4em;
     font-size: 0.8rem;
     color: $light;
@@ -88,6 +87,46 @@ figure {
     background-color: $neonred;
     border-radius: 0.5em;
     bottom: -1em;
+
+    a {
+      display: block;
+    }
+
+    a:hover {
+      color: $light !important;
+    }
+  }
+}
+
+aside {
+  position: relative;
+  font-style: italic;
+  color: $light;
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: 0.6rem solid $neonred;
+  text-align: left;
+
+  &::before {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    position: absolute;
+    background-color: $neonred;
+    top: -0.7rem;
+    left: -1.05rem;
+  }
+
+  &::after {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    position: absolute;
+    background-color: $neonred;
+    bottom: -0.7em;
+    left: -1.05em;
   }
 }
 

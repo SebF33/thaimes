@@ -26,35 +26,43 @@
 				<p>
 					{{ theme.text }}
 				</p>
-				<aside>
-					<p>Citation</p>
-				</aside>
+				{% if theme.asideText %}
+					<aside>
+						<p>{{ theme.asideText }}</p>
+					</aside>
+				{% endif %}
 				{% if theme.picture %}
 					<figure>
 						<img class="neon-img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
-						<figcaption>Image by</figcaption>
+						{% if theme.pictureAuthor %}
+							<figcaption>
+								<a href="{{ theme.pictureAuthorLink | external_link }}">{{ 'Image by'|trans }} {{ theme.pictureAuthor }}</a>
+							</figcaption>
+						{% endif %}
 					</figure>
 				{% endif %}
-				<p>
-					TEXT 2
-				</p>
 
-				<h2>TITLE 2</h2>
+				{% if theme.textTwo %}
+					<p>
+						{{ theme.textTwo }}
+					</p>
+				{% endif %}
+
+				<h2>titleTwo</h2>
 				<p>
-					TEXT 3
+					textThree
 				</p>
 				<figure>
 					<img class="neon-img" src="https://assets.codepen.io/t-1/cassidy-james-blaede-1lzJt360gkE-unsplash.jpg" alt="two people playing Guitar Hero Arcade. "/>
-					<figcaption>Photo by Cassidy James Blaede</figcaption>
+					<figcaption>pictureTwo</figcaption>
 				</figure>
 				<p>
-					TEXT 4
+					textFour
 				</p>
 			</div>
 		</div>
 
-		<div
-			class="col-lg-4 mt-5">
+		<div class="col-lg-4 mt-5">
 			{# Lien vers participations #}
 			<div class="row text-left">
 				<p class="h5">
