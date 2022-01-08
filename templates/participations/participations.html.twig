@@ -26,11 +26,13 @@
 	</div>
 
 	{# Pagination #}
-	{% if previous >= 0 %}
-		<a href="{{ path('explanations', { slug: theme.slug, offset: previous }) }}">{{'Previous'|trans }}</a>
-	{% endif %}
-	{% if next < comments|length %}
-		<a href="{{ path('explanations', { slug: theme.slug, offset: next }) }}">{{'Next'|trans }}</a>
-	{% endif %}
+	<div class="pagination mb-5">
+		{% if previous >= 0 %}
+			<a class="app-button" href="{{ path('participations', { slug: theme.slug, offset: previous }) }}">{{'Previous'|trans }}</a>
+		{% endif %}
+		{% if next < comments|length %}
+			<a class="app-button" href="{{ path('participations', { slug: theme.slug, offset: next }) }}">{{'Next'|trans }}</a>
+		{% endif %}
+	</div>
 
 {% endif %}

@@ -2,7 +2,7 @@
 
 {% block title %}
 	Thaimes -
-	{{ 'Last explanations'|trans }}
+	{{ 'Last participations'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -51,6 +51,7 @@
 	</div>
 
 	{% if comments|length > 0 %}
+
 		<div class="page mx-auto">
 			<div class="archive">
 				{% for comment in comments %}
@@ -73,6 +74,17 @@
 				{% endfor %}
 			</div>
 		</div>
+
+		{# Pagination #}
+		<div class="pagination mb-5">
+			{% if previous >= 0 %}
+				<a class="app-button" href="{{ path('last-participations', { offset: previous }) }}">{{'Previous'|trans }}</a>
+			{% endif %}
+			{% if next < comments|length %}
+				<a class="app-button" href="{{ path('last-participations', { offset: next }) }}">{{'Next'|trans }}</a>
+			{% endif %}
+		</div>
+
 	{% endif %}
 
 {% endblock %}

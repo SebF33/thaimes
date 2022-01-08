@@ -16,7 +16,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
  */
 class CommentRepository extends ServiceEntityRepository
 {
-    public const PAGINATOR_PER_PAGE = 16;
+    public const PAGINATOR_PER_PAGE = 6;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -46,7 +46,20 @@ class CommentRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function getCommentPaginator(Theme $theme, int $offset): Paginator
+    public function getCommentPaginator(int $offset): Paginator
+    {
+        $query = $this->createQueryBuilder('t')
+            ->andWhere('t.state = :state')
+            ->setParameter('state', 'published')
+            ->orderBy('t.createdAt', 'DESC')
+            ->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->getQuery();
+
+        return new Paginator($query);
+    }
+
+    public function getCommentPaginatorByTheme(Theme $theme, int $offset): Paginator
     {
         $query = $this->createQueryBuilder('t')
             ->andWhere('t.theme = :theme')
@@ -65,7 +78,7 @@ class CommentRepository extends ServiceEntityRepository
     {
         $stmt  = $this->getEntityManager()->getConnection()->prepare('SELECT COUNT(id) num, DATE(created_at) d FROM comment GROUP BY DATE(created_at)');
         $result = $stmt->executeQuery()->fetchAllAssociative();
-        
+
         return $result;
     }
 

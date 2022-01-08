@@ -43,10 +43,15 @@ class ThemeController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/", name="homepage")
      */
-    public function index(ThemeRepository $themeRepository)
+    public function index(Request $request, ThemeRepository $themeRepository)
     {
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $paginator = $themeRepository->getThemePaginator($offset);
+
         return new Response($this->twig->render('theme/index.html.twig', [
-            'themes' => $themeRepository->findAllDisplayThemes(),
+            'themes' => $paginator,
+            'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($paginator), $offset + CommentRepository::PAGINATOR_PER_PAGE),
         ]));
     }
 
@@ -120,14 +125,14 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}/explanations", name="explanations")
+     * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}/participations", name="participations")
      */
-    public function showExplanationsByTheme(Request $request, Theme $theme, CommentRepository $commentRepository)
+    public function showParticipationsByTheme(Request $request, Theme $theme, CommentRepository $commentRepository)
     {
         $offset = max(0, $request->query->getInt('offset', 0));
-        $paginator = $commentRepository->getCommentPaginator($theme, $offset);
+        $paginator = $commentRepository->getCommentPaginatorByTheme($theme, $offset);
 
-        return new Response($this->twig->render('theme/showExplanations.html.twig', [
+        return new Response($this->twig->render('theme/showParticipations.html.twig', [
             'theme' => $theme,
             'comments' => $paginator,
             'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
@@ -136,12 +141,17 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/last-explanations", name="last-explanations")
+     * @Route("/{_locale<%app.supported_locales%>}/last-participations", name="last-participations")
      */
-    public function showLastExplanations(CommentRepository $commentRepository)
+    public function showLastParticipations(Request $request, CommentRepository $commentRepository)
     {
-        return new Response($this->twig->render('theme/lastExplanations.html.twig', [
-            'comments' =>  $commentRepository->findRecentPublishedComments(),
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $paginator = $commentRepository->getCommentPaginator($offset);
+
+        return new Response($this->twig->render('theme/lastParticipations.html.twig', [
+            'comments' => $paginator,
+            'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($paginator), $offset + CommentRepository::PAGINATOR_PER_PAGE),
         ]));
     }
 }

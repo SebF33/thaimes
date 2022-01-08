@@ -67,11 +67,11 @@
 			<div class="row text-left">
 				<p class="h5">
 					{% if comments|length > 0 %}
-						<a href="{{ path('explanations', { slug: theme.slug }) }}">
+						<a href="{{ path('participations', { slug: theme.slug }) }}">
 							{{ 'nb_of_comments'|trans({count: comments|length})}}
 						</a>
 					{% else %}
-						{{'No explanations have been posted yet for this theme.'|trans }}
+						{{'No participations have been posted yet for this theme.'|trans }}
 					{% endif %}
 				</p>
 			</div>

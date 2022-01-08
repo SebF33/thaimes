@@ -12,7 +12,7 @@ import './styles/footer.scss';
 import './styles/neon.scss';
 import './styles/postcard.scss';
 import './styles/search.scss';
-import './styles/show-explanations.scss';
+import './styles/show-participations.scss';
 import './styles/show-theme.scss';
 
 // Bootstrap

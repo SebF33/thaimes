@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
 
 
+/* Skeleton */
 html {
   position: relative;
   min-height: 100%;
@@ -36,26 +37,6 @@ header {
   -webkit-mask-image: linear-gradient(to bottom, $background 50%, transparent);
   -o-mask-image: linear-gradient(to bottom, $background 50%, transparent);
   -moz-mask-image: linear-gradient(to bottom, $background 50%, transparent);
-}
-
-/* Scrollbar personnalisée pour Chrome, Edge, Safari et Opera */
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: $symfony;
-  border-radius: 7px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: $background;
-  border-radius: 7px;
-}
-
-/* Surlignage */
-::selection {
-  background-color: $red;
 }
 
 h1,
@@ -105,6 +86,19 @@ a:hover {
   border-color: transparent;
 }
 
+// Darken buttons
+@each $color,
+$value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value, darken($value, 10%));
+  }
+}
+
+// Highlighting
+::selection {
+  background-color: $red;
+}
+
 /* Dropdown custom */
 .dropdown-menu {
   min-width: 6em;
@@ -127,32 +121,19 @@ a:hover {
   }
 }
 
-/* SweetAlert2 custom */
-.swal2-popup {
-  background: $background !important;
-  color: $symfony;
-  border: 6px solid $light;
-}
-
-.swal2-icon.swal2-question {
-  border-color: $light;
-  color: $light;
-}
-
-.swal2-icon.swal2-success {
-  color: $green;
-}
-
-.swal2-popup.swal2-toast .swal2-success {
-  border-color: $green;
-}
-
-/* Darken buttons */
-@each $color,
-$value in $theme-colors {
-  .btn-#{$color} {
-    @include button-variant($value, $value, darken($value, 10%));
+/* Forms */
+.login-form {
+  input {
+    margin: 0 auto;
+    max-width: 270px;
+    border: 3px solid;
+    box-shadow: 0 0 18px rgb(0, 0, 0, 1);
   }
+}
+
+.form-control:focus {
+  border-color: $main-red;
+  box-shadow: 0 0 18px rgb(0, 0, 0, 1);
 }
 
 /* Navbars */
@@ -165,7 +146,6 @@ $value in $theme-colors {
 .logoSite {
   display: block;
 }
-
 
 .navbar-actions,
 .navbar-brand {
@@ -203,27 +183,44 @@ $value in $theme-colors {
   }
 }
 
-.comment-img {
-  width: 250px;
-  height: 150px;
-
-  img {
-    max-width: 250px;
-    max-height: 150px;
+/* Pagination */
+.pagination {
+  a:hover {
+    color: $light !important;
   }
 }
 
-/* Forms */
-.login-form {
-  input {
-    margin: 0 auto;
-    max-width: 270px;
-    border: 3px solid;
-    box-shadow: 0 0 18px rgb(0, 0, 0, 1);
-  }
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
 }
 
-.form-control:focus {
-  border-color: $main-red;
-  box-shadow: 0 0 18px rgb(0, 0, 0, 1);
+::-webkit-scrollbar-thumb {
+  background-color: $symfony;
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $background;
+  border-radius: 7px;
+}
+
+/* SweetAlert2 */
+.swal2-popup {
+  background: $background !important;
+  color: $symfony;
+  border: 6px solid $light;
+}
+
+.swal2-icon.swal2-question {
+  border-color: $light;
+  color: $light;
+}
+
+.swal2-icon.swal2-success {
+  color: $green;
+}
+
+.swal2-popup.swal2-toast .swal2-success {
+  border-color: $green;
 }

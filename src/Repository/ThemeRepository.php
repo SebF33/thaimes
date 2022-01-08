@@ -15,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ThemeRepository extends ServiceEntityRepository
 {
-    public const PAGINATOR_PER_PAGE = 2;
+    public const PAGINATOR_PER_PAGE = 4;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -25,7 +25,8 @@ class ThemeRepository extends ServiceEntityRepository
     public function getThemePaginator(int $offset): Paginator
     {
         $query = $this->createQueryBuilder('t')
-            ->setParameter('state', 'published')
+            ->where('t.display = :val')
+            ->setParameter('val', TRUE)
             ->orderBy('t.createdAt', 'DESC')
             ->setMaxResults(self::PAGINATOR_PER_PAGE)
             ->setFirstResult($offset)
