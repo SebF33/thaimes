@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block body %}
-	<div class="row justify-content-between">
+	<div class="row justify-content-between mb-5">
 		<div class="col-lg-7">
 			<div class="head">
-				<h1 id="theme-title" class="headline">{{ theme }}</h1>
+				<h1 id="theme-name" class="theme-title headline">{{ theme }}</h1>
 				<h2 id="theme-catch" class="subhead">
 					{{ theme.catch }}
 				</h2>
@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="content mt-4">
-				<p id="theme-text">
+				<p id="theme-text" class="pb-4">
 					{{ theme.text }}
 				</p>
 				{% if theme.asideText %}
@@ -34,6 +34,7 @@
 						<p>{{ theme.asideText }}</p>
 					</aside>
 				{% endif %}
+
 				{% if theme.picture %}
 					<figure>
 						<img class="neon-img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
@@ -47,22 +48,33 @@
 				{% endif %}
 
 				{% if theme.textTwo %}
-					<p>
+					<p class="p-4">
 						{{ theme.textTwo }}
 					</p>
 				{% endif %}
 
-				<h2>titleTwo</h2>
-				<p>
-					textThree
-				</p>
-				<figure>
-					<img class="neon-img" src="https://assets.codepen.io/t-1/cassidy-james-blaede-1lzJt360gkE-unsplash.jpg" alt="two people playing Guitar Hero Arcade. "/>
-					<figcaption>pictureTwo</figcaption>
-				</figure>
-				<p>
-					textFour
-				</p>
+				{% if theme.titleTwo %}
+					<h2 class="theme-title pt-4">{{ theme.titleTwo }}</h2>
+				{% endif %}
+				{% if theme.textThree %}
+					<p class="px-4 py-2">{{ theme.textThree }}</p>
+				{% endif %}
+
+				{% if theme.pictureTwo %}
+					<figure class="pt-2">
+						<img class="neon-img" src="{{ asset('uploads/theme/' ~ theme.pictureTwo) }}" alt="{{ theme.pictureTwo }}"/>
+						{% if theme.pictureTwoAuthor %}
+							<figcaption>
+								<a href="{{ theme.pictureTwoAuthorLink | external_link }}">{{ 'Image by'|trans }}
+									{{ theme.pictureTwoAuthor }}</a>
+							</figcaption>
+						{% endif %}
+					</figure>
+				{% endif %}
+
+				{% if theme.textFour %}
+					<p class="p-4">{{ theme.textFour }}</p>
+				{% endif %}
 			</div>
 		</div>
 

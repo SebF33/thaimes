@@ -78,9 +78,39 @@ class Theme
     private $pictureAuthorLink;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $textTwo;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $titleTwo;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $textThree;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pictureTwo;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pictureTwoAuthor;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pictureTwoAuthorLink;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $textFour;
 
     /**
      * @var \DateTime
@@ -281,6 +311,78 @@ class Theme
     public function setTextTwo(string $textTwo): self
     {
         $this->textTwo = $textTwo;
+
+        return $this;
+    }
+
+    public function getTitleTwo(): ?string
+    {
+        return $this->titleTwo;
+    }
+
+    public function setTitleTwo(string $titleTwo): self
+    {
+        $this->titleTwo = $titleTwo;
+
+        return $this;
+    }
+
+    public function getTextThree(): ?string
+    {
+        return $this->textThree;
+    }
+
+    public function setTextThree(string $textThree): self
+    {
+        $this->textThree = $textThree;
+
+        return $this;
+    }
+
+    public function getPictureTwo(): ?string
+    {
+        return $this->pictureTwo;
+    }
+
+    public function setPictureTwo(?string $pictureTwo): self
+    {
+        $this->pictureTwo = $pictureTwo;
+
+        return $this;
+    }
+
+    public function getPictureTwoAuthor(): ?string
+    {
+        return $this->pictureTwoAuthor;
+    }
+
+    public function setPictureTwoAuthor(string $pictureTwoAuthor): self
+    {
+        $this->pictureTwoAuthor = $pictureTwoAuthor;
+
+        return $this;
+    }
+
+    public function getPictureTwoAuthorLink(): ?string
+    {
+        return $this->pictureTwoAuthorLink;
+    }
+
+    public function setPictureTwoAuthorLink(string $pictureTwoAuthorLink): self
+    {
+        $this->pictureTwoAuthorLink = $pictureTwoAuthorLink;
+
+        return $this;
+    }
+
+    public function getTextFour(): ?string
+    {
+        return $this->textFour;
+    }
+
+    public function setTextFour(string $textFour): self
+    {
+        $this->textFour = $textFour;
 
         return $this;
     }

@@ -3,10 +3,13 @@
 
 
 /* Layout */
-.headline {
-  position: relative;
+.theme-title {
   color: $white;
   text-shadow: 0 0 0.5em $neonlight, 0 0 0.2em $white;
+}
+
+.headline {
+  position: relative;
   border-top: 0.4rem solid $neonred;
   border-right: 0.4rem solid $neongreen;
   border-bottom: 0.4rem solid $neonblue;
@@ -24,6 +27,7 @@
     background-color: $neonred;
     top: -0.70rem;
     left: -0.25rem;
+    box-shadow: 0 0 8px rgb(0, 0, 0, 1);
   }
 }
 
@@ -46,6 +50,7 @@
     background-color: $neonmagenta;
     bottom: -0.35rem;
     left: -0.67rem;
+    box-shadow: 0 0 8px rgb(0, 0, 0, 1);
   }
 }
 
@@ -68,6 +73,7 @@
 
   i {
     display: block;
+    text-shadow: 1px 3px 2px #000, 0px -2px 5px $symfony;
   }
 }
 
@@ -114,29 +120,32 @@ aside {
   color: $light;
   margin: 1.5em 0;
   padding-left: 1em;
-  border-left: 0.6rem solid $neonred;
+  border-left: 0.4rem solid $neonred;
+  font-size: 20px;
   text-align: left;
 
   &::before {
     content: "";
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     position: absolute;
     background-color: $neonred;
     top: -0.7rem;
-    left: -1.05rem;
+    left: -0.7rem;
+    box-shadow: 0 0 8px rgb(0, 0, 0, 1);
   }
 
   &::after {
     content: "";
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     position: absolute;
     background-color: $neonred;
     bottom: -0.7em;
-    left: -1.05em;
+    left: -0.7rem;
+    box-shadow: 0 0 8px rgb(0, 0, 0, 1);
   }
 }
 

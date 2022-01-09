@@ -81,10 +81,10 @@ class ReadAndSpeech {
 
 const readAndSpeech = new ReadAndSpeech(); // Initialise reader
 
-var themeTitle = document.querySelector("#theme-title").textContent;
+var themeName = document.querySelector("#theme-name").textContent;
 var themeCatch = document.querySelector("#theme-catch").textContent;
 var themeText = document.querySelector("#theme-text").textContent;
-var theme = themeTitle + themeCatch + themeText;
+var theme = themeName + themeCatch + themeText;
 
 document.querySelector(".readandspeech").addEventListener("click", (e) => {
   e.preventDefault();

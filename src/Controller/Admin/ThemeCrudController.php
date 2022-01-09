@@ -27,8 +27,8 @@ class ThemeCrudController extends AbstractCrudController
             Field::new('year'),
             Field::new('text')->hideOnIndex(),
             Field::new('catch')->hideOnIndex(),
-            Field::new('asideText')->hideOnIndex(),
             AssociationField::new('tags'),
+            Field::new('asideText')->hideOnIndex(),
             ImageField::new('picture')
                 ->setBasePath('uploads/theme')
                 ->setUploadDir('public/uploads/theme')
@@ -38,6 +38,17 @@ class ThemeCrudController extends AbstractCrudController
             Field::new('pictureAuthor')->hideOnIndex(),
             Field::new('pictureAuthorLink')->hideOnIndex(),
             Field::new('textTwo')->hideOnIndex(),
+            Field::new('titleTwo')->hideOnIndex(),
+            Field::new('textThree')->hideOnIndex(),
+            ImageField::new('pictureTwo')
+                ->setBasePath('uploads/theme')
+                ->setUploadDir('public/uploads/theme')
+                ->setFormType(FileUploadType::class)
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false),
+            Field::new('pictureTwoAuthor')->hideOnIndex(),
+            Field::new('pictureTwoAuthorLink')->hideOnIndex(),
+            Field::new('textFour')->hideOnIndex(),
             IntegerField::new('commentCount', 'Comments')->hideOnForm(),
             BooleanField::new('display')
         ];
