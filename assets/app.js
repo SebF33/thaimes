@@ -27,9 +27,6 @@ require('@fortawesome/fontawesome-free/js/all.js');
 // Lottie
 import './scripts/lib/lottie-player';
 
-// ReadAndSpeech
-import './scripts/readandspeech';
-
 // SweetAlert2
 import Swal from 'sweetalert2/src/sweetalert2.js'
 window.Swal = Swal;
