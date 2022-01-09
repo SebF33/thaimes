@@ -50,8 +50,8 @@ class ThemeController extends AbstractController
 
         return new Response($this->twig->render('theme/index.html.twig', [
             'themes' => $paginator,
-            'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
-            'next' => min(count($paginator), $offset + CommentRepository::PAGINATOR_PER_PAGE),
+            'previous' => $offset - ThemeRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($paginator), $offset + ThemeRepository::PAGINATOR_PER_PAGE),
         ]));
     }
 

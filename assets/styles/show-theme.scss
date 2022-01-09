@@ -61,6 +61,16 @@
   }
 }
 
+.readandspeech {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 30px;
+
+  i {
+    display: block;
+  }
+}
+
 figure {
   display: flex;
   position: relative;

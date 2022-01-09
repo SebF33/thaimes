@@ -9,21 +9,24 @@
 	<div class="row justify-content-between">
 		<div class="col-lg-7">
 			<div class="head">
-				<h1 class="headline">{{ theme }}</h1>
-				<h2 class="subhead">
+				<h1 id="theme-title" class="headline">{{ theme }}</h1>
+				<h2 id="theme-catch" class="subhead">
 					{{ theme.catch }}
 				</h2>
-				<div class="article-meta">
+				<div class="article-meta mb-4">
 					<p class="article-tags">
 						{% for theme in theme.getTags() %}
 							<span class="tag">{{ theme.name }}</span>
 						{% endfor %}
 					</p>
 				</div>
+				<a class="readandspeech">
+					<i class="fas fa-volume-up"></i>
+				</a>
 			</div>
 
-			<div class="content">
-				<p>
+			<div class="content mt-4">
+				<p id="theme-text">
 					{{ theme.text }}
 				</p>
 				{% if theme.asideText %}
@@ -36,7 +39,8 @@
 						<img class="neon-img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
 						{% if theme.pictureAuthor %}
 							<figcaption>
-								<a href="{{ theme.pictureAuthorLink | external_link }}">{{ 'Image by'|trans }} {{ theme.pictureAuthor }}</a>
+								<a href="{{ theme.pictureAuthorLink | external_link }}">{{ 'Image by'|trans }}
+									{{ theme.pictureAuthor }}</a>
 							</figcaption>
 						{% endif %}
 					</figure>
@@ -62,7 +66,8 @@
 			</div>
 		</div>
 
-		<div class="col-lg-4 mt-5">
+		<div
+			class="col-lg-4 mt-5">
 			{# Lien vers participations #}
 			<div class="row text-left">
 				<p class="h5">
