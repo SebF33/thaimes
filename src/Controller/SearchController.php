@@ -3,15 +3,22 @@
 namespace App\Controller;
 
 use App\Repository\ThemeRepository;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Twig\Environment;
 
 class SearchController extends AbstractController
 {
+    private $twig;
+
+    public function __construct(Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
     /**
      * @Route("/search", name="search")
      */
@@ -25,7 +32,7 @@ class SearchController extends AbstractController
     public function searchBar()
     {
         $form = $this->createFormBuilder()
-            ->setAction($this->generateUrl('handleSearch'))
+            ->setAction($this->generateUrl('themes-search'))
             ->getForm();
 
         return $this->render('search/searchBar.html.twig', [
@@ -34,18 +41,22 @@ class SearchController extends AbstractController
     }
 
     /**
-     * @Route("/handleSearch", name="handleSearch")
+     * @Route("/themes-search", name="themes-search")
      * @param Request $request
      */
-    public function handleSearch(Request $request, ThemeRepository $repo)
+    public function themesSearch(Request $request, PaginatorInterface $paginator, ThemeRepository $themeRepository)
     {
         $query = $request->request->get('searchForm')['query'];
-        if ($query) {
-            $themes = $repo->findThemesByTitle($query);
-        }
+        $data = $themeRepository->findThemesByTitle($query);
 
-        return $this->render('search/results.html.twig', [
+        $themes = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            2
+        );
+
+        return new Response($this->twig->render('search/results.html.twig', [
             'themes' => $themes
-        ]);
+        ]));
     }
 }

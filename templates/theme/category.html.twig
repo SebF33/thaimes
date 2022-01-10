@@ -16,8 +16,9 @@
 		</div>
 	</div>
 
-	{% for row in themes|batch(4) %}
-		<div class="container mt-5">
+	<div class="container my-5">
+		{% for row in themes|batch(6) %}
+
 			{% for theme in row %}
 				{# Cartes de thème #}
 				<article class="postcard dark red">
@@ -49,6 +50,8 @@
 					</div>
 				</article>
 			{% endfor %}
-		</div>
-	{% endfor %}
+
+		{% endfor %}
+	</div>
+
 {% endblock %}

@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Tag;
 use App\Entity\Theme;
-use Twig\Environment;
 use App\Entity\Comment;
 use App\Form\CommentFormType;
 use App\Message\CommentMessage;
@@ -18,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Twig\Environment;
 
 class ThemeController extends AbstractController
 {
@@ -85,21 +84,21 @@ class ThemeController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}", name="theme")
      */
-    public function showTheme(Request $request, Theme $theme, CommentRepository $commentRepository, string $photoDir)
+    public function showTheme(Request $request, Theme $theme, CommentRepository $commentRepository, string $pictureDir)
     {
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setTheme($theme);
-            if ($photo = $form['photo']->getData()) {
-                $filename = bin2hex(random_bytes(6)) . '.' . $photo->guessExtension();
+            if ($picture = $form['picture']->getData()) {
+                $filename = bin2hex(random_bytes(6)) . '.' . $picture->guessExtension();
                 try {
-                    $photo->move($photoDir, $filename);
+                    $picture->move($pictureDir, $filename);
                 } catch (FileException $e) {
-                    "Unable to upload the photo.";
+                    "Unable to upload the picture.";
                 }
-                $comment->setPhotoFilename($filename);
+                $comment->setPictureFilename($filename);
             }
 
             $this->entityManager->persist($comment);

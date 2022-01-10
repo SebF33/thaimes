@@ -10,9 +10,9 @@
 							<span class="italic">{{ comment.createdAt|format_datetime('medium', 'short') }}</span>
 						</p>
 					</div>
-					{% if comment.photofilename %}
-						<a href="{{ asset('uploads/photos/' ~ comment.photofilename) }}" target="_blank">
-							<img class="comment-img" src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" alt="{{ comment.photofilename }}"/>
+					{% if comment.picturefilename %}
+						<a href="{{ asset('uploads/pictures/' ~ comment.picturefilename) }}" target="_blank">
+							<img class="comment-img" src="{{ asset('uploads/pictures/' ~ comment.picturefilename) }}" alt="{{ comment.picturefilename }}"/>
 						</a>
 					{% endif %}
 					<div class="mt-2">

@@ -84,7 +84,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoRoute('Dashboard', 'fa fa-chart-line', 'admin');
         yield MenuItem::linktoRoute('Website', 'fa fa-map-marker', 'homepage');
         yield MenuItem::linkToCrud('Themes', 'fa fa-pen-fancy', Theme::class);
-        yield MenuItem::linkToCrud('Posts', 'fa fa-comments', Comment::class);
+        yield MenuItem::linkToCrud('Participations', 'fa fa-comments', Comment::class);
         yield MenuItem::linkToCrud('Tags', 'fa fa-tag', Tag::class);
     }
 

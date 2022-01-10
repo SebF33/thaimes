@@ -24,10 +24,10 @@ class CommentMessageHandler implements MessageHandlerInterface
     private $mailer;
     private $imageOptimizer;
     private $adminEmail;
-    private $photoDir;
+    private $pictureDir;
     private $logger;
 
-    public function __construct(EntityManagerInterface $entityManager, SpamChecker $spamChecker, CommentRepository $commentRepository, MessageBusInterface $bus, WorkflowInterface $commentStateMachine, MailerInterface $mailer, ImageOptimizer $imageOptimizer, string $adminEmail, string $photoDir, LoggerInterface $logger = null)
+    public function __construct(EntityManagerInterface $entityManager, SpamChecker $spamChecker, CommentRepository $commentRepository, MessageBusInterface $bus, WorkflowInterface $commentStateMachine, MailerInterface $mailer, ImageOptimizer $imageOptimizer, string $adminEmail, string $pictureDir, LoggerInterface $logger = null)
     {
         $this->entityManager = $entityManager;
         $this->spamChecker = $spamChecker;
@@ -37,7 +37,7 @@ class CommentMessageHandler implements MessageHandlerInterface
         $this->mailer = $mailer;
         $this->imageOptimizer = $imageOptimizer;
         $this->adminEmail = $adminEmail;
-        $this->photoDir = $photoDir;
+        $this->pictureDir = $pictureDir;
         $this->logger = $logger;
     }
 
@@ -69,8 +69,8 @@ class CommentMessageHandler implements MessageHandlerInterface
                     ->context(['comment' => $comment])
             );
         } elseif ($this->workflow->can($comment, 'optimize')) {
-            if ($comment->getPhotoFilename()) {
-                $this->imageOptimizer->resize($this->photoDir . '/' . $comment->getPhotoFilename());
+            if ($comment->getPictureFilename()) {
+                $this->imageOptimizer->resizeParticipation($this->pictureDir . '/' . $comment->getPictureFilename());
             }
             $this->workflow->apply($comment, 'optimize');
             $this->entityManager->flush();

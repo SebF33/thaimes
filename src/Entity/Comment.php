@@ -47,7 +47,7 @@ class Comment
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $photoFilename;
+    private $pictureFilename;
 
     /**
      * @var \DateTime
@@ -115,14 +115,14 @@ class Comment
         return $this;
     }
 
-    public function getPhotoFilename(): ?string
+    public function getPictureFilename(): ?string
     {
-        return $this->photoFilename;
+        return $this->pictureFilename;
     }
 
-    public function setPhotoFilename(?string $photoFilename): self
+    public function setPictureFilename(?string $pictureFilename): self
     {
-        $this->photoFilename = $photoFilename;
+        $this->pictureFilename = $pictureFilename;
 
         return $this;
     }

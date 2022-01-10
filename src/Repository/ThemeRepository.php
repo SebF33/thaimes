@@ -24,7 +24,7 @@ class ThemeRepository extends ServiceEntityRepository
 
     public function getThemePaginator(int $offset): Paginator
     {
-        $query = $this->createQueryBuilder('t')
+        $qb = $this->createQueryBuilder('t')
             ->where('t.display = :val')
             ->setParameter('val', TRUE)
             ->orderBy('t.createdAt', 'DESC')
@@ -32,7 +32,7 @@ class ThemeRepository extends ServiceEntityRepository
             ->setFirstResult($offset)
             ->getQuery();
 
-        return new Paginator($query);
+        return new Paginator($qb);
     }
 
     public function findAll()
@@ -62,11 +62,11 @@ class ThemeRepository extends ServiceEntityRepository
             )
             ->andWhere($qb->expr()->eq('t.display', ':val'))
             ->setParameter('query', '%' . $query . '%')
-            ->setParameter('val', TRUE);
-
-        return $qb
+            ->setParameter('val', TRUE)
             ->getQuery()
             ->getResult();
+
+        return $qb;
     }
 
     /*

@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block body %}
+
 	{% if app.request.method == 'POST' %}
-		<div class="container d-flex justify-content-md-between">
-			<div class="neon-text h1">
+		<div class="container row d-flex justify-content-md-between">
+			<h2 class="mb-5 hide">{{ 'Search results'|trans }}</h2>
+			<div class="neon-text h1 col-8">
 				{% if themes | length == 0 %}
 					<span class="letter">N</span>
 					<span class="letter">o</span>
@@ -36,8 +38,9 @@
 					<span class="letter letter-3">s</span>
 				{% endif %}
 			</div>
+
 			{# Bloc de recherche #}
-			<div class="container-box align-self-center">
+			<div class="container-box col-4 mt-4">
 				{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
 			</div>
 		</div>
@@ -46,38 +49,41 @@
 			<h1 class="mb-5 hide">{{ 'No results'|trans }}</h1>
 		{% else %}
 			<h1 class="mb-5 hide">{{ 'Search results'|trans }}</h1>
-			<div class="container mt-5">
+
+			<div class="container my-5 row">
 				{% for theme in themes %}
-					<article class="postcard dark red">
-						<a class="postcard__img_link" href="{{ path('theme', { slug: theme.slug }) }}">
-							{% if theme.picture %}
-								<img class="postcard__img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
-							{% endif %}
-						</a>
-						<div class="postcard__text">
-							<h4 class="postcard__title red">
-								<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
-							</h4>
-							<div class="postcard__subtitle small">
-								<i class="fas fa-calendar-alt"></i>
-								{{ theme.createdAt|format_datetime(pattern="EEEE dd MMMM YYYY", locale="fr") }}
+					<div class="col-md-6 col-xs-12">
+						<article class="postcard search-postcard dark red">
+							<a class="postcard__img_link" href="{{ path('theme', { slug: theme.slug }) }}">
+								{% if theme.picture %}
+									<img class="postcard__img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
+								{% endif %}
+							</a>
+							<div class="postcard__text">
+								<h4 class="postcard__title red">
+									<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
+								</h4>
+								<div class="postcard__bar"></div>
+								<ul class="postcard__tagbox">
+									{% for theme in theme.getTags() %}
+										<li class="tag__item">
+											<a class="tag__item_a" href="{{ path('category', { name: theme.name }) }}">
+												<i class="fas fa-tag"></i>
+												{{ theme.name }}
+											</a>
+										</li>
+									{% endfor %}
+								</ul>
 							</div>
-							<div class="postcard__bar"></div>
-							<div class="postcard__preview-txt">{{ theme.text }}</div>
-							<ul class="postcard__tagbox">
-								{% for theme in theme.getTags() %}
-									<li class="tag__item">
-										<a class="tag__item_a" href="{{ path('category', { name: theme.name }) }}">
-											<i class="fas fa-tag"></i>
-											{{ theme.name }}
-										</a>
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
-					</article>
+						</article>
+					</div>
 				{% endfor %}
+
+				{# Pagination #}
+				{{ knp_pagination_render(themes) }}
+
 			</div>
+
 		{% endif %}
 	{% endif %}
 {% endblock %}
