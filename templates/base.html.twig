@@ -34,13 +34,13 @@
 							<li class="nav-item active">
 								<a class="nav-link" href="{{ path('homepage') }}">
 									<i class="fas fa-home"></i>
-									{{ 'Accueil'|trans }}
+									{{ 'Home'|trans }}
 								</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link">
 									<i class="fas fa-fire"></i>
-									{{ 'Populaires'|trans }}
+									{{ 'Popular'|trans }}
 								</a>
 							</li>
 							<li class="nav-item">
@@ -52,7 +52,7 @@
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('categories') }}">
 									<i class="fas fa-tag"></i>
-									{{ 'Catégories'|trans }}
+									{{ 'Categories'|trans }}
 								</a>
 							</li>
 						</ul>
@@ -161,8 +161,10 @@
 				</div>
 			</div>
 		</footer>
+		
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
+		
 	</body>
 </html>

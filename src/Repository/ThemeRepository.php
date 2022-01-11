@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Theme;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -15,24 +14,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ThemeRepository extends ServiceEntityRepository
 {
-    public const PAGINATOR_PER_PAGE = 4;
+    public const MAX_RECENT_THEMES = 10;
 
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Theme::class);
-    }
-
-    public function getThemePaginator(int $offset): Paginator
-    {
-        $qb = $this->createQueryBuilder('t')
-            ->where('t.display = :val')
-            ->setParameter('val', TRUE)
-            ->orderBy('t.createdAt', 'DESC')
-            ->setMaxResults(self::PAGINATOR_PER_PAGE)
-            ->setFirstResult($offset)
-            ->getQuery();
-
-        return new Paginator($qb);
     }
 
     public function findAll()
@@ -46,6 +32,17 @@ class ThemeRepository extends ServiceEntityRepository
             ->where('t.display = :val')
             ->setParameter('val', TRUE)
             ->orderBy('t.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findRecentThemes()
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.display = :val')
+            ->setParameter('val', TRUE)
+            ->orderBy('t.createdAt', 'DESC')
+            ->setMaxResults(self::MAX_RECENT_THEMES)
             ->getQuery()
             ->getResult();
     }

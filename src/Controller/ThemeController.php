@@ -10,6 +10,7 @@ use App\Repository\TagRepository;
 use App\Repository\ThemeRepository;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,15 +43,18 @@ class ThemeController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/", name="homepage")
      */
-    public function index(Request $request, ThemeRepository $themeRepository)
+    public function index(Request $request, PaginatorInterface $paginator, ThemeRepository $themeRepository)
     {
-        $offset = max(0, $request->query->getInt('offset', 0));
-        $paginator = $themeRepository->getThemePaginator($offset);
+        $data = $themeRepository->findRecentThemes();
+
+        $themes = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            4
+        );
 
         return new Response($this->twig->render('theme/index.html.twig', [
-            'themes' => $paginator,
-            'previous' => $offset - ThemeRepository::PAGINATOR_PER_PAGE,
-            'next' => min(count($paginator), $offset + ThemeRepository::PAGINATOR_PER_PAGE),
+            'themes' => $themes
         ]));
     }
 
@@ -126,31 +130,37 @@ class ThemeController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}/participations", name="participations")
      */
-    public function showParticipationsByTheme(Request $request, Theme $theme, CommentRepository $commentRepository)
+    public function showParticipationsByTheme(Request $request, Theme $theme, PaginatorInterface $paginator, CommentRepository $commentRepository)
     {
-        $offset = max(0, $request->query->getInt('offset', 0));
-        $paginator = $commentRepository->getCommentPaginatorByTheme($theme, $offset);
+        $data = $commentRepository->findCommentsByTheme($theme);
+
+        $comments = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            4
+        );
 
         return new Response($this->twig->render('theme/showParticipations.html.twig', [
             'theme' => $theme,
-            'comments' => $paginator,
-            'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
-            'next' => min(count($paginator), $offset + CommentRepository::PAGINATOR_PER_PAGE),
+            'comments' => $comments
         ]));
     }
 
     /**
      * @Route("/{_locale<%app.supported_locales%>}/last-participations", name="last-participations")
      */
-    public function showLastParticipations(Request $request, CommentRepository $commentRepository)
+    public function showLastParticipations(Request $request, PaginatorInterface $paginator, CommentRepository $commentRepository)
     {
-        $offset = max(0, $request->query->getInt('offset', 0));
-        $paginator = $commentRepository->getCommentPaginator($offset);
+        $data = $commentRepository->findRecentComments();
+
+        $comments = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            6
+        );
 
         return new Response($this->twig->render('theme/lastParticipations.html.twig', [
-            'comments' => $paginator,
-            'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
-            'next' => min(count($paginator), $offset + CommentRepository::PAGINATOR_PER_PAGE),
+            'comments' => $comments
         ]));
     }
 }

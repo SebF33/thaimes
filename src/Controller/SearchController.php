@@ -31,8 +31,9 @@ class SearchController extends AbstractController
 
     public function searchBar()
     {
-        $form = $this->createFormBuilder()
-            ->setAction($this->generateUrl('themes-search'))
+        $form = $this->createFormBuilder('SymfonyComponentFormExtensionCoreTypeFormType', array('csrf_protection' => false))
+            ->setAction($this->generateUrl('themes_search_result'))
+            ->setMethod('GET')
             ->getForm();
 
         return $this->render('search/searchBar.html.twig', [
@@ -41,12 +42,13 @@ class SearchController extends AbstractController
     }
 
     /**
-     * @Route("/themes-search", name="themes-search")
+     * @Route("/{_locale<%app.supported_locales%>}/themes_search_result", name="themes_search_result")
      * @param Request $request
      */
     public function themesSearch(Request $request, PaginatorInterface $paginator, ThemeRepository $themeRepository)
     {
-        $query = $request->request->get('searchForm')['query'];
+
+        $query = $request->query->get('searchForm')['query'];
         $data = $themeRepository->findThemesByTitle($query);
 
         $themes = $paginator->paginate(

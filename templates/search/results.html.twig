@@ -6,7 +6,7 @@
 
 {% block body %}
 
-	{% if app.request.method == 'POST' %}
+	{% if app.request.method == 'GET' %}
 		<div class="container row d-flex justify-content-md-between">
 			<h2 class="mb-5 hide">{{ 'Search results'|trans }}</h2>
 			<div class="neon-text h1 col-8">
@@ -80,7 +80,7 @@
 				{% endfor %}
 
 				{# Pagination #}
-				{{ knp_pagination_render(themes) }}
+				{{ knp_pagination_render(themes, 'pagination/pagination.html.twig') }}
 
 			</div>
 

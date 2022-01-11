@@ -76,13 +76,8 @@
 		</div>
 
 		{# Pagination #}
-		<div class="pagination mb-5">
-			{% if previous >= 0 %}
-				<a class="app-button" href="{{ path('last-participations', { offset: previous }) }}">{{'Previous'|trans }}</a>
-			{% endif %}
-			{% if next < comments|length %}
-				<a class="app-button" href="{{ path('last-participations', { offset: next }) }}">{{'Next'|trans }}</a>
-			{% endif %}
+		<div class="container my-5">
+			{{ knp_pagination_render(comments, 'pagination/pagination.html.twig') }}
 		</div>
 
 	{% endif %}

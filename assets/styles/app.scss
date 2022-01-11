@@ -136,6 +136,7 @@ $value in $theme-colors {
 .menu {
   a {
     font-weight: $font-weight-bold;
+    text-transform: uppercase;
   }
 }
 
@@ -184,6 +185,29 @@ $value in $theme-colors {
   a:hover {
     color: $light !important;
   }
+}
+
+.page-item.active .page-link,
+.page-item.disabled .page-link {
+  color: $gray-600;
+  border: 3px #666;
+  border-color: unset;
+  box-shadow: unset;
+  text-shadow: unset;
+}
+
+.pagination-sm .page-item:first-child .page-link {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-top-right-radius: 0.1rem;
+  border-bottom-right-radius: 0.1rem;
+}
+
+.pagination-sm .page-item:last-child .page-link {
+  border-top-left-radius: 0.1rem;
+  border-bottom-left-radius: 0.1rem;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 /* Scrollbar */

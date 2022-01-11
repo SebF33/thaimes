@@ -85,14 +85,7 @@
 				{% endfor %}
 
 				{# Pagination #}
-				<div class="pagination">
-					{% if previous >= 0 %}
-						<a class="app-button" href="{{ path('homepage', { offset: previous }) }}">{{'Previous'|trans }}</a>
-					{% endif %}
-					{% if next < themes|length %}
-						<a class="app-button" href="{{ path('homepage', { offset: next }) }}">{{'Next'|trans }}</a>
-					{% endif %}
-				</div>
+				{{ knp_pagination_render(themes, 'pagination/pagination.html.twig') }}
 
 			{% endfor %}
 		</div>

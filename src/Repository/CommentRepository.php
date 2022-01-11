@@ -16,7 +16,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
  */
 class CommentRepository extends ServiceEntityRepository
 {
-    public const PAGINATOR_PER_PAGE = 6;
+    public const MAX_RECENT_PARTICIPATIONS = 80;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -46,37 +46,33 @@ class CommentRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function getCommentPaginator(int $offset): Paginator
+    public function findRecentComments()
     {
-        $query = $this->createQueryBuilder('t')
+        return $this->createQueryBuilder('t')
             ->andWhere('t.state = :state')
             ->setParameter('state', 'published')
             ->orderBy('t.createdAt', 'DESC')
-            ->setMaxResults(self::PAGINATOR_PER_PAGE)
-            ->setFirstResult($offset)
-            ->getQuery();
-
-        return new Paginator($query);
+            ->setMaxResults(self::MAX_RECENT_PARTICIPATIONS)
+            ->getQuery()
+            ->getResult();
     }
 
-    public function getCommentPaginatorByTheme(Theme $theme, int $offset): Paginator
+    public function findCommentsByTheme(Theme $theme)
     {
-        $query = $this->createQueryBuilder('t')
+        return $this->createQueryBuilder('t')
             ->andWhere('t.theme = :theme')
             ->andWhere('t.state = :state')
             ->setParameter('theme', $theme)
             ->setParameter('state', 'published')
             ->orderBy('t.createdAt', 'DESC')
-            ->setMaxResults(self::PAGINATOR_PER_PAGE)
-            ->setFirstResult($offset)
-            ->getQuery();
-
-        return new Paginator($query);
+            ->getQuery()
+            ->getResult();
     }
 
     public function getCommentLastDays()
     {
-        $stmt  = $this->getEntityManager()->getConnection()->prepare('SELECT COUNT(id) num, DATE(created_at) d FROM comment GROUP BY DATE(created_at)');
+        $sql = 'SELECT COUNT(id) num, DATE(created_at) d FROM comment GROUP BY DATE(created_at)';
+        $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
         $result = $stmt->executeQuery()->fetchAllAssociative();
 
         return $result;
