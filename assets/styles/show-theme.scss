@@ -149,7 +149,7 @@ aside {
   }
 }
 
-/* Comment form */
+/* Participation form */
 .comment-form {
   max-width: 320px;
 
@@ -162,6 +162,10 @@ aside {
     label {
       color: $text-muted;
     }
+  }
+
+  .custom-file-label {
+    display: none;
   }
 
   input,

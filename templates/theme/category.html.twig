@@ -6,15 +6,15 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="container d-flex justify-content-md-between">
-		<div class="neon-text col-8 normal">
+		<div class="neon-text">
 			<h2 class="letter letter-normal">{{ tag.name }}</h2>
 		</div>
-		{# Bloc de recherche #}
-		<div class="container-box col-4 mt-4">
-			{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
-		</div>
 	</div>
+
+	{# Bloc de recherche #}
+	{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
 
 	<div class="container my-5">
 		{% for row in themes|batch(6) %}

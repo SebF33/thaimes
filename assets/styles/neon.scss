@@ -199,22 +199,18 @@
   flex-flow: row;
 
   &.h1 {
-    font-size: 3em !important;
-    letter-spacing: -12px;
+    font-size: 3rem !important;
+    letter-spacing: -0.75rem;
   }
 
   &.h2 {
-    font-size: 2.8em !important;
-    letter-spacing: -11px;
+    font-size: 2.8rem !important;
+    letter-spacing: -0.70rem;
   }
 
   &.h3 {
-    font-size: 2.4em !important;
-    letter-spacing: -10px;
-  }
-
-  &.normal {
-    font-size: 2.8em !important;
+    font-size: 2.4rem !important;
+    letter-spacing: -0.60rem;
   }
 
   .letter {
@@ -234,6 +230,15 @@
 
     &.letter-normal {
       animation: flicker2 3s ease-in-out infinite alternate;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .neon-text {
+    &.h1 {
+      font-size: 2rem !important;
+      letter-spacing: -0.5rem;
     }
   }
 }

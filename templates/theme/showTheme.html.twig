@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="row justify-content-between mb-5">
+
 		<div class="col-lg-7">
 			<div class="head">
 				<h1 id="theme-name" class="theme-title headline">{{ theme }}</h1>
@@ -78,8 +80,8 @@
 			</div>
 		</div>
 
-		<div
-			class="col-lg-4 mt-5">
+		<div class="col-lg-4 mt-5">
+
 			{# Lien vers participations #}
 			<div class="row text-left">
 				<p class="h5">
@@ -119,19 +121,27 @@
 						<span class="letter letter-3">!</span>
 					</div>
 					{{ form_start(comment_form, {'attr': {'id': 'comment_form'}}) }}
-					{{ form_row(comment_form.author, { 'label': 'Your name' }) }}
-					{{ form_row(comment_form.text, { 'label': 'Your text' }) }}
-					{{ form_row(comment_form.email, { 'label': 'Your email' }) }}
-					{{ form_row(comment_form.picture, { 'label': 'Your picture' }) }}
-					{{ form_row(comment_form.submit, {'attr': {'class': 'app-button'}}, { 'label': 'Submit' }) }}
+					{% if app.request.locale=='en' %}
+						{% set submitLabel = 'Submit' %}
+					{% elseif app.request.locale=='fr' %}
+						{% set submitLabel = 'Soumettre' %}
+					{% endif %}
+					{{ form_row(comment_form.author, {'label': 'Your name'}) }}
+					{{ form_row(comment_form.text, {'label': 'Your text'}) }}
+					{{ form_row(comment_form.email, {'label': 'Your email'}) }}
+					{{ form_row(comment_form.picture, {'label': 'Your picture', 'attr': {'class':'form-control'}}) }}
+					{{ form_row(comment_form.submit, {'label': submitLabel, 'attr': {'class':'app-button'}}) }}
 					{{ form_end(comment_form) }}
 				</div>
 			</div>
+
 		</div>
+
 	</div>
 
 	{% block javascripts %}
 		{{ parent() }}
 		{{ encore_entry_script_tags('readandspeech') }}
 	{% endblock %}
+
 {% endblock %}

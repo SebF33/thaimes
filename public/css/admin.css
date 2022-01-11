@@ -8,6 +8,7 @@
   --color-blue: #084bb1;
 
   --body-bg: var(--color-dark);
+  --button-hover-color: var(--color-red);
   --button-shadow: var(--color-light);
   --color-primary: var(--color-red);
   --form-input-border-color: var(--color-light);
@@ -30,7 +31,7 @@
   --table-thead-sorted-color: var(--color-light);
   --table-thead-marker-color: var(--color-light);
   --text-color: var(--color-light);
-  --text-color-dark: var(--color-light);
+  --text-color-dark: var(--color-dark);
   --text-on-primary: var(--color-light);
   --user-name-color: var(--color-light);
 }
@@ -59,6 +60,10 @@ body {
 .datagrid .ea-lightbox-thumbnail img,
 .basicLightbox__placeholder img {
   background: var(--color-light);
+}
+
+.ea-fileupload .input-group .btn {
+  color: var(--color-dark);
 }
 
 .form-check-input:checked {

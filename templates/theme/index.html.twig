@@ -6,9 +6,9 @@
 
 {% block body %}
 
-	<div class="container row d-flex justify-content-md-between">
+	<div class="container">
 		<h2 class="mb-5 hide">{{ 'What\'s new?'|trans }}</h2>
-		<div class="neon-text h1 col-8">
+		<div class="neon-text h1">
 			{% if app.request.locale=='en' %}
 				<span class="letter">W</span>
 				<span class="letter">h</span>
@@ -40,56 +40,54 @@
 				<span class="letter letter-3">?</span>
 			{% endif %}
 		</div>
-
-		{# Bloc de recherche #}
-		<div class="container-box col-4 mt-4">
-			{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
-		</div>
 	</div>
+	
+	{# Bloc de recherche #}
+	{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
 
-	{% if themes|length > 0 %}
+		{% if themes|length > 0 %}
 
-		<div class="container my-5">
-			{% for row in themes|batch(6) %}
+			<div class="container my-5">
+				{% for row in themes|batch(6) %}
 
-				{% for theme in row %}
-					{# Cartes de thème #}
-					<article class="postcard dark red">
-						<a class="postcard__img_link" href="{{ path('theme', { slug: theme.slug }) }}">
-							{% if theme.picture %}
-								<img class="postcard__img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
-							{% endif %}
-						</a>
-						<div class="postcard__text">
-							<h4 class="postcard__title red">
-								<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
-							</h4>
-							<div class="postcard__subtitle small">
-								<i class="fas fa-calendar-alt"></i>
-								{{ theme.createdAt|format_datetime(pattern="EEEE dd MMMM YYYY") }}
+					{% for theme in row %}
+						{# Cartes de thème #}
+						<article class="postcard dark red">
+							<a class="postcard__img_link" href="{{ path('theme', { slug: theme.slug }) }}">
+								{% if theme.picture %}
+									<img class="postcard__img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
+								{% endif %}
+							</a>
+							<div class="postcard__text">
+								<h4 class="postcard__title red">
+									<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
+								</h4>
+								<div class="postcard__subtitle small">
+									<i class="fas fa-calendar-alt"></i>
+									{{ theme.createdAt|format_datetime(pattern="EEEE dd MMMM YYYY") }}
+								</div>
+								<div class="postcard__bar"></div>
+								<div class="postcard__preview-txt">{{ theme.text }}</div>
+								<ul class="postcard__tagbox">
+									{% for theme in theme.getTags() %}
+										<li class="tag__item">
+											<a class="tag__item_a" href="{{ path('category', { name: theme.name }) }}">
+												<i class="fas fa-tag"></i>
+												{{ theme.name }}
+											</a>
+										</li>
+									{% endfor %}
+								</ul>
 							</div>
-							<div class="postcard__bar"></div>
-							<div class="postcard__preview-txt">{{ theme.text }}</div>
-							<ul class="postcard__tagbox">
-								{% for theme in theme.getTags() %}
-									<li class="tag__item">
-										<a class="tag__item_a" href="{{ path('category', { name: theme.name }) }}">
-											<i class="fas fa-tag"></i>
-											{{ theme.name }}
-										</a>
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
-					</article>
+						</article>
+					{% endfor %}
+
+					{# Pagination #}
+					{{ knp_pagination_render(themes, 'pagination/pagination.html.twig') }}
+
 				{% endfor %}
+			</div>
 
-				{# Pagination #}
-				{{ knp_pagination_render(themes, 'pagination/pagination.html.twig') }}
+		{% endif %}
 
-			{% endfor %}
-		</div>
-
-	{% endif %}
-
-{% endblock %}
+	{% endblock %}
