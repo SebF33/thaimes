@@ -7,87 +7,93 @@
 {% block body %}
 
 	<div class="container">
-		<h2 class="mb-5 hide">{{ 'What\'s new?'|trans }}</h2>
-		<div class="neon-text h1">
-			{% if app.request.locale=='en' %}
-				<span class="letter">W</span>
-				<span class="letter">h</span>
-				<span class="letter letter-2">a</span>
-				<span class="letter">t</span>
-				<span class="letter">'</span>
-				<span class="letter">s</span>
-				<span class="letter">&nbsp;</span>
-				<span class="letter">&nbsp;</span>
-				<span class="letter">n</span>
-				<span class="letter">e</span>
-				<span class="letter">w</span>
-				<span class="letter letter-3">?</span>
-			{% elseif app.request.locale=='fr' %}
-				<span class="letter">Q</span>
-				<span class="letter">u</span>
-				<span class="letter">o</span>
-				<span class="letter">i</span>
-				<span class="letter">&nbsp;</span>
-				<span class="letter">&nbsp;</span>
-				<span class="letter">d</span>
-				<span class="letter letter-2">e</span>
-				<span class="letter">&nbsp;</span>
-				<span class="letter">&nbsp;</span>
-				<span class="letter">n</span>
-				<span class="letter">e</span>
-				<span class="letter">u</span>
-				<span class="letter">f</span>
-				<span class="letter letter-3">?</span>
-			{% endif %}
-		</div>
-	</div>
+		<div class="row">
+
+			<h2 class="hide">{{ 'What\'s new?'|trans }}</h2>
+			<div class="neon-text h1 col-xl-8">
+				{% if app.request.locale=='en' %}
+					<span class="letter">W</span>
+					<span class="letter">h</span>
+					<span class="letter letter-2">a</span>
+					<span class="letter">t</span>
+					<span class="letter">'</span>
+					<span class="letter">s</span>
+					<span class="letter">&nbsp;</span>
+					<span class="letter">&nbsp;</span>
+					<span class="letter">n</span>
+					<span class="letter">e</span>
+					<span class="letter">w</span>
+					<span class="letter letter-3">?</span>
+				{% elseif app.request.locale=='fr' %}
+					<span class="letter">Q</span>
+					<span class="letter">u</span>
+					<span class="letter">o</span>
+					<span class="letter">i</span>
+					<span class="letter">&nbsp;</span>
+					<span class="letter">&nbsp;</span>
+					<span class="letter">d</span>
+					<span class="letter letter-2">e</span>
+					<span class="letter">&nbsp;</span>
+					<span class="letter">&nbsp;</span>
+					<span class="letter">n</span>
+					<span class="letter">e</span>
+					<span class="letter">u</span>
+					<span class="letter">f</span>
+					<span class="letter letter-3">?</span>
+				{% endif %}
+			</div>
 	
-	{# Bloc de recherche #}
-	{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
-
-		{% if themes|length > 0 %}
-
-			<div class="container my-5">
-				{% for row in themes|batch(6) %}
-
-					{% for theme in row %}
-						{# Cartes de thème #}
-						<article class="postcard dark red">
-							<a class="postcard__img_link" href="{{ path('theme', { slug: theme.slug }) }}">
-								{% if theme.picture %}
-									<img class="postcard__img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
-								{% endif %}
-							</a>
-							<div class="postcard__text">
-								<h4 class="postcard__title red">
-									<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
-								</h4>
-								<div class="postcard__subtitle small">
-									<i class="fas fa-calendar-alt"></i>
-									{{ theme.createdAt|format_datetime(pattern="EEEE dd MMMM YYYY") }}
-								</div>
-								<div class="postcard__bar"></div>
-								<div class="postcard__preview-txt">{{ theme.text }}</div>
-								<ul class="postcard__tagbox">
-									{% for theme in theme.getTags() %}
-										<li class="tag__item">
-											<a class="tag__item_a" href="{{ path('category', { name: theme.name }) }}">
-												<i class="fas fa-tag"></i>
-												{{ theme.name }}
-											</a>
-										</li>
-									{% endfor %}
-								</ul>
-							</div>
-						</article>
-					{% endfor %}
-
-					{# Pagination #}
-					{{ knp_pagination_render(themes, 'pagination/pagination.html.twig') }}
-
-				{% endfor %}
+			{# Bloc de recherche #}
+			<div class="col-xl-3 offset-xl-1 mt-3">
+				{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
 			</div>
 
-		{% endif %}
+		</div>
+	</div>
 
-	{% endblock %}
+	{% if themes|length > 0 %}
+
+		<div class="container my-6">
+			{% for row in themes|batch(6) %}
+
+				{% for theme in row %}
+					{# Cartes de thème #}
+					<article class="postcard dark red">
+						<a class="postcard__img_link" href="{{ path('theme', { slug: theme.slug }) }}">
+							{% if theme.picture %}
+								<img class="postcard__img" src="{{ asset('uploads/theme/' ~ theme.picture) }}" alt="{{ theme.picture }}"/>
+							{% endif %}
+						</a>
+						<div class="postcard__text">
+							<h4 class="postcard__title red">
+								<a href="{{ path('theme', { slug: theme.slug }) }}">{{ theme }}</a>
+							</h4>
+							<div class="postcard__subtitle small">
+								<i class="fas fa-calendar-alt"></i>
+								{{ theme.createdAt|format_datetime(pattern="EEEE dd MMMM YYYY") }}
+							</div>
+							<div class="postcard__bar"></div>
+							<div class="postcard__preview-txt">{{ theme.text }}</div>
+							<ul class="postcard__tagbox">
+								{% for theme in theme.getTags() %}
+									<li class="tag__item">
+										<a class="tag__item_a" href="{{ path('category', { name: theme.name }) }}">
+											<i class="fas fa-tag"></i>
+											{{ theme.name }}
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</article>
+				{% endfor %}
+
+				{# Pagination #}
+				{{ knp_pagination_render(themes, 'pagination/pagination.html.twig') }}
+
+			{% endfor %}
+		</div>
+
+	{% endif %}
+
+{% endblock %}

@@ -7,95 +7,99 @@
 {% block body %}
 
 	{% if app.request.method == 'GET' %}
-		<div class="container row d-flex justify-content-md-between">
-			<h2 class="mb-5 hide">{{ 'Search results'|trans }}</h2>
-			<div class="neon-text h1">
-				{% if themes | length == 0 %}
-					{% if app.request.locale=='en' %}
-						<span class="letter">N</span>
-						<span class="letter">o</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter letter-2">r</span>
-						<span class="letter">e</span>
-						<span class="letter">s</span>
-						<span class="letter">u</span>
-						<span class="letter">l</span>
-						<span class="letter">t</span>
-						<span class="letter letter-3">s</span>
-					{% elseif app.request.locale=='fr' %}
-						<span class="letter">P</span>
-						<span class="letter">a</span>
-						<span class="letter">s</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">d</span>
-						<span class="letter">e</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter letter-2">r</span>
-						<span class="letter">é</span>
-						<span class="letter">s</span>
-						<span class="letter">u</span>
-						<span class="letter">l</span>
-						<span class="letter">t</span>
-						<span class="letter">a</span>
-						<span class="letter">t</span>
-						<span class="letter letter-3">s</span>
-					{% endif %}
-				{% else %}
-					{% if app.request.locale=='en' %}
-						<span class="letter">S</span>
-						<span class="letter">e</span>
-						<span class="letter">a</span>
-						<span class="letter letter-2">r</span>
-						<span class="letter">c</span>
-						<span class="letter">h</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">r</span>
-						<span class="letter">e</span>
-						<span class="letter">s</span>
-						<span class="letter">u</span>
-						<span class="letter">l</span>
-						<span class="letter">t</span>
-						<span class="letter letter-3">s</span>
-					{% elseif app.request.locale=='fr' %}
-						<span class="letter">R</span>
-						<span class="letter">é</span>
-						<span class="letter">s</span>
-						<span class="letter">u</span>
-						<span class="letter">l</span>
-						<span class="letter">t</span>
-						<span class="letter">a</span>
-						<span class="letter">t</span>
-						<span class="letter letter-3">s</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">d</span>
-						<span class="letter">e</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">l</span>
-						<span class="letter">a</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter">&nbsp;</span>
-						<span class="letter letter-2">r</span>
-						<span class="letter">e</span>
-						<span class="letter">c</span>
-						<span class="letter">h</span>
-						<span class="letter">e</span>
-						<span class="letter">r</span>
-						<span class="letter">c</span>
-						<span class="letter">h</span>
-						<span class="letter letter-3">e</span>
-					{% endif %}
-				{% endif %}
-			</div>
+		<div class="container">
+			<div class="row">
 
-			{# Bloc de recherche #}
-			<div class="container-box col-4 mt-4">
-				{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
+				<h2 class="hide">{{ 'Search results'|trans }}</h2>
+				<div class="neon-text h1 col-xl-8">
+					{% if themes | length == 0 %}
+						{% if app.request.locale=='en' %}
+							<span class="letter">N</span>
+							<span class="letter">o</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter letter-2">r</span>
+							<span class="letter">e</span>
+							<span class="letter">s</span>
+							<span class="letter">u</span>
+							<span class="letter">l</span>
+							<span class="letter">t</span>
+							<span class="letter letter-3">s</span>
+						{% elseif app.request.locale=='fr' %}
+							<span class="letter">P</span>
+							<span class="letter">a</span>
+							<span class="letter">s</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">d</span>
+							<span class="letter">e</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter letter-2">r</span>
+							<span class="letter">é</span>
+							<span class="letter">s</span>
+							<span class="letter">u</span>
+							<span class="letter">l</span>
+							<span class="letter">t</span>
+							<span class="letter">a</span>
+							<span class="letter">t</span>
+							<span class="letter letter-3">s</span>
+						{% endif %}
+					{% else %}
+						{% if app.request.locale=='en' %}
+							<span class="letter">S</span>
+							<span class="letter">e</span>
+							<span class="letter">a</span>
+							<span class="letter letter-2">r</span>
+							<span class="letter">c</span>
+							<span class="letter">h</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">r</span>
+							<span class="letter">e</span>
+							<span class="letter">s</span>
+							<span class="letter">u</span>
+							<span class="letter">l</span>
+							<span class="letter">t</span>
+							<span class="letter letter-3">s</span>
+						{% elseif app.request.locale=='fr' %}
+							<span class="letter">R</span>
+							<span class="letter">é</span>
+							<span class="letter">s</span>
+							<span class="letter">u</span>
+							<span class="letter">l</span>
+							<span class="letter">t</span>
+							<span class="letter">a</span>
+							<span class="letter">t</span>
+							<span class="letter letter-3">s</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">d</span>
+							<span class="letter">e</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">l</span>
+							<span class="letter">a</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter">&nbsp;</span>
+							<span class="letter letter-2">r</span>
+							<span class="letter">e</span>
+							<span class="letter">c</span>
+							<span class="letter">h</span>
+							<span class="letter">e</span>
+							<span class="letter">r</span>
+							<span class="letter">c</span>
+							<span class="letter">h</span>
+							<span class="letter letter-3">e</span>
+						{% endif %}
+					{% endif %}
+				</div>
+
+				{# Bloc de recherche #}
+				<div class="col-xl-3 offset-xl-1 mt-3">
+					{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
+				</div>
+
 			</div>
 		</div>
 
@@ -105,6 +109,7 @@
 			<h1 class="mb-5 hide">{{ 'Search results'|trans }}</h1>
 
 			<div class="container my-5 row">
+			
 				{% for theme in themes %}
 					<div class="col-md-6 col-xs-12">
 						<article class="postcard search-postcard dark red">
@@ -140,4 +145,5 @@
 
 		{% endif %}
 	{% endif %}
+
 {% endblock %}
