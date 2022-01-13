@@ -1,11 +1,6 @@
 @import './variables';
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
-@font-face {
-  font-family: "Liberty";
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/907368/liberty.otf');
-}
-
 
 .sign {
   user-select: none;
@@ -194,7 +189,7 @@
 
 .neon-text {
   user-select: none;
-  font-family: 'Liberty' !important;
+  font-family: $font-family-thaimes;
   font-weight: 100;
   flex-flow: row;
 
@@ -239,6 +234,11 @@
     &.h1 {
       font-size: 2rem !important;
       letter-spacing: -0.5rem;
+    }
+
+    &.h2 {
+      font-size: 1.8rem !important;
+      letter-spacing: -0.45rem;
     }
   }
 }
