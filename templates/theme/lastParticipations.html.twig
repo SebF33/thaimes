@@ -50,7 +50,7 @@
 
 			{# Bloc de recherche #}
 			<div class="col-xl-3 offset-xl-1 mt-3">
-				{{ render(controller('App\\Controller\\SearchController::searchBar')) }}
+				{{ render(controller('App\\Controller\\SearchController::searchBarForParticipations')) }}
 			</div>
 
 		</div>
@@ -58,10 +58,14 @@
 
 	{% if comments|length > 0 %}
 
-		<div class="page mx-auto">
+		<div class="page mx-auto mt-4">
 			<div class="archive">
 				{% for comment in comments %}
-					<article class="article">
+					{% set articleClasses = ["article"] %}
+					{% if (app.request.query.get('page')|default(1) == 1) and (loop.first) %}
+						{% set articleClasses = articleClasses|merge(["first"]) %}
+					{% endif %}
+					<article class="{{ articleClasses|join(" ") }}">
 						<div class="text-left">
 							<p class="bold">{{ comment.author }}
 								<br>
@@ -82,7 +86,7 @@
 		</div>
 
 		{# Pagination #}
-		<div class="container my-5">
+		<div class="container mb-6">
 			{{ knp_pagination_render(comments, 'pagination/pagination.html.twig') }}
 		</div>
 

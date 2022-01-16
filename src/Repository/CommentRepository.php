@@ -2,11 +2,10 @@
 
 namespace App\Repository;
 
-use App\Entity\Theme;
 use App\Entity\Comment;
-use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\ORM\Tools\Pagination\Paginator;
+use App\Entity\Theme;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
@@ -67,6 +66,25 @@ class CommentRepository extends ServiceEntityRepository
             ->orderBy('t.createdAt', 'DESC')
             ->getQuery()
             ->getResult();
+    }
+
+    public function findCommentsByQuery(string $query)
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->like('LOWER(c.text)', 'LOWER(:query)'),
+                    $qb->expr()->like('c.state', ':state')
+                )
+            )
+            ->setParameter('query', '%' . $query . '%')
+            ->setParameter('state', 'published')
+            ->orderBy('c.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
     }
 
     public function getCommentLastDays()

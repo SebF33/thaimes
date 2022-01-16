@@ -53,7 +53,7 @@
 
 	{% if themes|length > 0 %}
 
-		<div class="container my-6">
+		<div class="container mt-6">
 			{% for row in themes|batch(6) %}
 
 				{% for theme in row %}
@@ -88,10 +88,12 @@
 					</article>
 				{% endfor %}
 
-				{# Pagination #}
-				{{ knp_pagination_render(themes, 'pagination/pagination.html.twig') }}
-
 			{% endfor %}
+		</div>
+
+		{# Pagination #}
+		<div class="container mb-6">
+			{{ knp_pagination_render(themes, 'pagination/pagination.html.twig') }}
 		</div>
 
 	{% endif %}

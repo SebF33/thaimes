@@ -32,11 +32,12 @@
   padding: 1em;
   background: $symfony;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
 
-.article:nth-child(1) {
-  grid-column: 1 / -1;
-  background: $symfony
+  &.first {
+    grid-column: 1 / -1;
+    border: 3px outset $light;
+    box-shadow: 0 0 4px $light, 0 0 10px $light, 0 0 20px $light;
+  }
 }
 
 @media (max-width: 680px) {
