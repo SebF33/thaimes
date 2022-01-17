@@ -93,6 +93,7 @@ class ThemeController extends AbstractController
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setTheme($theme);
             if ($picture = $form['picture']->getData()) {

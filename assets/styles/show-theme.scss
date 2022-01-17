@@ -158,18 +158,26 @@ aside {
     border: 1px solid $light !important;
     box-shadow: 0 4px 8px 0 $light !important;
 
+    .custom-file-label {
+      display: none;
+    }
+
+    .form-group:nth-child(-n+4) {
+      margin-bottom: 16px;
+    }
+
+    .form-group:nth-child(5) {
+      margin-top: 24px;
+    }
+
     input,
     label {
       color: $text-muted;
     }
-  }
 
-  .custom-file-label {
-    display: none;
-  }
-
-  input,
-  textarea {
-    margin-bottom: 8px;
+    .invalid-feedback {
+      font-size: 0.975em;
+      color: $danger;
+    }
   }
 }

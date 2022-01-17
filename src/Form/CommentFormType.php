@@ -17,10 +17,14 @@ class CommentFormType extends AbstractType
     {
         $builder
             ->add('author', null, [
-                'label' => 'Your name',
+                'required' => false,
             ])
-            ->add('text')
-            ->add('email', EmailType::class)
+            ->add('text', null, [
+                'required' => false,
+            ])
+            ->add('email', EmailType::class, [
+                'required' => false,
+            ])
             ->add('picture', FileType::class, [
                 'required' => false,
                 'mapped' => false,

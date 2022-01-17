@@ -21,20 +21,20 @@ class Comment
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message = "author.name.not_blank")
      */
     private $author;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message = "author.text.not_blank")
      */
     private $text;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Email
+     * @Assert\NotBlank(message = "author.email.not_blank")
+     * @Assert\Email(message = "author.email.format")
      */
     private $email;
 

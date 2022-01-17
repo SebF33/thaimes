@@ -7,6 +7,7 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@sweetalert2/themes/dark/dark.scss';
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
 @font-face {
   font-family: "Liberty";
   src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/907368/liberty.otf');
@@ -148,6 +149,7 @@ $value in $theme-colors {
       font-family: $font-family-thaimes;
       font-weight: $font-weight-bold;
       text-transform: uppercase;
+      text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0, 0, 0, 0.15);
     }
   }
 }
@@ -238,10 +240,13 @@ $value in $theme-colors {
 }
 
 /* SweetAlert2 */
-.swal2-popup {
-  background: $background !important;
-  color: $symfony;
-  border: 6px solid $light;
+.swal2-icon.swal2-error {
+  border-color: $red;
+  color: $red;
+}
+
+.swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
+  background-color: $red;
 }
 
 .swal2-icon.swal2-question {
@@ -253,6 +258,16 @@ $value in $theme-colors {
   color: $green;
 }
 
+.swal2-popup {
+  background: $background !important;
+  color: $symfony;
+  border: 6px solid $light;
+}
+
 .swal2-popup.swal2-toast .swal2-success {
   border-color: $green;
+}
+
+.swal2-title {
+  font-size: calc(1.325rem + 0.9vw);
 }

@@ -21,9 +21,11 @@ $('#comment_form_submit').on('click', function (e) {
   }
 })
 
-// Pop-up participation envoyée
 window.onload = function () {
-  if (sessionStorage.getItem('submitted') == '1') {
+  var formError = document.getElementById('form-error-message');
+
+  // Pop-up participation envoyée
+  if (sessionStorage.getItem('submitted') == '1' && formError === null) {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top',
@@ -38,6 +40,27 @@ window.onload = function () {
     Toast.fire({
       icon: 'success',
       title: 'Votre participation a été transmise !'
+    });
+    sessionStorage.clear();
+  }
+
+  // Pop-up erreur
+  else
+  if (sessionStorage.getItem('submitted') == '1' && typeof (formError) != 'undefined' && formError != null) {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    });
+    Toast.fire({
+      icon: 'error',
+      title: "Votre participation n'a pas été transmise..."
     });
     sessionStorage.clear();
   }

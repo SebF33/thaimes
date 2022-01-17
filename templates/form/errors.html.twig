@@ -1,0 +1,9 @@
+{% block form_errors %}
+	{% apply spaceless %}
+		{% for error in errors %}
+			<span id="form-error-message" class="invalid-feedback d-block">
+				<span class="form-error-message">{{ error.message }}</span>
+			</span>
+		{% endfor %}
+	{% endapply %}
+{% endblock %}

@@ -121,24 +121,25 @@
 						<span class="letter letter-3">!</span>
 					</div>
 					{{ form_start(comment_form, {'attr': {'id': 'comment_form'}}) }}
-					{% if app.request.locale=='en' %}
-						{% set nameLabel = 'Your name' %}
-						{% set textLabel = 'Your text' %}
-						{% set emailLabel = 'Your email' %}
-						{% set pictureLabel = 'Your picture' %}
-						{% set submitLabel = 'Submit' %}
-					{% elseif app.request.locale=='fr' %}
-						{% set nameLabel = 'Ton nom' %}
-						{% set textLabel = 'Ton texte' %}
-						{% set emailLabel = 'Ton email' %}
-						{% set pictureLabel = 'Ton illustration' %}
-						{% set submitLabel = 'Soumettre' %}
-					{% endif %}
-					{{ form_row(comment_form.author, {'label': nameLabel}) }}
-					{{ form_row(comment_form.text, {'label': textLabel}) }}
-					{{ form_row(comment_form.email, {'label': emailLabel}) }}
-					{{ form_row(comment_form.picture, {'label': pictureLabel, 'attr': {'class':'form-control'}}) }}
-					{{ form_row(comment_form.submit, {'label': submitLabel, 'attr': {'class':'app-button'}}) }}
+						{% form_theme comment_form 'form/errors.html.twig' %}
+						{% if app.request.locale=='en' %}
+							{% set nameLabel = 'Your name:' %}
+							{% set textLabel = 'Your text:' %}
+							{% set emailLabel = 'Your email:' %}
+							{% set pictureLabel = 'Your picture:' %}
+							{% set submitLabel = 'Submit' %}
+						{% elseif app.request.locale=='fr' %}
+							{% set nameLabel = 'Ton nom :' %}
+							{% set textLabel = 'Ton texte :' %}
+							{% set emailLabel = 'Ton email :' %}
+							{% set pictureLabel = 'Ton illustration :' %}
+							{% set submitLabel = 'Soumettre' %}
+						{% endif %}
+						{{ form_row(comment_form.author, {'label': nameLabel}) }}
+						{{ form_row(comment_form.text, {'label': textLabel}) }}
+						{{ form_row(comment_form.email, {'label': emailLabel}) }}
+						{{ form_row(comment_form.picture, {'label': pictureLabel, 'attr': {'class':'form-control'}}) }}
+						{{ form_row(comment_form.submit, {'label': submitLabel, 'attr': {'class':'app-button'}}) }}
 					{{ form_end(comment_form) }}
 				</div>
 			</div>

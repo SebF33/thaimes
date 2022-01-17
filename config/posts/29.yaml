@@ -1,0 +1,2 @@
+parameters:
+    html5_validation: '%env(bool:APP_HTML5_VALIDATION)%'
