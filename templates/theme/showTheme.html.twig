@@ -96,9 +96,9 @@
 			</div>
 
 			{# Form de participation #}
-			<div class="comment-form row mx-auto">
+			<div id="participation-form" class="comment-form row mx-auto" data-user-language="{{ app.request.locale|json_encode}}">
 				<div class="box-form bg-light rounded-lg p-4">
-					<h3 class="font-weight-light hide">
+					<h3 class="hide">
 						{{'Participate!'|trans }}
 					</h3>
 					<div class="neon-text h3 mb-3">

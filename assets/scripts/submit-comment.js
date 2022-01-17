@@ -1,17 +1,38 @@
+// Langage
+var participation = document.querySelector('#participation-form');
+if (participation.dataset.userLanguage == '"en"') {
+  var confTitle = "Submit your participation?";
+  var successTitle = "Your participation has been submitted!";
+  var errorTitle = "Your participation has not been submitted...";
+  var cancelButtonText = "Not yet";
+  var confirmButtonText = "Yes let's go !";
+} else
+if (participation.dataset.userLanguage == '"fr"') {
+  var confTitle = "Transmettre votre participation ?";
+  var successTitle = "Votre participation a été transmise !";
+  var errorTitle = "Votre participation n'a pas été transmise...";
+  var cancelButtonText = "Non, pas encore";
+  var confirmButtonText = "Oui, allons-y !";
+};
+
+
 // Pop-up confirmation de participation
 $('#comment_form_submit').on('click', function (e) {
+
   e.preventDefault();
+
   var form = $('#comment_form');
+
   if (form.get(0).reportValidity()) {
     Swal.fire({
-      title: "Transmettre votre participation ?",
-      icon: "question",
-      type: "warning",
+      title: confTitle,
+      icon: 'question',
+      type: 'warning',
       showCancelButton: true,
-      cancelButtonColor: "#bd150b",
-      cancelButtonText: "Non, pas encore",
-      confirmButtonColor: "#0a8558",
-      confirmButtonText: "Oui, allons-y !",
+      cancelButtonColor: '#bd150b',
+      cancelButtonText: cancelButtonText,
+      confirmButtonColor: '#0a8558',
+      confirmButtonText: confirmButtonText,
     }).then(function (result) {
       if (result.value === true) {
         sessionStorage.setItem('submitted', '1');
@@ -21,7 +42,9 @@ $('#comment_form_submit').on('click', function (e) {
   }
 })
 
+
 window.onload = function () {
+
   var formError = document.getElementById('form-error-message');
 
   // Pop-up participation envoyée
@@ -39,7 +62,7 @@ window.onload = function () {
     });
     Toast.fire({
       icon: 'success',
-      title: 'Votre participation a été transmise !'
+      title: successTitle
     });
     sessionStorage.clear();
   }
@@ -60,7 +83,7 @@ window.onload = function () {
     });
     Toast.fire({
       icon: 'error',
-      title: "Votre participation n'a pas été transmise..."
+      title: errorTitle
     });
     sessionStorage.clear();
   }
