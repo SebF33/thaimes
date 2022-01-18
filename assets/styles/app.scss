@@ -67,7 +67,7 @@ a:hover {
 }
 
 a:hover {
-  color: $red !important;
+  color: $thaimes-palette-2 !important;
 }
 
 .bold {
@@ -97,7 +97,7 @@ $value in $theme-colors {
 
 // Highlighting
 ::selection {
-  background-color: $red;
+  background-color: $thaimes-palette-1;
 }
 
 /* Dropdown custom */
@@ -140,6 +140,7 @@ $value in $theme-colors {
 /* Navbars */
 .menu {
   font-size: 1.1rem;
+  user-select: none;
 
   li {
     margin-left: 12px;
@@ -151,6 +152,12 @@ $value in $theme-colors {
       text-transform: uppercase;
       text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0, 0, 0, 0.15);
     }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .menu {
+    font-size: 1rem;
   }
 }
 

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const values = Object.values(commentLast30Days);
 
   var options = {
-    colors: ['#bd150b'],
+    colors: ['#a4313d'],
     series: [{
       name: "Participation(s)",
       data: values

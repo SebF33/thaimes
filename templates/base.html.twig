@@ -21,37 +21,39 @@
 		</head>
 
 		<body>
-			<header
-				class="header">
+			<header class="header">
 				{# Menu #}
 				<div class="container-fluid px-4">
 					<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-						<a class="navbar-brand col-2" href="{{ path('homepage') }}"><img class="logoSite" src={{ asset('/build/logo.png') }} alt="Thaimes" width="110" height="55"/></a>
+						<a class="navbar-brand col-2" href="{{ path('homepage') }}" draggable="false" ondragstart="return false">
+							<img class="logoSite" src={{ asset('/build/logo.png') }} alt="Thaimes" width="139" height="100"/>
+							<div class="light-bulb"></div>
+						</a>
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
-						<div class="menu collapse navbar-collapse justify-content-center col-8" id="navbar">
+						<div class="menu collapse navbar-collapse justify-content-center col-8 mt-2" id="navbar">
 							<ul class="navbar-nav mr-auto">
 								<li class="nav-item active">
-									<a class="nav-link" href="{{ path('homepage') }}">
+									<a class="nav-link" href="{{ path('homepage') }}" draggable="false" ondragstart="return false">
 										<i class="fas fa-home"></i>
 										{{ 'Home'|trans }}
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link">
+									<a class="nav-link" draggable="false" ondragstart="return false">
 										<i class="fas fa-fire"></i>
 										{{ 'Popular'|trans }}
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('last-participations') }}">
+									<a class="nav-link" href="{{ path('last-participations') }}" draggable="false" ondragstart="return false">
 										<i class="fas fa-comments"></i>
 										Participations
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('categories') }}">
+									<a class="nav-link" href="{{ path('categories') }}" draggable="false" ondragstart="return false">
 										<i class="fas fa-tag"></i>
 										{{ 'Categories'|trans }}
 									</a>
@@ -62,23 +64,23 @@
 							<ul class="navbar-nav mr-auto">
 								<li class="nav-item">
 									<div class="dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="dropdownlanguage" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<a class="nav-link dropdown-toggle" href="#" id="dropdownlanguage" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" draggable="false" ondragstart="return false">
 											{{ app.request.locale|locale_name(app.request.locale)|u.title }}
 										</a>
 										<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownlanguage">
 											<li>
-												<a class="dropdown-item" href="{{ path('homepage', {_locale: 'en'}) }}">
+												<a class="dropdown-item" href="{{ path('homepage', {_locale: 'en'}) }}" draggable="false" ondragstart="return false">
 													<span class="flag-icon flag-icon-us"></span>EN</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{ path('homepage', {_locale: 'fr'}) }}">
+												<a class="dropdown-item" href="{{ path('homepage', {_locale: 'fr'}) }}" draggable="false" ondragstart="return false">
 													<span class="flag-icon flag-icon-fr"></span>FR</a>
 											</li>
 										</ul>
 									</div>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('admin') }}">
+									<a class="nav-link" href="{{ path('admin') }}" draggable="false" ondragstart="return false">
 										<i class="fas fa-user-lock"></i>
 									</a>
 								</li>
@@ -111,7 +113,7 @@
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-md-2">
-						<h5>© Thaimes</h5>
+						<h5 class="copyright">© Thaimes</h5>
 						<div class="row">
 							<div class="col-6">
 								<ul class="list-unstyled">

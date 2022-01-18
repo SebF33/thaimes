@@ -1,0 +1,101 @@
+@import './variables';
+
+
+.light-bulb {
+  width: 204px;
+  height: 220px;
+  background: url(/assets/images/light-white.png) no-repeat center / contain;
+  position: absolute;
+  top: -80px;
+  left: -54px;
+  -webkit-animation: blink-bulb 8s 0.2s linear infinite;
+  -moz-animation: blink-bulb 8s 0.2s linear infinite;
+  -o-animation: blink-bulb 8s 0.2s linear infinite;
+  animation: blink-bulb 8s 0.2s linear infinite;
+}
+
+@keyframes blink-bulb {
+  from {
+    opacity: 1;
+  }
+
+  8% {
+    opacity: 0.93;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.96;
+  }
+
+  38% {
+    opacity: 0.68;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  86% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.87;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

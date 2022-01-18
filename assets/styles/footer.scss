@@ -14,6 +14,12 @@ body {
   /* Set the fixed height of the footer here */
   height: 340px;
   background: $symfony;
+
+  .copyright {
+    color: $thaimes-palette-2 !important;
+    text-shadow: 4px 3px 0px #000, 7px 5px 0px rgba(0, 0, 0, 0.15);
+    user-select: none;
+  }
 }
 
 /* Taller footer on small screens */
