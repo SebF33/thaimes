@@ -1,18 +1,20 @@
 // Langage
 var participation = document.querySelector('#participation-form');
-if (participation.dataset.userLanguage == '"en"') {
-  var confTitle = "Submit your participation?";
-  var successTitle = "Your participation has been submitted! 😃";
-  var errorTitle = "Your participation has not been submitted... 😒";
-  var cancelButtonText = "Not yet";
-  var confirmButtonText = "Yes let's go !";
-} else
-if (participation.dataset.userLanguage == '"fr"') {
-  var confTitle = "Transmettre votre participation ?";
-  var successTitle = "Votre participation a été transmise ! 😃";
-  var errorTitle = "Votre participation n'a pas été transmise... 😒";
-  var cancelButtonText = "Non, pas encore";
-  var confirmButtonText = "Oui, allons-y !";
+if (typeof (participation) != 'undefined' && participation != null) {
+  if (participation.dataset.userLanguage == '"en"') {
+    var confTitle = "Submit your participation?";
+    var successTitle = "Your participation has been submitted! 😃";
+    var errorTitle = "Your participation has not been submitted... 😒";
+    var cancelButtonText = "Not yet";
+    var confirmButtonText = "Yes let's go !";
+  } else
+  if (participation.dataset.userLanguage == '"fr"') {
+    var confTitle = "Transmettre votre participation ?";
+    var successTitle = "Votre participation a été transmise ! 😃";
+    var errorTitle = "Votre participation n'a pas été transmise... 😒";
+    var cancelButtonText = "Non, pas encore";
+    var confirmButtonText = "Oui, allons-y !";
+  }
 };
 
 
@@ -53,7 +55,7 @@ window.onload = function () {
       toast: true,
       position: 'top',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 4000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -74,7 +76,7 @@ window.onload = function () {
       toast: true,
       position: 'top',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 4000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)

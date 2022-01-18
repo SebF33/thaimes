@@ -161,6 +161,18 @@ $value in $theme-colors {
   }
 }
 
+@media screen and (max-width: 991px) {
+  .fa-fire {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .fa-tag {
+    margin-left: 2px;
+    margin-right: 1px;
+  }
+}
+
 .logoSite {
   display: block;
 }
