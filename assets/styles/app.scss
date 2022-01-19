@@ -133,7 +133,7 @@ $value in $theme-colors {
 }
 
 .form-control:focus {
-  border-color: $main-red;
+  border-color: $thaimes-palette-2;
   box-shadow: 0 0 18px rgb(0, 0, 0, 1);
 }
 
@@ -260,12 +260,12 @@ $value in $theme-colors {
 
 /* SweetAlert2 */
 .swal2-icon.swal2-error {
-  border-color: $red;
-  color: $red;
+  border-color: $thaimes-palette-3;
+  color: $thaimes-palette-3;
 }
 
 .swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
-  background-color: $red;
+  background-color: $thaimes-palette-3;
 }
 
 .swal2-icon.swal2-question {
@@ -280,7 +280,7 @@ $value in $theme-colors {
 .swal2-popup {
   background: $background !important;
   color: $symfony;
-  border: 6px solid $light;
+  border: 6px solid $thaimes-palette-3;
 }
 
 .swal2-popup.swal2-toast .swal2-success {

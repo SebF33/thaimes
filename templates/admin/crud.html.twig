@@ -1,0 +1,9 @@
+{% extends '@!EasyAdmin/crud/index.html.twig' %}
+
+{% block header_logo %}
+	<div id="header-logo">
+		<a class="logo text-center" title="{{ ea.dashboardTitle|striptags }}" href="{{ path(ea.dashboardRouteName) }}">
+			<img class="logoSite" src={{ asset('/build/favicon-192.png') }} alt="{{ ea.dashboardTitle|raw }}" width="70" height="70"/>
+		</a>
+	</div>
+{% endblock header_logo %}

@@ -31,7 +31,7 @@ $('#comment_form_submit').on('click', function (e) {
       icon: 'question',
       type: 'warning',
       showCancelButton: true,
-      cancelButtonColor: '#bd150b',
+      cancelButtonColor: '#ca525e',
       cancelButtonText: cancelButtonText,
       confirmButtonColor: '#0a8558',
       confirmButtonText: confirmButtonText,
@@ -55,7 +55,7 @@ window.onload = function () {
       toast: true,
       position: 'top',
       showConfirmButton: false,
-      timer: 4000,
+      timer: 4600,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -76,7 +76,7 @@ window.onload = function () {
       toast: true,
       position: 'top',
       showConfirmButton: false,
-      timer: 4000,
+      timer: 4600,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)

@@ -37,7 +37,7 @@ class ThemeController extends AbstractController
      */
     public function indexNoLocale()
     {
-        return $this->redirectToRoute('homepage', ['_locale' => 'en']);
+        return $this->redirectToRoute('homepage', ['_locale' => 'fr']);
     }
 
     /**

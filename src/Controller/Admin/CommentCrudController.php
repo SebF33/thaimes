@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Comment;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -18,6 +19,11 @@ class CommentCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Comment::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->overrideTemplate('crud/index', 'admin/crud.html.twig');
     }
 
     public function configureFilters(Filters $filters): Filters

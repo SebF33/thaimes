@@ -40,6 +40,10 @@ body {
   font-family: 'Baloo 2', cursive;
 }
 
+.h1 {
+  color: var(--color-light) !important;
+}
+
 .text-large {
   font-size: 140%;
   font-weight: 900;

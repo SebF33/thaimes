@@ -55,7 +55,7 @@ class DashboardController extends AbstractDashboardController
     }
 
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/{_locale}/admin", name="admin")
      */
     public function index(): Response
     {
