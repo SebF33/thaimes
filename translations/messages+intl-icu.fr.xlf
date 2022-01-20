@@ -17,18 +17,6 @@
         <source>themes and</source>
         <target>thèmes et</target>
       </trans-unit>
-      <trans-unit id="TvTUcCZ" resname="Participation reviewed, thank you!">
-        <source>Participation reviewed, thank you!</source>
-        <target>Participation modérée, merci !</target>
-      </trans-unit>
-      <trans-unit id="aT_8pHT" resname="Applied transition:">
-        <source>Applied transition:</source>
-        <target>Transition appliquée :</target>
-      </trans-unit>
-      <trans-unit id="NEaTwVw" resname="New state:">
-        <source>New state:</source>
-        <target>Nouvel état :</target>
-      </trans-unit>
       <trans-unit id="OnhpU4i" resname="Home">
         <source>Home</source>
         <target>Accueil</target>

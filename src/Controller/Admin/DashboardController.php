@@ -88,13 +88,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Tags', 'fa fa-tag', Tag::class);
     }
 
-    public function configureUserMenu(UserInterface $user): UserMenu
-    {
-        return parent::configureUserMenu($user)->addMenuItems([
-            MenuItem::linkToLogout('Logout', 'fa fa-sign-out'),
-        ]);
-    }
-
     public function configureAssets(): Assets
     {
         return Assets::new()
@@ -103,4 +96,13 @@ class DashboardController extends AbstractDashboardController
             ->addJsFile('js/area.js')
             ->addJsFile('js/donut.js');
     }
+
+    /*
+    public function configureUserMenu(UserInterface $user): UserMenu
+    {
+        return parent::configureUserMenu($user)->addMenuItems([
+            MenuItem::linkToLogout('Logout', 'fa fa-sign-out'),
+        ]);
+    }
+    */
 }

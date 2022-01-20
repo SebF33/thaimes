@@ -70,7 +70,9 @@ class SearchController extends AbstractController
             2
         );
 
+        $page = null;
         return new Response($this->twig->render('search/results.html.twig', [
+            'page' => $page,
             'themes' => $themes
         ]));
     }

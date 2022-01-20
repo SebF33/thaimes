@@ -1,19 +1,24 @@
 {% extends '@email/default/notification/body.html.twig' %}
 
 {% block content %}
+	{{ 'Author:'|trans }}
+	{{ comment.author }}<br/>
+	{{ 'Email:'|trans }}
+	{{ comment.email }}<br/>
+	{{ 'State:'|trans }}
+	{{ comment.state }}<br/>
 
-    {{ 'Author:'|trans }} {{ comment.author }}<br/>
-    {{ 'Email:'|trans }} {{ comment.email }}<br/>
-    {{ 'State:'|trans }} {{ comment.state }}<br/>
+	<p>
+		{{ comment.text }}
+	</p>
 
-    <p>
-        {{ comment.text }}
-    </p>
-
+	{% if comment.picturefilename %}
+		<img src="{{ email.image('@images/' ~ comment.picturefilename) }}">
+	{% endif %}
 {% endblock %}
 
 {% block action %}
-    <spacer size="16"></spacer>
-    <button href="{{ url('review_comment', {id: comment.id}) }}">{{ 'Accept'|trans }}</button>
-    <button href="{{ url('review_comment', {id: comment.id, reject: true}) }}">{{ 'Reject'|trans }}</button>
+	<spacer size="16"></spacer>
+	<button href="{{ url('review_comment', {id: comment.id}) }}">{{ 'Accept'|trans }}</button>
+	<button href="{{ url('review_comment', {id: comment.id, reject: true}) }}">{{ 'Reject'|trans }}</button>
 {% endblock %}
