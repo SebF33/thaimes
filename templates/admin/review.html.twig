@@ -1,8 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>{{ 'Participation reviewed, thank you!'|trans }}</h2>
+	<div class="container neon-text">
+		<h2 class="letter letter-normal">{{ 'Participation reviewed, thank you!'|trans }}</h2>
+	</div>
 
-    <p>{{ 'Applied transition:'|trans }} <strong>{{ transition }}</strong></p>
-    <p>{{ 'New state:'|trans }} <strong>{{ comment.state }}</strong></p>
+	<div class="container mt-6">
+		<p>{{ 'Applied transition:'|trans }}
+			<strong>{{ transition }}</strong>
+		</p>
+
+		<p class="mt-2">{{ 'New state:'|trans }}
+			<strong>{{ comment.state }}</strong>
+		</p>
+	</div>
+
+	<div class="container mt-2">
+		<lottie-player src={{ asset('/build/bulb2.json') }} background="transparent" speed="0.8" style="width: 320px; height: 320px; margin: 0 auto;" autoplay></lottie-player>
+	</div>
+
 {% endblock %}

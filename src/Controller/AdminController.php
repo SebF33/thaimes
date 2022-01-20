@@ -27,7 +27,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/comment/review/{id}", name="review_comment")
+     * @Route("/fr/admin/comment/review/{id}", name="review_comment")
      */
     public function reviewComment(Request $request, Comment $comment, Registry $registry)
     {
@@ -38,7 +38,7 @@ class AdminController extends AbstractController
         } elseif ($machine->can($comment, 'publish_ham')) {
             $transition = $accepted ? 'publish_ham' : 'reject_ham';
         } else {
-            return new Response('Comment already reviewed or not in the right state.');
+            return new Response('Participation déjà modérée ou pas au bon état.');
         }
 
         $machine->apply($comment, $transition);
@@ -47,10 +47,12 @@ class AdminController extends AbstractController
         if ($accepted) {
             $this->bus->dispatch(new CommentMessage($comment->getId()));
         }
-        
+
+        $page = 'login';
         return $this->render('admin/review.html.twig', [
+            'page' => $page,
             'transition' => $transition,
-            'comment' => $comment,
+            'comment' => $comment
         ]);
     }
 }

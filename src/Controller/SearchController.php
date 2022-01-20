@@ -91,7 +91,9 @@ class SearchController extends AbstractController
             4
         );
 
+        $page = 'participations';
         return new Response($this->twig->render('search/participationsResults.html.twig', [
+            'page' => $page,
             'comments' => $comments
         ]));
     }

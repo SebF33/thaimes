@@ -3,8 +3,9 @@
 
 :root {
   --color-dark: #131313;
+  --color-lighter-dark: #1b2431;
   --color-light: #e1e5ea;
-  --color-red: #a4313d;
+  --color-red: #ca525e;
   --color-blue: #084bb1;
 
   --body-bg: var(--color-dark);
@@ -111,4 +112,24 @@ tr:hover {
 .apexcharts-tooltip-title {
   background: var(--color-light);
   color: var(--color-dark);
+}
+
+/* Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark) var(--color-lighter-dark);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark);
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-lighter-dark);
+  border-radius: 7px;
 }

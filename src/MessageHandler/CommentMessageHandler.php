@@ -62,7 +62,7 @@ class CommentMessageHandler implements MessageHandlerInterface
             $this->bus->dispatch($message);
         } elseif ($this->workflow->can($comment, 'publish') || $this->workflow->can($comment, 'publish_ham')) {
             $this->mailer->send((new NotificationEmail())
-                    ->subject('New comment posted')
+                    ->subject('New participation posted')
                     ->htmlTemplate('emails/comment_notification.html.twig')
                     ->from($this->adminEmail)
                     ->to($this->adminEmail)

@@ -39,25 +39,25 @@
 					<div class="menu collapse navbar-collapse justify-content-center col-8 mt-2" id="navbar">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active">
-								<a class="nav-link" href="{{ path('homepage') }}" draggable="false" ondragstart="return false">
+								<a class="{{ (page == 'home') ? 'nav-link active' : 'nav-link' }}" href="{{ path('homepage') }}" draggable="false" ondragstart="return false">
 									<i class="fas fa-home"></i>
 									{{ 'Home'|trans }}
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" draggable="false" ondragstart="return false">
+								<a class="{{ (page == 'popular') ? 'nav-link active' : 'nav-link' }}" draggable="false" ondragstart="return false">
 									<i class="fas fa-fire"></i>
 									{{ 'Popular'|trans }}
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('last-participations') }}" draggable="false" ondragstart="return false">
+								<a class="{{ (page == 'participations') ? 'nav-link active' : 'nav-link' }}" href="{{ path('last-participations') }}" draggable="false" ondragstart="return false">
 									<i class="fas fa-comments"></i>
 									Participations
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('categories') }}" draggable="false" ondragstart="return false">
+								<a class="{{ (page == 'categories') ? 'nav-link active' : 'nav-link' }}" href="{{ path('categories') }}" draggable="false" ondragstart="return false">
 									<i class="fas fa-tag"></i>
 									{{ 'Categories'|trans }}
 								</a>
@@ -84,7 +84,7 @@
 								</div>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('admin') }}" draggable="false" ondragstart="return false">
+								<a class="{{ (page == 'login') ? 'nav-link active' : 'nav-link' }}" href="{{ path('admin') }}" draggable="false" ondragstart="return false">
 									<i class="fas fa-user-lock"></i>
 								</a>
 							</li>
@@ -101,7 +101,7 @@
 					{% if app.request.locale=='en' %}
 						<span class="fast-flicker">L</span>et's enlighten ourselves<br>with what we&nbsp;<span class="flicker">love!</span>
 					{% elseif app.request.locale=='fr' %}
-						<span class="fast-flicker">É</span>clairons-nous<br>de ce que nous&nbsp;<span class="flicker">aimons !</span>
+						<span class="fast-flicker">É</span>clairons-nous<br>de ce que l'on&nbsp;<span class="flicker">aime !</span>
 					{% endif %}
 				</div>
 			</div>

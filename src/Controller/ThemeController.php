@@ -53,7 +53,9 @@ class ThemeController extends AbstractController
             4
         );
 
+        $page = 'home';
         return new Response($this->twig->render('theme/index.html.twig', [
+            'page' => $page,
             'themes' => $themes
         ]));
     }
@@ -63,8 +65,10 @@ class ThemeController extends AbstractController
      */
     public function showTagList(TagRepository $tagRepository)
     {
+        $page = 'categories';
         return new Response($this->twig->render('theme/categories.html.twig', [
-            'tags_by_letter' => $tagRepository->findAllByTagLetter(),
+            'page' => $page,
+            'tags_by_letter' => $tagRepository->findAllByTagLetter()
         ]));
     }
 
@@ -79,9 +83,11 @@ class ThemeController extends AbstractController
 
         $themes = $tag->getThemes();
 
+        $page = 'categories';
         return new Response($this->twig->render('theme/category.html.twig', [
+            'page' => $page,
             'themes' => $themes,
-            'tag' => $tag,
+            'tag' => $tag
         ]));
     }
 
@@ -121,10 +127,12 @@ class ThemeController extends AbstractController
             return $this->redirectToRoute('theme', ['slug' => $theme->getSlug()]);
         }
 
+        $page = null;
         return new Response($this->twig->render('theme/showTheme.html.twig', [
+            'page' => $page,
             'theme' => $theme,
             'comments' =>  $commentRepository->findAllPublishedCommentsByTheme($theme),
-            'comment_form' => $form->createView(),
+            'comment_form' => $form->createView()
         ]));
     }
 
@@ -141,7 +149,9 @@ class ThemeController extends AbstractController
             4
         );
 
+        $page = 'participations';
         return new Response($this->twig->render('theme/showParticipations.html.twig', [
+            'page' => $page,
             'theme' => $theme,
             'comments' => $comments
         ]));
@@ -160,7 +170,9 @@ class ThemeController extends AbstractController
             6
         );
 
+        $page = 'participations';
         return new Response($this->twig->render('theme/lastParticipations.html.twig', [
+            'page' => $page,
             'comments' => $comments
         ]));
     }

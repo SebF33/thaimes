@@ -1,16 +1,14 @@
-{{ form_start(searchForm) }}
-
 {% if app.request.locale=='en' %}
 	{% set placeholder = 'Search...' %}
 {% elseif app.request.locale=='fr' %}
 	{% set placeholder = 'Recherche...' %}
 {% endif %}
 
+{{ form_start(searchForm) }}
 	<div class="search-box m-auto">
 		<button type="submit" id="form_search" class="btn-search" name="searchForm[search]">
 			<i class="fas fa-search"></i>
 		</button>
 		<input type="text" class="input-search" placeholder="{{ placeholder }}" name="searchForm[query]" required="required">
 	</div>
-
 {{ form_end(searchForm) }}

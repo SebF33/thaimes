@@ -9,6 +9,114 @@
         <source>nb_of_comments</source>
         <target>{count, plural, =0 {Aucun éclaircissement.} =1 {1 éclaircissement.} other {# éclaircissements.}}</target>
       </trans-unit>
+      <trans-unit id="rz8S4WH" resname="You have">
+        <source>You have</source>
+        <target>Tu as</target>
+      </trans-unit>
+      <trans-unit id="lcUzxrt" resname="themes and">
+        <source>themes and</source>
+        <target>thèmes et</target>
+      </trans-unit>
+      <trans-unit id="TvTUcCZ" resname="Participation reviewed, thank you!">
+        <source>Participation reviewed, thank you!</source>
+        <target>Participation modérée, merci !</target>
+      </trans-unit>
+      <trans-unit id="aT_8pHT" resname="Applied transition:">
+        <source>Applied transition:</source>
+        <target>Transition appliquée :</target>
+      </trans-unit>
+      <trans-unit id="NEaTwVw" resname="New state:">
+        <source>New state:</source>
+        <target>Nouvel état :</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="djJ97Jr" resname="Popular">
+        <source>Popular</source>
+        <target>Populaire</target>
+      </trans-unit>
+      <trans-unit id="uLHYlMa" resname="Categories">
+        <source>Categories</source>
+        <target>Catégories</target>
+      </trans-unit>
+      <trans-unit id="ihPINRi" resname="Let's enlighten ourselves with what we love!">
+        <source>Let's enlighten ourselves with what we love!</source>
+        <target>Éclairons-nous de ce que l'on aime !</target>
+      </trans-unit>
+      <trans-unit id="laP8ZYf" resname="Author:">
+        <source>Author:</source>
+        <target>Auteur :</target>
+      </trans-unit>
+      <trans-unit id="F1B9z4R" resname="Email:">
+        <source>Email:</source>
+        <target>E-mail :</target>
+      </trans-unit>
+      <trans-unit id="szf1Rs_" resname="State:">
+        <source>State:</source>
+        <target>État :</target>
+      </trans-unit>
+      <trans-unit id="iXE7nJw" resname="Accept">
+        <source>Accept</source>
+        <target>Accepter</target>
+      </trans-unit>
+      <trans-unit id="q2BKNgd" resname="Reject">
+        <source>Reject</source>
+        <target>Rejeter</target>
+      </trans-unit>
+      <trans-unit id="6XiwDeR" resname="Search results">
+        <source>Search results</source>
+        <target>Résultats de recherche</target>
+      </trans-unit>
+      <trans-unit id="pDYZ8yE" resname="No results">
+        <source>No results</source>
+        <target>Aucun résultat</target>
+      </trans-unit>
+      <trans-unit id="yKeA0.P" resname="Log in!">
+        <source>Log in!</source>
+        <target>Connexion !</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>Tu es connecté(e) en tant que</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>S'identifier</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="YjqrXE3" resname="What's new?">
+        <source>What's new?</source>
+        <target>Quoi de neuf ?</target>
+      </trans-unit>
+      <trans-unit id="7Cl7FJ6" resname="Last participations">
+        <source>Last participations</source>
+        <target>Dernières participations</target>
+      </trans-unit>
+      <trans-unit id="DSdqqh1" resname="Last explanations">
+        <source>Last explanations</source>
+        <target>Derniers éclaircissements</target>
+      </trans-unit>
+      <trans-unit id="XG0l1nK" resname="Image by">
+        <source>Image by</source>
+        <target>Image de</target>
+      </trans-unit>
+      <trans-unit id="LyZOjNh" resname="No participations have been posted yet for this theme.">
+        <source>No participations have been posted yet for this theme.</source>
+        <target>Aucune participation n'a encore été publiée pour ce thème.</target>
+      </trans-unit>
+      <trans-unit id="u0PGmo." resname="Participate!">
+        <source>Participate!</source>
+        <target>Participe !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
