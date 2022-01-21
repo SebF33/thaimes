@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Tag;
 use App\Entity\Theme;
 use App\Entity\Comment;
+use App\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -16,6 +17,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
+    public function __construct(private CommentRepository $comments)
+    {
+        $this->comments = $comments;
+    }
+
     private function commentLast30Days()
     {
         $result = [];
@@ -81,10 +87,13 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        $numPendingParticipations = $this->comments->getNumPendingReview();
+
         yield MenuItem::linktoRoute('Dashboard', 'fa fa-chart-line', 'admin');
         yield MenuItem::linktoRoute('Website', 'fa fa-map-marker', 'homepage');
         yield MenuItem::linkToCrud('Themes', 'fa fa-pen-fancy', Theme::class);
-        yield MenuItem::linkToCrud('Participations', 'fa fa-comments', Comment::class);
+        yield MenuItem::linkToCrud('Participations', 'fa fa-comments', Comment::class)
+            ->setBadge($numPendingParticipations);
         yield MenuItem::linkToCrud('Tags', 'fa fa-tag', Tag::class);
     }
 

@@ -96,6 +96,18 @@ class CommentRepository extends ServiceEntityRepository
         return $result;
     }
 
+    public function getNumPendingReview()
+    {
+        $states = ['ham', 'potential_spam'];
+
+        return $this->createQueryBuilder('t')
+            ->select('count(t.id)')
+            ->where('t.state IN (:states)')
+            ->setParameter('states', $states)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */
