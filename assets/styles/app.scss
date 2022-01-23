@@ -106,12 +106,6 @@ $value in $theme-colors {
   background-color: $thaimes-palette-1;
 }
 
-// Remove focus styles for non-keyboard focus
-:focus:not(:focus-visible) {
-  outline: 0;
-  box-shadow: none;
-}
-
 /* Dropdown custom */
 .dropdown-menu {
   min-width: 6em;
@@ -292,7 +286,7 @@ $value in $theme-colors {
 .swal2-popup {
   background: $background !important;
   color: $symfony;
-  border: 6px solid $thaimes-palette-1;
+  border: 6px solid $light;
 }
 
 .swal2-popup.swal2-toast .swal2-success {

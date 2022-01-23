@@ -67,7 +67,7 @@ class SearchController extends AbstractController
         $themes = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            2
+            4
         );
 
         $page = null;

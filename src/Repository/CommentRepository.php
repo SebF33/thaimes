@@ -74,7 +74,7 @@ class CommentRepository extends ServiceEntityRepository
         $qb
             ->where(
                 $qb->expr()->andX(
-                    $qb->expr()->like('LOWER(c.text)', 'LOWER(:query)'),
+                    $qb->expr()->like('unaccent(LOWER(c.text))', 'unaccent(LOWER(:query))'),
                     $qb->expr()->like('c.state', ':state')
                 )
             )
@@ -98,7 +98,7 @@ class CommentRepository extends ServiceEntityRepository
 
     public function getNumPendingReview()
     {
-        $states = ['ham', 'potential_spam'];
+        $states = ['ham', 'potential_spam', 'submitted'];
 
         return $this->createQueryBuilder('t')
             ->select('count(t.id)')

@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ThemeRepository extends ServiceEntityRepository
 {
-    public const MAX_RECENT_THEMES = 10;
+    public const MAX_RECENT_THEMES = 20;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -53,13 +53,14 @@ class ThemeRepository extends ServiceEntityRepository
         $qb
             ->where(
                 $qb->expr()->andX(
-                    $qb->expr()->like('LOWER(t.title)', 'LOWER(:query)'),
+                    $qb->expr()->like('unaccent(LOWER(t.title))', 'unaccent(LOWER(:query))'),
                     $qb->expr()->isNotNull('t.createdAt')
                 )
             )
             ->andWhere($qb->expr()->eq('t.display', ':val'))
             ->setParameter('query', '%' . $query . '%')
             ->setParameter('val', TRUE)
+            ->orderBy('t.year', 'DESC')
             ->getQuery()
             ->getResult();
 
