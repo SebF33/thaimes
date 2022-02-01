@@ -105,6 +105,10 @@
         <source>Participate!</source>
         <target>Participe !</target>
       </trans-unit>
+      <trans-unit id="p4NwFZC" resname="Available disk space:">
+        <source>Available disk space:</source>
+        <target>Espace disque disponible :</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

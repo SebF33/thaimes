@@ -2,17 +2,16 @@
 
 namespace App\Controller\Admin;
 
+
+use App\Entity\Comment;
 use App\Entity\Tag;
 use App\Entity\Theme;
-use App\Entity\Comment;
 use App\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
-use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
-use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use Symfony\Component\Security\Core\User\UserInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
@@ -45,6 +44,20 @@ class DashboardController extends AbstractDashboardController
         return $result;
     }
 
+    private function diskSpace()
+    {
+        $bytes = disk_free_space("/");
+        $precision = 2;
+        $units = array('B', 'KiB', 'MiB', 'GiB', 'TiB');
+
+        $bytes = max($bytes, 0);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
+        $bytes /= pow(1024, $pow);
+
+        return round($bytes, $precision) . ' ' . $units[$pow];
+    }
+
     private function themesCounts()
     {
         $result = [];
@@ -69,6 +82,7 @@ class DashboardController extends AbstractDashboardController
         $comments = $this->getDoctrine()->getRepository(Comment::class)->count([]);
         $commentLast30Days = $this->commentLast30Days();
         $themesCounts = $this->themesCounts();
+        $diskSpace = $this->diskSpace();
 
         return $this->render('admin/dashboard.html.twig', [
             'themes' => $themes,
@@ -76,6 +90,7 @@ class DashboardController extends AbstractDashboardController
             'commentLast30Days' => $commentLast30Days,
             'commentLast30DaysSum' => array_sum($commentLast30Days),
             'themesCounts' => $themesCounts,
+            'diskSpace' => $diskSpace
         ]);
     }
 
