@@ -83,6 +83,7 @@ class DashboardController extends AbstractDashboardController
         $commentLast30Days = $this->commentLast30Days();
         $themesCounts = $this->themesCounts();
         $diskSpace = $this->diskSpace();
+        $phpInfo = phpversion();
 
         return $this->render('admin/dashboard.html.twig', [
             'themes' => $themes,
@@ -90,7 +91,8 @@ class DashboardController extends AbstractDashboardController
             'commentLast30Days' => $commentLast30Days,
             'commentLast30DaysSum' => array_sum($commentLast30Days),
             'themesCounts' => $themesCounts,
-            'diskSpace' => $diskSpace
+            'diskSpace' => $diskSpace,
+            'phpInfo' => $phpInfo
         ]);
     }
 

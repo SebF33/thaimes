@@ -6,14 +6,17 @@ use App\Repository\ThemeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @ORM\Entity(repositoryClass=ThemeRepository::class)
+ * @Gedmo\TranslationEntity(class="App\Entity\ThemeTranslation")
  * @UniqueEntity("slug")
  */
-class Theme
+class Theme implements Translatable
 {
     /**
      * @ORM\Id
@@ -23,26 +26,38 @@ class Theme
     private $id;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $title;
 
     /**
+     * @Gedmo\Locale
+     * Used locale to override Translation listener`s locale
+     * this is not a mapped field of entity metadata, just a simple property
+     */
+    private $locale;
+
+    /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="string", length=4)
      */
     private $year;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="text")
      */
     private $text;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="string", length=255)
      */
     private $catch;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $asideText;
@@ -78,16 +93,19 @@ class Theme
     private $pictureAuthorLink;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="text", nullable=true)
      */
     private $textTwo;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $titleTwo;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="text", nullable=true)
      */
     private $textThree;
@@ -108,6 +126,7 @@ class Theme
     private $pictureTwoAuthorLink;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="text", nullable=true)
      */
     private $textFour;
@@ -115,8 +134,7 @@ class Theme
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
-     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
-     * @Doctrine\ORM\Mapping\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 
@@ -124,6 +142,15 @@ class Theme
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="themes")
      */
     private $tags;
+
+    /**
+     * @ORM\OneToMany(
+     *   targetEntity="ThemeTranslation",
+     *   mappedBy="object",
+     *   cascade={"persist", "remove"}
+     * )
+     */
+    private $translations;
 
     public function __construct()
     {
@@ -134,6 +161,11 @@ class Theme
     public function __toString(): string
     {
         return $this->title . ' (' . $this->year . ')';
+    }
+
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 
     public function getId(): ?int
@@ -158,6 +190,11 @@ class Theme
         $this->title = $title;
 
         return $this;
+    }
+
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 
     public function getYear(): ?string

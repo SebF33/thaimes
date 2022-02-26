@@ -18,4 +18,4 @@ doctrine:
                 alias: App
         dql:
             string_functions:
-                unaccent: App\Doctrine\DQL\Unaccent
+                unaccent: App\Unaccent

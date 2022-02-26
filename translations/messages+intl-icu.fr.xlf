@@ -109,6 +109,10 @@
         <source>Available disk space:</source>
         <target>Espace disque disponible :</target>
       </trans-unit>
+      <trans-unit id="5uxVX9G" resname="PHP version:">
+        <source>PHP version:</source>
+        <target>Version PHP :</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
