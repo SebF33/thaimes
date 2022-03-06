@@ -1,20 +1,30 @@
 # PROJET AVEC FRAMEWORK
+![logo_sebflix](/github/logo_thaimes.png)
+
 **Titre : Thaimes**
+
+**Accroche :**
+*"Éclairons-nous de ce que l’on aime !"*
 
 **Auteur : Sébastien Flouriot (SebF33)**
 
+Cahier des charges :
+
+
+## :link: Liens
 Site web : https://www.thaimes.com
 
-Vidéo : https://youtu.be/_hl4ums-3L0
+Démo : https://youtu.be/_hl4ums-3L0
 
-Accroche :
-*"Éclairons-nous de ce que l’on aime !"*
+GitHub : https://github.com/SebF33/theme
 
-Description :
+
+## :computer: Développement
+Description technique :
 
 Langages : PHP (POO), JavaScript.
 
-Technologies:
+Technologies :
 - Symfony 5
 - Doctrine
 - Composer
@@ -42,8 +52,13 @@ Pour lancer Mercure sur Windows :
 `$env:ADDR=":3000";$env:SERVER_NAME=":3000";$env:MERCURE_JWT_KEY="I_l0v3_{M3rCuR3}&{5ymF0nY}~ifSeb";$env:MERCURE_EXTRA_DIRECTIVES="cors_origins http://127.0.0.1:3000 https://127.0.0.1:8000"; .\mercure.exe run -config Caddyfile.dev`
 
 
+### RabbitMQ
+Pour consommer les messages :
+`symfony console messenger:consume async`
+
+
 ### Symfony 5
-Pour vider tous les caches PHP :
+Pour vider les caches PHP :
 `php bin/console cache:clear`
 
 Pour faire un dump de la BDD :
@@ -53,3 +68,6 @@ Pour faire un dump de la BDD :
 ### Webpack
 Pour compiler les assets :
 `yarn encore dev --watch`
+
+
+![avatar](/github/avatar.png)
