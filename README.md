@@ -9,6 +9,8 @@
 **Auteur : Sébastien Flouriot (SebF33)**
 
 Cahier des charges :
+Proposer une variété de sujets catégorisés sur lesquels il est possible de contribuer et discuter.
+Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 
 ## :link: Liens
@@ -24,7 +26,7 @@ Description technique :
 
 Langages : PHP (POO), JavaScript.
 
-Technologies :
+:toolbox: Technologies :
 - Symfony 5
 - Doctrine
 - Composer
