@@ -26,7 +26,8 @@ Description technique :
 
 Langages : PHP (POO), JavaScript.
 
-![Symfony](/github/Symfony.png)
+![Symfony](/github/Symfony.png)![Composer](/github/Composer.png)
+
 :toolbox: Technologies :
 - Symfony 5
 - Doctrine
