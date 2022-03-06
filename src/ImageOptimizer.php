@@ -5,6 +5,7 @@ namespace App;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 
+
 class ImageOptimizer
 {
     private const PARTICIPATION_MAX_WIDTH = 600;

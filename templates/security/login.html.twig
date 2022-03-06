@@ -6,53 +6,53 @@
 
 {% block body %}
 
+	<h1 class="hide">{{'Sign in'|trans }}</h1>
+	<div class="neon-text h2">
+		<span class="letter">L</span>
+		<span class="letter letter-3">o</span>
+		<span class="letter">g</span>
+		<span class="letter">i</span>
+		<span class="letter letter-2">n</span>
+	</div>
+
+	{% if app.user %}
+		<div class="h3">
+			<p class="text-center">{{'You are logged in as '|trans }}<span class="bold">{{ app.user.username }}</span>.</p>
+		</div>
+		<button class="app-button" onclick='window.location = "{{ path('app_logout') }}"'>Logout</button>
+	{% endif %}
+
 	<form class="login-form" method="post">
-	
+
 		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
 
-		{% if app.user %}
-			<div class="mb-3">
-				{{'You are logged in as'|trans }}
-				{{ app.user.username }},
-				<a href="{{ path('app_logout') }}">Logout</a>
+		{% if not app.user %}
+			<div class="form-group pt-2">
+				<label for="inputUsername">{{'Username:'|trans }}</label>
+				<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
 			</div>
+			<div class="form-group">
+				<label for="inputPassword">{{'Password:'|trans }}</label>
+				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			</div>
+
+			{#
+				Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+				See https://symfony.com/doc/current/security/remember_me.html
+		
+				<div class="checkbox mb-3">
+						<label>
+								<input type="checkbox" name="_remember_me"> Remember me
+						</label>
+				</div>
+			#}
+			
+			<button class="app-button" type="submit">{{'Sign in'|trans }}</button>
+			<p class="text-center mt-1">Don't have an account yet? <a class="bold text-decoration-underline" href="/register">Sign up!</a></p>
 		{% endif %}
-
-		<h1 class="hide">{{'Sign in'|trans }}</h1>
-		<div class="neon-text h2">
-			<span class="letter">A</span>
-			<span class="letter">d</span>
-			<span class="letter letter-2">m</span>
-			<span class="letter">i</span>
-			<span class="letter">n</span>
-			<span class="letter">&nbsp;</span>
-			<span class="letter">&nbsp;</span>
-			<span class="letter">l</span>
-			<span class="letter">o</span>
-			<span class="letter letter-3">g</span>
-			<span class="letter">i</span>
-			<span class="letter">n</span>
-		</div>
-
-		<label for="inputUsername">{{'Username'|trans }}</label>
-		<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-		<label for="inputPassword">{{'Password'|trans }}</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-		{#
-		Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-		See https://symfony.com/doc/current/security/remember_me.html
-
-		<div class="checkbox mb-3">
-				<label>
-						<input type="checkbox" name="_remember_me"> Remember me
-				</label>
-		</div>
-		#}
-		<button class="app-button" type="submit">{{'Sign in'|trans }}</button>
 
 	</form>
 

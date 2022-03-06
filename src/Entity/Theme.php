@@ -11,6 +11,7 @@ use Gedmo\Translatable\Translatable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+
 /**
  * @ORM\Entity(repositoryClass=ThemeRepository::class)
  * @Gedmo\TranslationEntity(class="App\Entity\ThemeTranslation")

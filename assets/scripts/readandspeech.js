@@ -1,4 +1,8 @@
-// ReadAndSpeech
+/**
+ * ReadAndSpeech
+ */
+
+// Classes
 class ReadAndSpeechNotAVoice extends Error {
   constructor(msg) {
     super(msg);
@@ -79,7 +83,8 @@ class ReadAndSpeech {
   }
 }
 
-const readAndSpeech = new ReadAndSpeech(); // Initialise reader
+// Lecture vocale du thème
+const readAndSpeech = new ReadAndSpeech(); // Initialiser le lecteur
 
 var themeName = document.querySelector("#theme-name").textContent;
 var themeCatch = document.querySelector("#theme-catch").textContent;

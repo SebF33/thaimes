@@ -2,17 +2,18 @@
 
 namespace App\Controller\Admin;
 
-
 use App\Entity\Comment;
+use App\Entity\GroupConversation;
 use App\Entity\Tag;
 use App\Entity\Theme;
 use App\Repository\CommentRepository;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
 
 class DashboardController extends AbstractDashboardController
 {
@@ -21,6 +22,9 @@ class DashboardController extends AbstractDashboardController
         $this->comments = $comments;
     }
 
+    /**
+     * Définition des participations des 30 derniers jours
+     */
     private function commentLast30Days()
     {
         $result = [];
@@ -44,6 +48,9 @@ class DashboardController extends AbstractDashboardController
         return $result;
     }
 
+    /**
+     * Calcul de l'espace disque disponible
+     */
     private function diskSpace()
     {
         $bytes = disk_free_space("/");
@@ -109,11 +116,15 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoRoute('Dashboard', 'fa fa-chart-line', 'admin');
         yield MenuItem::linktoRoute('Website', 'fa fa-map-marker', 'homepage');
         yield MenuItem::linkToCrud('Themes', 'fa fa-pen-fancy', Theme::class);
-        yield MenuItem::linkToCrud('Participations', 'fa fa-comments', Comment::class)
+        yield MenuItem::linkToCrud('Participations', 'fa fa-lightbulb', Comment::class)
             ->setBadge($numPendingParticipations);
+        yield MenuItem::linkToCrud('Chat', 'fa fa-comments', GroupConversation::class);
         yield MenuItem::linkToCrud('Tags', 'fa fa-tag', Tag::class);
     }
 
+    /**
+     * Assets personnalisés pour l'interface d'administration
+     */
     public function configureAssets(): Assets
     {
         return Assets::new()

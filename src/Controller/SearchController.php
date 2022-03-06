@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
+
 class SearchController extends AbstractController
 {
     private $twig;
@@ -30,6 +31,9 @@ class SearchController extends AbstractController
         ]);
     }
 
+    /**
+     * Barre de recherche de thèmes
+     */
     public function searchBar()
     {
         $form = $this->createFormBuilder('SymfonyComponentFormExtensionCoreTypeFormType', array('csrf_protection' => false))
@@ -42,6 +46,9 @@ class SearchController extends AbstractController
         ]);
     }
 
+    /**
+     * Barre de recherche de participations
+     */
     public function searchBarForParticipations()
     {
         $form = $this->createFormBuilder('SymfonyComponentFormExtensionCoreTypeFormType', array('csrf_protection' => false))
@@ -55,6 +62,8 @@ class SearchController extends AbstractController
     }
 
     /**
+     * Résultats de la recherche de thèmes
+     * 
      * @Route("/{_locale<%app.supported_locales%>}/themes_search_result", name="themes_search_result")
      * @param Request $request
      */
@@ -78,6 +87,8 @@ class SearchController extends AbstractController
     }
 
     /**
+     * Résultats de la recherche de participations
+     * 
      * @Route("/{_locale<%app.supported_locales%>}/participations_search_result", name="participations_search_result")
      * @param Request $request
      */

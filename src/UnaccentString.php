@@ -5,12 +5,12 @@ namespace App;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
+
 /**
- * Unaccent string using postgresql extension unaccent : 
+ * Chaîne sans accent utilisant l'extension PostgreSQL :
  * http://www.postgresql.org/docs/current/static/unaccent.html
  * 
  * Usage : StringFunction UNACCENT(string)
- *
  */
 class Unaccent extends FunctionNode
 {

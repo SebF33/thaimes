@@ -1,0 +1,54 @@
+{# templates/registration/registration.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="registration">
+
+	<div class="registration-wrapper">
+
+		{{ form_start(form, {'attr': {'id': 'user_registration', 'class' : 'form--container'}}) }}
+		<span class="form--title">
+			<h2>Inscription</h2>
+		</span>
+
+		<div class="form--input--container">
+			{{ form_row(form.username, {'attr': {'class': 'form-control','placeholder': 'Nom d\'utilisateur'}}) }}
+		</div>
+
+		{% if form_errors(form.mail) %}
+				<div class="form-error">
+						<i class="fas fa-exclamation-triangle"></i> {{ form_errors(form.mail)|striptags }}
+				</div>
+		{% endif %}
+		<div class="form--input--container">
+				{{ form_row(form.mail, {'attr': {'class': 'form-control', 'placeholder': 'E-mail'}}) }}
+		</div>
+
+		{% if form_errors(form.password.first) %}
+				<div class="form-error">
+						<i class="fas fa-exclamation-triangle"></i> {{ form_errors(form.password.first)|striptags }}
+				</div>
+		{% endif %}
+		<div class="form--input--container">
+				{{ form_row(form.password.first, {'attr': {'class':'form-control', 'placeholder': 'Mot de passe'}}) }}
+		</div>
+
+		{% if form_errors(form.password.second) %}
+				<div class="form-error">
+						<i class="fas fa-exclamation-triangle"></i> {{ form_errors(form.password.second)|striptags }}
+				</div>
+		{% endif %}
+		<div class="form--input--container">
+				{{ form_row(form.password.second, {'attr': {'class':'form-control', 'placeholder': 'Confirmer le mot de passe'}}) }}
+		</div>
+
+		<div id="captcha"></div>
+		<input type="submit" value="Créer le compte" class="form--submit">
+		{{ form_end(form) }}
+
+	</div>
+
+</div>
+
+{% endblock %}

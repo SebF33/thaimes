@@ -152,6 +152,12 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.4.0"
     },
+    "lcobucci/clock": {
+        "version": "2.1.0"
+    },
+    "lcobucci/jwt": {
+        "version": "4.1.5"
+    },
     "lorenzo/pinky": {
         "version": "1.0.5"
     },
@@ -222,6 +228,9 @@
     },
     "psr/event-dispatcher": {
         "version": "1.0.0"
+    },
+    "psr/link": {
+        "version": "1.1.1"
     },
     "psr/log": {
         "version": "1.1.4"
@@ -446,6 +455,21 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/mercure": {
+        "version": "v0.6.1"
+    },
+    "symfony/mercure-bundle": {
+        "version": "0.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "0.3",
+            "ref": "e0a854b5439186e04b28fb8887b42c54f24a0d32"
+        },
+        "files": [
+            "./config/packages/mercure.yaml"
+        ]
+    },
     "symfony/messenger": {
         "version": "5.3",
         "recipe": {
@@ -653,6 +677,9 @@
     },
     "symfony/var-exporter": {
         "version": "v5.3.8"
+    },
+    "symfony/web-link": {
+        "version": "v5.4.3"
     },
     "symfony/web-profiler-bundle": {
         "version": "5.3",

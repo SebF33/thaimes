@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Admin;
 use App\Entity\Comment;
 use App\Entity\Theme;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -20,30 +19,30 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $amsterdam = new Theme();
-        $amsterdam->setTitle('Amsterdam');
-        $amsterdam->setYear('2019');
-        $amsterdam->setDisplay(true);
-        $manager->persist($amsterdam);
+        $theme1 = new Theme();
+        $theme1->setTitle('Theme 1');
+        $theme1->setYear('2019');
+        $theme1->setDisplay(true);
+        $manager->persist($theme1);
 
-        $paris = new Theme();
-        $paris->setTitle('Paris');
-        $paris->setYear('2020');
-        $paris->setDisplay(false);
-        $manager->persist($paris);
+        $theme2 = new Theme();
+        $theme2->setTitle('Theme 2');
+        $theme2->setYear('2020');
+        $theme2->setDisplay(false);
+        $manager->persist($theme2);
 
         $comment1 = new Comment();
-        $comment1->setTheme($amsterdam);
-        $comment1->setAuthor('Fabien');
-        $comment1->setEmail('fabien@example.com');
-        $comment1->setText('This was a great conference.');
+        $comment1->setTheme($theme1);
+        $comment1->setAuthor('Mr X');
+        $comment1->setEmail('mrx@example.com');
+        $comment1->setText('This is a great theme.');
         $comment1->setState('published');
         $manager->persist($comment1);
 
         $comment2 = new Comment();
-        $comment2->setTheme($amsterdam);
-        $comment2->setAuthor('Lucas');
-        $comment2->setEmail('lucas@example.com');
+        $comment2->setTheme($theme2);
+        $comment2->setAuthor('A Human');
+        $comment2->setEmail('ahuman@example.com');
         $comment2->setText('I think this one is going to be moderated.');
         $manager->persist($comment2);
 

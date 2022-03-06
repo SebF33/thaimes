@@ -19,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Twig\Environment;
 
+
 class ThemeController extends AbstractController
 {
     private $twig;
@@ -92,12 +93,15 @@ class ThemeController extends AbstractController
     }
 
     /**
+     * Afficher la page d'un thème
+     * 
      * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}", name="theme")
      */
     public function showTheme(Request $request, Theme $theme, CommentRepository $commentRepository, string $pictureDir)
     {
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -137,6 +141,8 @@ class ThemeController extends AbstractController
     }
 
     /**
+     * Afficher les participations sur un thème
+     * 
      * @Route("/{_locale<%app.supported_locales%>}/theme/{slug}/participations", name="participations")
      */
     public function showParticipationsByTheme(Request $request, Theme $theme, PaginatorInterface $paginator, CommentRepository $commentRepository)
@@ -158,6 +164,8 @@ class ThemeController extends AbstractController
     }
 
     /**
+     * Afficher les dernières participations
+     * 
      * @Route("/{_locale<%app.supported_locales%>}/last-participations", name="last-participations")
      */
     public function showLastParticipations(Request $request, PaginatorInterface $paginator, CommentRepository $commentRepository)

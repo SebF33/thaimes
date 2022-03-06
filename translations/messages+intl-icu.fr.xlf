@@ -74,12 +74,12 @@
         <target>S'identifier</target>
       </trans-unit>
       <trans-unit id="47ienTP" resname="Username">
-        <source>Username</source>
-        <target>Nom d'utilisateur</target>
+        <source>Username:</source>
+        <target>Nom d'utilisateur :</target>
       </trans-unit>
       <trans-unit id="588_9PF" resname="Password">
-        <source>Password</source>
-        <target>Mot de passe</target>
+        <source>Password:</source>
+        <target>Mot de passe :</target>
       </trans-unit>
       <trans-unit id="YjqrXE3" resname="What's new?">
         <source>What's new?</source>

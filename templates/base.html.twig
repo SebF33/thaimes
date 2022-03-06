@@ -1,3 +1,4 @@
+{# templates/base.html.twig #}
 <!doctype html>
 
 {% if app.request.locale=='en' %}
@@ -52,8 +53,14 @@
 							</li>
 							<li class="nav-item">
 								<a class="{{ (page == 'participations') ? 'nav-link active' : 'nav-link' }}" href="{{ path('last-participations') }}" draggable="false" ondragstart="return false">
-									<i class="fas fa-comments"></i>
+									<i class="fas fa-lightbulb"></i>
 									Participations
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="{{ (page == 'chat') ? 'nav-link active' : 'nav-link' }}" href="{{ path('conversation_browse') }}" draggable="false" ondragstart="return false">
+									<i class="fas fa-comments"></i>
+									Chat
 								</a>
 							</li>
 							<li class="nav-item">
@@ -84,7 +91,7 @@
 								</div>
 							</li>
 							<li class="nav-item">
-								<a class="{{ (page == 'login') ? 'nav-link active' : 'nav-link' }}" href="{{ path('admin') }}" draggable="false" ondragstart="return false">
+								<a class="{{ (page == 'login') ? 'nav-link active' : 'nav-link' }}" href="{{ path('app_login') }}" draggable="false" ondragstart="return false">
 									<i class="fas fa-user-lock"></i>
 								</a>
 							</li>

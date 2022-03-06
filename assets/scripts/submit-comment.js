@@ -1,4 +1,8 @@
-// Langage
+/**
+ * Boîtes de dialogue pour la participation
+ */
+
+// Langage (en/fr)
 var participation = document.querySelector('#participation-form');
 if (typeof (participation) != 'undefined' && participation != null) {
   if (participation.dataset.userLanguage == '"en"') {
@@ -46,7 +50,6 @@ $('#comment_form_submit').on('click', function (e) {
 
 
 window.onload = function () {
-
   var formError = document.getElementById('form-error-message');
 
   // Pop-up participation envoyée

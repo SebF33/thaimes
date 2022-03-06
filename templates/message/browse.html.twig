@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{% if app.user %}
+		<div class="connected-user">
+			<p>Connecté en tant que :
+				{{ app.user.getUsername }}
+				<a class="btn btn-danger" href="{{ path("app_logout") }}">Déconnexion</a>
+			</p>
+		</div>
+	{% endif %}
+	<div class="messages-list col-12">
+		<div class="container my-3">
+			{% if conversation is defined %}
+				<a class="btn btn-primary" href="{{ path("conversation_browse") }}">Liste des Conversations</a>
+				<a class="btn btn-success" href="{{ path("messages_ping", {'id' : conversation.id}) }}">Ping Mercure (EventSource)</a>
+				<h2>Conversation :
+					{{ conversation.name }}</h2>
+				{% if conversation.admin.getId == app.user.getId %}
+					<a class="btn btn-danger" href="{{ path("conversation_delete", {'id' : conversation.id}) }}">supprimer</a>
+				{% endif %}
+			{% endif %}
+		</div>
+
+		<div class="container ">
+			{% if(conversation.admin.getUsername) %}
+				<div class="connected-user">
+					<p>Administrateur :
+						{{ conversation.admin.getUsername }}</p>
+				</div>
+			{% endif %}
+			<div class="conversation">
+				{% if messages is empty %}
+					<div class="row">
+						<div class="media mr-auto mb-3">
+							<div class="col-12 media-body">
+								Envoyez le premier message.
+							</div>
+						</div>
+					</div>
+				{% else %}
+					{% for key, message in messages %}
+						{% if message.getMine %}
+							<!-- Sender Message-->
+							<div class="chat--message ">
+								<div class="d-flex flex-row-reverse">
+									<div class="content bg-info p-1">
+										<p class="text-white mb-0">{{ message.getUser.username }}
+											:
+											{{ message.getContent }}</p>
+									</div>
+								</div>
+								<div class="d-flex flex-row-reverse mb-2">
+									<div class="message--info--right">
+										<div class="message--date">{{ message.created | date("H:i") }}</div>
+									</div>
+								</div>
+							</div>
+						{% else %}
+							<!-- Reciever Message-->
+							<div class="chat--message">
+								<div class="d-flex flex-row">
+									<div class="content bg-secondary p-1">
+										<p class="text-white mb-0">{{ message.getUser.username }}
+											:
+											{{ message.getContent }}</p>
+									</div>
+								</div>
+								<div class="d-flex flex-row mb-2">
+									<div class="message--info--left">
+										<div class="message--date">{{ message.created | date("H:i") }}</div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div id="bottom"></div>
+			<div class="controls d-flex justify-content-between">
+				{% if conversation is defined %}
+					<div class="control--input">
+						<textarea id="message-box" name="message-box" aria-describedby="button-send" class="input--controls" placeholder="Saisir un message"></textarea>
+					</div>
+					<input id="button-send" type="submit" class="btn-send btn btn-primary" value="Envoyer"/>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('messages') }}
+{% endblock %}

@@ -16,6 +16,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
+
 class AppAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
@@ -46,11 +47,18 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse($targetPath);
+        $user = $token->getUser();
+
+        // Default target for unknown roles
+        $url = 'homepage';
+
+        if (!in_array('ROLE_ADMIN', $user->getRoles())) {
+            $url = self::LOGIN_ROUTE;
+        } elseif (in_array('ROLE_ADMIN', $user->getRoles())) {
+            $url = 'admin';
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('easyadmin'));
+        return new RedirectResponse($this->urlGenerator->generate($url));
     }
 
     protected function getLoginUrl(Request $request): string

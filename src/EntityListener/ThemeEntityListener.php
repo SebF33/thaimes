@@ -6,6 +6,7 @@ use App\Entity\Theme;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+
 class ThemeEntityListener
 {
     private $slugger;

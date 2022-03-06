@@ -1,0 +1,43 @@
+# Learn how to configure the Mercure.rocks Hub on https://mercure.rocks/docs/hub/config
+{
+    # Debug mode (disable it in production!)
+    {$DEBUG:debug}
+    # HTTP/3 support
+    servers {
+        protocol {
+            experimental_http3
+        }
+    }
+}
+
+{$SERVER_NAME:127.0.0.1}
+
+log
+
+route {
+    redir / /.well-known/mercure/ui/
+    encode zstd gzip
+
+    mercure {
+        # Transport to use (default to Bolt)
+        transport_url {$MERCURE_TRANSPORT_URL:bolt://mercure.db}
+        # Publisher JWT key
+        jwt_key {env.MERCURE_JWT_KEY}
+        #public_url {env.MERCURE_PUBLIC_URL}
+        # Publisher JWT key
+        publisher_jwt {env.MERCURE_JWT_KEY}
+        # Subscriber JWT key
+        subscriber_jwt {env.MERCURE_JWT_KEY}
+        cors_origins http://127.0.0.1:3000 https://127.0.0.1:8000
+        #publish_origins {env.MERCURE_PUBLISH_ALLOWED_ORIGINS}
+        #demo
+        #anonymous
+        #subscriptions
+        # Extra directives
+        {$MERCURE_EXTRA_DIRECTIVES}
+    }
+
+    respond /healthz 200
+
+    respond "Not Found" 404
+}
