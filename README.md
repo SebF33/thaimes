@@ -1,27 +1,36 @@
-# PROJET
+# PROJET AVEC FRAMEWORK
+**Titre : Thaimes**
 
-Titre: Thaimes
+**Auteur : Sébastien Flouriot (SebF33)**
 
-Auteur: Sébastien Flouriot
+Site web : https://www.thaimes.com
 
-Description: "Éclairons-nous de ce que l’on aime !"
+Vidéo : https://youtu.be/_hl4ums-3L0
+
+Accroche :
+*"Éclairons-nous de ce que l’on aime !"*
+
+Description :
+
+Langages : PHP (POO), JavaScript.
 
 Technologies:
-Symfony 5
-Composer
-EasyAdmin 4
-Twig
-PHPUnit
-Docker
-PostgreSQL
-Bootstrap
-Sass
-Webpack
-RabbitMQ
-MailCatcher
-SweetAlert
-ApexCharts
-Mercure
+- Symfony 5
+- Doctrine
+- Composer
+- EasyAdmin 4
+- Twig
+- PHPUnit
+- Docker
+- PostgreSQL
+- Bootstrap
+- Sass
+- Webpack
+- RabbitMQ
+- MailCatcher
+- SweetAlert
+- ApexCharts
+- Mercure
 
 
 ### Mercure
