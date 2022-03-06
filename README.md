@@ -14,7 +14,7 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 
 ## :link: Liens
-Site web : https://www.thaimes.com
+:earth_africa: Site web : https://www.thaimes.com
 
 Démo : https://youtu.be/_hl4ums-3L0
 
@@ -26,7 +26,7 @@ Description technique :
 
 Langages : PHP (POO), JavaScript.
 
-![Symfony](/github/Symfony.png)![Composer](/github/Composer.png)
+![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) 
 
 :toolbox: Technologies :
 - Symfony 5
