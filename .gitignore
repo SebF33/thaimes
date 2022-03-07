@@ -1,6 +1,6 @@
 ###> dev ###
-/dump.sql
-/translations.rar
+dump.sql
+translations.rar
 ###< dev ###
 
 ###> symfony/framework-bundle ###
