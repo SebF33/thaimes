@@ -18,7 +18,7 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 :clapper: **Démo :** https://youtu.be/_hl4ums-3L0
 
-:octocat: **GitHub :** https://github.com/SebF33/theme
+:octocat: **GitHub :** https://github.com/SebF33/thaimes
 
 
 ## :computer: Développement
@@ -75,6 +75,9 @@ Pour vider les caches PHP :
 
 Pour faire un dump de la BDD :
 `symfony run pg_dump --data-only > dump.sql`
+
+Pour restaurer les données de la BDD :
+`symfony run psql > dump.sql`
 
 
 ### ![Webpack_tiny](/github/Webpack_tiny.png) Webpack
