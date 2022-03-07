@@ -22,30 +22,30 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 
 ## :computer: Développement
-**Description technique :**
+**Description technique :** Le projet est codé sur le motif Modèle-vue-contrôleur (MVC). Il emploie plusieurs services et librairies.
 
 **Langages :** PHP (POO), JavaScript.
 
 ![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) ![Docker](/github/Docker.png) ![PostgreSQL](/github/PostgreSQL.png) ![Bootstrap](/github/Bootstrap.png) ![Sass](/github/Sass.png) ![Webpack](/github/Webpack.png) ![RabbitMQ](/github/RabbitMQ.png) ![MailCatcher](/github/MailCatcher.png) ![SweetAlert](/github/SweetAlert.png) ![ApexCharts](/github/ApexCharts.png) ![Akismet](/github/Akismet.png) ![Mercure](/github/Mercure.png)
 
 :toolbox: **Technologies :**
-- Symfony 5
-- Doctrine
-- Composer
-- EasyAdmin 4
-- Twig
-- PHPUnit
-- Docker
-- PostgreSQL
-- Bootstrap
-- Sass
-- Webpack
-- RabbitMQ
-- MailCatcher
-- SweetAlert
-- ApexCharts
-- Akismet
-- Mercure
+            - Symfony 5
+            - Doctrine
+            - Composer
+            - EasyAdmin 4
+            - Twig
+            - PHPUnit
+            - Docker
+            - PostgreSQL
+            - Bootstrap
+            - Sass
+            - Webpack
+            - RabbitMQ
+            - MailCatcher
+            - SweetAlert
+            - ApexCharts
+            - Akismet
+            - Mercure
 
 
 ### ![Docker_tiny](/github/Docker_tiny.png) Docker
@@ -53,8 +53,6 @@ Pour lier la BDD à pgAdmin :
 `docker network create --driver bridge pgnetwork`
 `docker network connect pgnetwork thaimes-database`
 `docker network connect pgnetwork pgadmin`
-
-
 
 
 ### ![Mercure_tiny](/github/Mercure_tiny.png) Mercure
