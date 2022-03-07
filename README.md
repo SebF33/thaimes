@@ -61,7 +61,7 @@ Pour consommer les messages :
 `symfony console messenger:consume async`
 
 
-![Symfony_tiny](/github/Symfony_tiny.png) ### Symfony 5
+### ![Symfony_tiny](/github/Symfony_tiny.png) Symfony 5
 Pour vider les caches PHP :
 `php bin/console cache:clear`
 
