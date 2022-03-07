@@ -26,7 +26,7 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 **Langages :** PHP (POO), JavaScript.
 
-![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) ![PostgreSQL](/github/PostgreSQL.png) ![Bootstrap](/github/Bootstrap.png) ![Sass](/github/Sass.png) ![Webpack](/github/Webpack.png) ![RabbitMQ](/github/RabbitMQ.png) ![MailCatcher](/github/MailCatcher.png) ![SweetAlert](/github/SweetAlert.png) ![ApexCharts](/github/ApexCharts.png) ![Mercure](/github/Mercure.png)
+![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) ![PostgreSQL](/github/PostgreSQL.png) ![Bootstrap](/github/Bootstrap.png) ![Sass](/github/Sass.png) ![Webpack](/github/Webpack.png)  ![RabbitMQ](/github/RabbitMQ.png) ![MailCatcher](/github/MailCatcher.png) ![SweetAlert](/github/SweetAlert.png) ![ApexCharts](/github/ApexCharts.png) ![Mercure](/github/Mercure.png)
 
 :toolbox: **Technologies :**
 - Symfony 5
@@ -69,7 +69,7 @@ Pour faire un dump de la BDD :
 `symfony run pg_dump --data-only > dump.sql`
 
 
-### Webpack
+### ![Webpack_tiny](/github/Webpack_tiny.png) Webpack
 Pour compiler les assets :
 `yarn encore dev --watch`
 
