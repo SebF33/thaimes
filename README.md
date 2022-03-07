@@ -26,7 +26,7 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 **Langages :** PHP (POO), JavaScript.
 
-![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) ![PostgreSQL](/github/PostgreSQL.png) ![Bootstrap](/github/Bootstrap.png) ![Sass](/github/Sass.png) ![Webpack](/github/Webpack.png) ![RabbitMQ](/github/RabbitMQ.png) ![MailCatcher](/github/MailCatcher.png) ![SweetAlert](/github/SweetAlert.png) ![ApexCharts](/github/ApexCharts.png) ![Mercure](/github/Mercure.png)
+![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) ![PostgreSQL](/github/PostgreSQL.png) ![Bootstrap](/github/Bootstrap.png) ![Sass](/github/Sass.png) ![Webpack](/github/Webpack.png) ![RabbitMQ](/github/RabbitMQ.png) ![MailCatcher](/github/MailCatcher.png) ![SweetAlert](/github/SweetAlert.png) ![ApexCharts](/github/ApexCharts.png) ![Akismet](/github/Akismet.png) ![Mercure](/github/Mercure.png)
 
 :toolbox: **Technologies :**
 - Symfony 5
@@ -44,7 +44,12 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 - MailCatcher
 - SweetAlert
 - ApexCharts
+- Akismet
 - Mercure
+
+
+### ![Docker_tiny](/github/Docker_tiny.png) Docker
+
 
 
 ### ![Mercure_tiny](/github/Mercure_tiny.png) Mercure
