@@ -26,7 +26,7 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 **Langages :** PHP (POO), JavaScript.
 
-![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) ![PostgreSQL](/github/PostgreSQL.png) ![Bootstrap](/github/Bootstrap.png) ![Sass](/github/Sass.png) ![Webpack](/github/Webpack.png)  ![RabbitMQ](/github/RabbitMQ.png) ![MailCatcher](/github/MailCatcher.png) ![SweetAlert](/github/SweetAlert.png) ![ApexCharts](/github/ApexCharts.png) ![Mercure](/github/Mercure.png)
+![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) ![PostgreSQL](/github/PostgreSQL.png) ![Bootstrap](/github/Bootstrap.png) ![Sass](/github/Sass.png) ![Webpack](/github/Webpack.png) ![RabbitMQ](/github/RabbitMQ.png) ![MailCatcher](/github/MailCatcher.png) ![SweetAlert](/github/SweetAlert.png) ![ApexCharts](/github/ApexCharts.png) ![Mercure](/github/Mercure.png)
 
 :toolbox: **Technologies :**
 - Symfony 5
@@ -47,7 +47,7 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 - Mercure
 
 
-### Mercure
+### ![Mercure_tiny](/github/Mercure_tiny.png) Mercure
 Le chat consiste à mettre en place différents groupes de conversation entre utilisateurs.
 L'intérêt de Mercure est de gérer les messages reçus en temps réel via SSE (Server-sent event).
 
@@ -56,7 +56,7 @@ Pour lancer Mercure sur Windows :
 `$env:ADDR=":3000";$env:SERVER_NAME=":3000";$env:MERCURE_JWT_KEY="I_l0v3_{M3rCuR3}&{5ymF0nY}~ifSeb";$env:MERCURE_EXTRA_DIRECTIVES="cors_origins http://127.0.0.1:3000 https://127.0.0.1:8000"; .\mercure.exe run -config Caddyfile.dev`
 
 
-### RabbitMQ
+### ![RabbitMQ_tiny](/github/RabbitMQ_tiny.png) RabbitMQ
 Pour consommer les messages :
 `symfony console messenger:consume async`
 
