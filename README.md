@@ -12,6 +12,8 @@
 Proposer une variété de sujets catégorisés sur lesquels il est possible de contribuer et discuter.
 Mettre en place une interface d'administration avec indicateurs/statistiques.
 
+:construction: Work in Progress
+
 
 ## :link: Liens
 :earth_africa: **Site web :** https://www.thaimes.com
@@ -26,26 +28,26 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 **Langages :** PHP (POO), JavaScript.
 
-![Symfony](/github/Symfony.png) ![Composer](/github/Composer.png) ![Twig](/github/Twig.png) ![Docker](/github/Docker.png) ![PostgreSQL](/github/PostgreSQL.png) ![Bootstrap](/github/Bootstrap.png) ![Sass](/github/Sass.png) ![Webpack](/github/Webpack.png) ![RabbitMQ](/github/RabbitMQ.png) ![MailCatcher](/github/MailCatcher.png) ![SweetAlert](/github/SweetAlert.png) ![ApexCharts](/github/ApexCharts.png) ![Akismet](/github/Akismet.png) ![Mercure](/github/Mercure.png)
+[![Symfony](/github/Symfony.png)](https://symfony.com) [![Doctrine](/github/Doctrine.png)](https://www.doctrine-project.org) [![Composer](/github/Composer.png)(https://getcomposer.org)] [![Twig](/github/Twig.png)](https://twig.symfony.com) [![Docker](/github/Docker.png)](https://www.docker.com) [![PostgreSQL](/github/PostgreSQL.png)](https://www.postgresql.org) [![Bootstrap](/github/Bootstrap.png)](https://getbootstrap.com) [![Sass](/github/Sass.png)](https://sass-lang.com) [![Webpack](/github/Webpack.png)](https://webpack.js.org) [![RabbitMQ](/github/RabbitMQ.png)](https://www.rabbitmq.com) [![MailCatcher](/github/MailCatcher.png)](https://mailcatcher.me) [![SweetAlert](/github/SweetAlert.png)](https://sweetalert2.github.io) [![ApexCharts](/github/ApexCharts.png)](https://apexcharts.com) [![Akismet](/github/Akismet.png)](https://akismet.com) [![Mercure](/github/Mercure.png)](https://mercure.rocks)
 
 :toolbox: **Technologies :**
-- Symfony 5
-- Doctrine
-- Composer
-- EasyAdmin 4
-- Twig
-- PHPUnit
-- Docker
-- PostgreSQL
-- Bootstrap
-- Sass
-- Webpack
-- RabbitMQ
-- MailCatcher
-- SweetAlert
-- ApexCharts
-- Akismet
-- Mercure
+- [Symfony 5](https://symfony.com/doc/5.4/index.html)
+- [Doctrine](https://www.doctrine-project.org/projects/doctrine-orm/en/current/tutorials/getting-started.html)
+- [Composer](https://getcomposer.org/doc)
+- [EasyAdmin 4](https://symfony.com/bundles/EasyAdminBundle/current/index.html)
+- [Twig](https://twig.symfony.com/doc/3.x)
+- [PHPUnit](https://phpunit.readthedocs.io/fr/latest)
+- [Docker](https://docs.docker.com)
+- [PostgreSQL](https://www.postgresql.org/docs)
+- [Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction)
+- [Sass](https://sass-lang.com/documentation)
+- [Webpack](https://webpack.js.org/concepts)
+- [RabbitMQ](https://www.rabbitmq.com/documentation.html)
+- [MailCatcher](https://mailcatcher.me)
+- [SweetAlert 2](https://sweetalert2.github.io/#download)
+- [ApexCharts](https://apexcharts.com/docs/installation)
+- [Akismet](https://akismet.com/development)
+- [Mercure](https://mercure.rocks/docs/getting-started)
 
 
 ### ![Docker_tiny](/github/Docker_tiny.png) Docker
