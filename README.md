@@ -1,5 +1,5 @@
 # PROJET AVEC FRAMEWORK
-![logo_sebflix](/github/logo_thaimes.png)
+![logo_sebflix](/.github/logo_thaimes.png)
 
 **Titre : Thaimes**
 
@@ -28,7 +28,7 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 
 **Langages :** PHP (POO), JavaScript.
 
-[![Symfony](/github/Symfony.png)](https://symfony.com) [![Doctrine](/github/Doctrine.png)](https://www.doctrine-project.org) [![Composer](/github/Composer.png)](https://getcomposer.org) [![Twig](/github/Twig.png)](https://twig.symfony.com) [![Docker](/github/Docker.png)](https://www.docker.com) [![PostgreSQL](/github/PostgreSQL.png)](https://www.postgresql.org) [![Bootstrap](/github/Bootstrap.png)](https://getbootstrap.com) [![Sass](/github/Sass.png)](https://sass-lang.com) [![Webpack](/github/Webpack.png)](https://webpack.js.org) [![RabbitMQ](/github/RabbitMQ.png)](https://www.rabbitmq.com) [![MailCatcher](/github/MailCatcher.png)](https://mailcatcher.me) [![SweetAlert](/github/SweetAlert.png)](https://sweetalert2.github.io) [![ApexCharts](/github/ApexCharts.png)](https://apexcharts.com) [![Akismet](/github/Akismet.png)](https://akismet.com) [![Mercure](/github/Mercure.png)](https://mercure.rocks)
+[![Symfony](/.github/Symfony.png)](https://symfony.com) [![Doctrine](/.github/Doctrine.png)](https://www.doctrine-project.org) [![Composer](/.github/Composer.png)](https://getcomposer.org) [![Twig](/.github/Twig.png)](https://twig.symfony.com) [![Docker](/.github/Docker.png)](https://www.docker.com) [![PostgreSQL](/.github/PostgreSQL.png)](https://www.postgresql.org) [![Bootstrap](/.github/Bootstrap.png)](https://getbootstrap.com) [![Sass](/.github/Sass.png)](https://sass-lang.com) [![Webpack](/.github/Webpack.png)](https://webpack.js.org) [![RabbitMQ](/.github/RabbitMQ.png)](https://www.rabbitmq.com) [![MailCatcher](/.github/MailCatcher.png)](https://mailcatcher.me) [![SweetAlert](/.github/SweetAlert.png)](https://sweetalert2.github.io) [![ApexCharts](/.github/ApexCharts.png)](https://apexcharts.com) [![Akismet](/.github/Akismet.png)](https://akismet.com) [![Mercure](/.github/Mercure.png)](https://mercure.rocks)
 
 :toolbox: **Technologies :**
 - [Symfony 5](https://symfony.com/doc/5.4/index.html)
@@ -50,14 +50,14 @@ Mettre en place une interface d'administration avec indicateurs/statistiques.
 - [Mercure](https://mercure.rocks/docs/getting-started)
 
 
-### ![Docker_tiny](/github/Docker_tiny.png) Docker
+### ![Docker_tiny](/.github/Docker_tiny.png) Docker
 Pour lier la BDD à pgAdmin :
 `docker network create --driver bridge pgnetwork`
 `docker network connect pgnetwork thaimes-database`
 `docker network connect pgnetwork pgadmin`
 
 
-### ![Mercure_tiny](/github/Mercure_tiny.png) Mercure
+### ![Mercure_tiny](/.github/Mercure_tiny.png) Mercure
 Le chat consiste à mettre en place différents groupes de conversation entre utilisateurs.
 L'intérêt de Mercure est de gérer les messages reçus en temps réel via SSE (Server-sent event).
 
@@ -66,12 +66,12 @@ Pour lancer Mercure sur Windows :
 `$env:ADDR=":3000";$env:SERVER_NAME=":3000";$env:MERCURE_JWT_KEY="I_l0v3_{M3rCuR3}&{5ymF0nY}~ifSeb";$env:MERCURE_EXTRA_DIRECTIVES="cors_origins http://127.0.0.1:3000 https://127.0.0.1:8000"; .\mercure.exe run -config Caddyfile.dev`
 
 
-### ![RabbitMQ_tiny](/github/RabbitMQ_tiny.png) RabbitMQ
+### ![RabbitMQ_tiny](/.github/RabbitMQ_tiny.png) RabbitMQ
 Pour consommer les messages :
 `symfony console messenger:consume async`
 
 
-### ![Symfony_tiny](/github/Symfony_tiny.png) Symfony 5
+### ![Symfony_tiny](/.github/Symfony_tiny.png) Symfony 5
 Pour vider les caches PHP :
 `php bin/console cache:clear`
 
@@ -82,9 +82,9 @@ Pour restaurer les données de la BDD :
 `symfony run psql > dump.sql`
 
 
-### ![Webpack_tiny](/github/Webpack_tiny.png) Webpack
+### ![Webpack_tiny](/.github/Webpack_tiny.png) Webpack
 Pour compiler les assets :
 `yarn encore dev --watch`
 
 
-![avatar](/github/avatar.png)
+![avatar](/.github/avatar.png)
