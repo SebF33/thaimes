@@ -1,5 +1,5 @@
 # PROJET AVEC FRAMEWORK
-![logo_sebflix](/.github/logo_thaimes.png)
+![logo_thaimes](/.github/logo_thaimes.png)
 
 **Titre : Thaimes**
 
