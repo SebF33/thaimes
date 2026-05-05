@@ -41,7 +41,7 @@ class GroupConversationFormType extends AbstractType
                 EntityType::class,
                 [
                     'class'         => User::class,
-                    'label'         => 'Membres du group',
+                    'label'         => 'Membres du groupe',
                     'choice_value'  => 'id',
                     'choice_label'  => 'username',
                     'expanded'      => true,

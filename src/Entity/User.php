@@ -92,6 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * A visual identifier that represents this user.
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
      */
     public function getUsername(): string
@@ -104,6 +105,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->username = $username;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->username;
     }
 
     public function getMail(): ?string

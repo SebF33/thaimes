@@ -22,6 +22,7 @@ class GroupConversationController extends AbstractController
      * @var UserRepository
      */
     private UserRepository $userRepository;
+
     /**
      * @var Security
      */
@@ -71,7 +72,6 @@ class GroupConversationController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        //used with connected user
         /** @var User $user */
         $user = $this->security->getUser();
         if (!($user)) {
@@ -90,7 +90,6 @@ class GroupConversationController extends AbstractController
             $conversation->setUpdated(new \DateTime('now'));
             $conversation->setAdmin($user);
 
-            //@TODO: I don't understand why users are not saved with ManyToMany connexion (table user_group_conversation)
             $user->addConversation($conversation);
             if ($conversation->getUsers()) {
                 foreach ($conversation->getUsers() as $user) {
@@ -122,8 +121,21 @@ class GroupConversationController extends AbstractController
      *
      * @Route("/conversation/{id}/delete", name="conversation_delete", requirements={"id" : "\d+"})
      */
-    public function delete(GroupConversation $groupConversation): Response
+    public function delete(GroupConversation $groupConversation, Request $request): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        if (!$this->isCsrfTokenValid('delete' . $groupConversation->getId(), $request->request->get('_token'))) {
+            $this->addFlash('error', 'Token invalide.');
+            return $this->redirectToRoute('conversation_browse');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($groupConversation);
+        $em->flush();
+
+        $this->addFlash('success', 'Conversation supprimée.');
+
+        return $this->redirectToRoute('conversation_browse');
     }
 }

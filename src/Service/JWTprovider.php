@@ -44,7 +44,7 @@ class JWTprovider implements TokenProviderInterface
 
         if ($user) {
             $conversations = $user->getConversations()->getValues();
-            //save all sub/pub conversations
+            // sauvegarde toutes les conversations sub/pub
             if ($conversations) {
                 foreach ($conversations as $conversation) {
                     $subscribe[] =  '/messages/' . $conversation->getId();
@@ -59,12 +59,12 @@ class JWTprovider implements TokenProviderInterface
                     'subscribe' => $subscribe,
                     'publish' => $subscribe
                 ])
-                // Builds a new token
+                // construit un nouveau token
                 ->getToken($config->signer(), $config->signingKey());
 
-            //dd( $token->toString());
             return $token->toString();
         }
+
         return "";
     }
 }

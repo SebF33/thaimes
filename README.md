@@ -63,7 +63,7 @@ L'intérêt de Mercure est de gérer les messages reçus en temps réel via SSE 
 
 Pour lancer Mercure sur Windows :
 `cd mercure`
-`$env:ADDR=":3000";$env:SERVER_NAME=":3000";$env:MERCURE_JWT_KEY="I_l0v3_{M3rCuR3}&{5ymF0nY}~ifSeb";$env:MERCURE_EXTRA_DIRECTIVES="cors_origins http://127.0.0.1:3000 https://127.0.0.1:8000"; .\mercure.exe run -config Caddyfile.dev`
+`$env:MERCURE_JWT_KEY="I_l0v3_{M3rCuR3}&{5ymF0nY}~ifSeb"; .\mercure.exe run --config Caddyfile.dev`
 
 
 ### ![RabbitMQ_tiny](/.github/RabbitMQ_tiny.png) RabbitMQ
@@ -72,6 +72,12 @@ Pour consommer les messages :
 
 
 ### ![Symfony_tiny](/.github/Symfony_tiny.png) Symfony 5
+Pour démarrer le serveur :
+`symfony server:start --no-tls`
+
+Pour arrêter le serveur :
+`symfony server:stop`
+
 Pour vider les caches PHP :
 `php bin/console cache:clear`
 
@@ -79,7 +85,13 @@ Pour faire un dump de la BDD :
 `symfony run pg_dump --data-only > dump.sql`
 
 Pour restaurer les données de la BDD :
-`symfony run psql > dump.sql`
+`symfony run psql < dump.sql`
+
+Pour créer une migration :  
+`symfony console make:migration`
+
+Pour exécuter les migrations :  
+`symfony console doctrine:migrations:migrate`
 
 
 ### ![Webpack_tiny](/.github/Webpack_tiny.png) Webpack

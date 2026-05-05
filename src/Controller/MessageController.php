@@ -29,14 +29,17 @@ class MessageController extends AbstractController
      * @var MessageRepository
      */
     private $messageRepository;
+
     /**
      * @var UserRepository
      */
     private $userRepository;
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
+
     /**
      * @var Security
      */
@@ -57,18 +60,20 @@ class MessageController extends AbstractController
      * @param GroupConversation $groupConversation
      * @return Response
      */
-    public function browse(GroupConversation $groupConversation): Response
+    public function browse(GroupConversation $groupConversation, CookieGenerator $cookieGenerator): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
         $messages = $this->messageRepository->findMessageByConversationId($groupConversation->getId());
 
-        $page = 'chat';
         $response = $this->render('message/browse.html.twig', [
-            'page' => $page,
+            'page'         => 'chat',
             'conversation' => $groupConversation,
-            'messages' => $messages
+            'messages'     => $messages,
         ]);
+
+        // attacher le cookie JWT Mercure à la réponse
+        $response->headers->setCookie($cookieGenerator->generate());
 
         return $response;
     }
@@ -106,16 +111,16 @@ class MessageController extends AbstractController
             try {
                 $date   = new \DateTime('now');
                 $update = new Update(
-                    '/messages/' . $groupConversation->getId(), //IRI, the topic being updated, can be any string usually URL
+                    '/messages/' . $groupConversation->getId(),
                     json_encode([
                         'conversation'  => 'Nouveau message conversation :' . $groupConversation->getName(),
                         'message'       => $content,
                         'from'          => $user->getUsername(),
                         'to'            => $groupConversation->getUsers(),
                         'date'          => $date->format('H:i'),
-                    ]), //the content of the update, can be anything
-                    $groupConversation->getPrivate(), //private
-                    'message-' . Uuid::v4(), //mercure id
+                    ]),
+                    false, // forcer public temporairement
+                    'message-' . Uuid::v4(),
                     'message'
                 );
 
@@ -143,10 +148,10 @@ class MessageController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_USER');
 
         $update = new Update(
-            '/ping/' .  $request->get('id'), //IRI, the topic being updated, can be any string usually URL
-            json_encode(['message' => 'pinged !']), //the content of the update, can be anything
+            '/ping/' .  $request->get('id'),
+            json_encode(['message' => 'pinged !']),
             false, //private
-            'ping-' . Uuid::v4(), //Mercure id
+            'ping-' . Uuid::v4(),
             'ping'
         );
 
