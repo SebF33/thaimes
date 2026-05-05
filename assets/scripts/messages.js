@@ -2,7 +2,6 @@
  * Gestion envoi de messages en temps réel avec Mercure
  */
 
-// Défilement automatique en bas
 function autoBottomScroll() {
   const objDiv = document.querySelector(".conversation");
   objDiv.scrollIntoView({
@@ -12,93 +11,107 @@ function autoBottomScroll() {
 }
 
 document.getElementById('bottom').scrollIntoView();
+
 document.addEventListener('DOMContentLoaded', function () {
 
-  let messageBox = document.querySelector('#message-box');
-  let pathUri = window.location.pathname;
+  const messageBox = document.querySelector('#message-box');
+  const pathUri = window.location.pathname;
 
-  messageBox.addEventListener('keyup', (event) => {
-    if (event.keyCode === 13) {
-      sendMessage(event.target.value);
-      messageBox.value = "";
-    }
-  })
+  // Extraire l'id
+  const pathParts = pathUri.split('/').filter(Boolean);
+  const conversationId = pathParts[pathParts.length - 1];
+  const topic = '/messages/' + conversationId;
 
-  document.getElementById("button-send").addEventListener("click", (event) => {
-    sendMessage(messageBox.value);
-    messageBox.value = "";
-  })
+  //console.log('🔍 topic souscrit:', topic);
 
-  //console.log('URI = ' + pathUri);
-  fetch(pathUri).then(result => {
+  // Forcer l'enregistrement du cookie avant l'EventSource
+  fetch(pathUri, {
+    credentials: 'include'
+  }).then(() => {
 
-    // Extract the hub URL from the Link header
     const hubUrl = new URL('http://127.0.0.1:3000/.well-known/mercure');
-    //console.log("hubUrl = " + hubUrl);
-    const url = new URL(hubUrl);
+    hubUrl.searchParams.append('topic', topic);
 
-    // Append the topic(s) to subscribe as query parameter
-    url.searchParams.append('topic', pathUri);
-    //console.log('fetch = ' + pathUri);
+    //console.log('🔍 Hub URL:', hubUrl.toString());
 
-    // Subscribe to updates
-    const eventSource = new EventSource(url, {
-      withCredentials: true //send cookies by browser
+    const eventSource = new EventSource(hubUrl, {
+      withCredentials: true
     });
 
-    //console.debug(eventSource);
+    eventSource.onopen = () => {
+      //console.log('✅ EventSource connecté:', hubUrl.toString());
+    };
 
-    if (typeof (eventSource !== undefined)) {
-      eventSource.onmessage = (event) => {
-        //console.dir(event);
+    eventSource.addEventListener('message', (event) => {
+      //console.log('📨 Message reçu:', event.data);
+      if (!event.data) return;
 
-        if (event.data !== null) {
-          const data = JSON.parse(event.data);
-          const newMessageHTML =
-            '<div class="chat--message">' +
-            '    <div class="d-flex flex-row">' +
-            '        <div class="content bg-secondary p-1"><p class="text-white mb-0">' + data.message + '</p></div>' +
-            '    </div>' +
-            '    <div class="message--info--left">' +
-            '        <div class="message--date">' + data.date + '</div>' +
-            '    </div>' +
-            '</div>';
+      const data = JSON.parse(event.data);
+      const isMe = (data.from === currentUsername);
 
-          document.querySelector('.conversation').insertAdjacentHTML('beforeend', '<div class="row">' + newMessageHTML + '</div>');
-          autoBottomScroll();
-        }
-      }
+      // supprime le message "vide" s'il existe
+      const chatEmpty = document.querySelector('.chat-empty');
+      if (chatEmpty) chatEmpty.remove();
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'chat--message ' + (isMe ? 'mine' : 'theirs') + ' chat--message--new';
+
+      wrapper.innerHTML =
+        '<div class="bubble">' +
+        '<span class="sender">' + data.from + '</span>' +
+        data.message +
+        '</div>' +
+        '<div class="message--date">' + data.date + '</div>';
+
+      document.querySelector('.conversation').appendChild(wrapper);
+
+      wrapper.addEventListener('animationend', () => {
+        wrapper.classList.remove('chat--message--new');
+      }, {
+        once: true
+      });
+
+      autoBottomScroll();
+    });
+
+    eventSource.onerror = () => {
+      console.error('❌ EventSource erreur, readyState:', eventSource.readyState);
+    };
+
+  }).catch(error => {
+    console.error('❌ Erreur fetch initialisation cookie:', error);
+  });
+
+  // envoi via touche Entrée (sans Shift pour permettre le retour à la ligne)
+  messageBox.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage(messageBox.value);
+      messageBox.value = "";
     }
+  });
+
+  // envoi via bouton
+  document.getElementById("button-send").addEventListener("click", () => {
+    sendMessage(messageBox.value);
+    messageBox.value = "";
   });
 
 });
 
 function sendMessage(data) {
+  if (data.trim() === "") return;
 
-  if (data === "")
-    return;
-
-  let formData = new FormData();
-  //set URI path to add a message ex: /messages/1/add
-  const pathUri = window.location.pathname + '/add'
-  //get textarea value to save
+  const pathUri = window.location.pathname;
+  const formData = new FormData();
   formData.append('message-box', data);
-  console.log('ADD MESSAGE URI : ' + pathUri);
 
-  fetch(pathUri, {
+  // l'affichage est géré par l'EventSource pour tout le monde
+  fetch(pathUri + '/add', {
     method: 'POST',
-    body: formData
-  }).then(result => {
-    // update chat-message
-    let newMessageHTML =
-      '<div class="chat--message">' +
-      '<div class="d-flex flex-row-reverse">' +
-      '   <div class="content bg-info p-1 mb-3">' +
-      '       <p class="text-white mb-0">' + data + '</p>' +
-      '   </div>' +
-      '</div>' +
-      '</div>';
-    document.querySelector('.conversation').insertAdjacentHTML('beforeend', '<div class="row">' + newMessageHTML + '</div>');
-    autoBottomScroll();
+    body: formData,
+    credentials: 'include'
+  }).catch(error => {
+    console.error('❌ Erreur envoi message:', error);
   });
 }

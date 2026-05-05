@@ -6,17 +6,17 @@ use App\Entity\Theme;
 use App\Entity\Comment;
 use App\Form\CommentFormType;
 use App\Message\CommentMessage;
+use App\Repository\CommentRepository;
 use App\Repository\TagRepository;
 use App\Repository\ThemeRepository;
-use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
 
@@ -101,7 +101,7 @@ class ThemeController extends AbstractController
     {
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
-        
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

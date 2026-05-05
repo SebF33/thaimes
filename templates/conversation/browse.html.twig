@@ -3,44 +3,56 @@
 {% block body %}
 	{% if app.user %}
 		<div class="connected-user">
-			<p>Connecté en tant que :
-				{{ app.user.getUsername }}
-				<a class="btn btn-danger" href="{{ path("app_logout") }}">Déconnexion</a>
+			<p>
+				Connecté en tant que :
+				<span class="username">{{ app.user.getUsername }}</span>
 			</p>
+			<a class="btn btn-danger btn-sm" href="{{ path("app_logout") }}">Déconnexion</a>
 		</div>
 	{% endif %}
-	<h2>Liste des conversations :</h2>
+
 	<div class="messages-list col-12">
 		<div class="container my-3">
-			<a class="btn btn-primary" href="{{ path("conversation_add") }}">Créer une conversation</a>
-			<a class="btn btn-success" href="https://jwt.io/?token={{ jwt }}" target="_blank">Check JWT sur jwt.io
-			</a>
+			<h2>Liste des conversations</h2>
+			<div class="conv-actions">
+				<a class="btn btn-primary" href="{{ path("conversation_add") }}">
+					+ Créer une conversation
+				</a>
+			</div>
 		</div>
 
 		<div class="container">
-			<ul class="list-group">
-				{% for key, conversation in conversations %}
-					<li class="list-group-item d-flex justify-content-between align-items-start">
-						<div class="col-6">
-							<a href="{{ path("messages_browse", {'groupConversation' : conversation.id}) }}">[{{ conversation.id }}] -
-								{{ conversation.name }}.</a>
-						</div>
-						<div class="col-2">
-							<span class="badge bg-primary rounded-pill">messages :
-								{{ conversation.messages|length }}</span>
-						</div>
-						<div class="col-2">
-							<span class="badge bg-info rounded-pill">membres :
-								{{ conversation.users|length }}</span>
-						</div>
-						<div class="col-2">
-							<span class="badge {{ conversation.private ? 'bg-danger' : 'bg-success' }} rounded-pill">
-								{{ conversation.private ? 'privé' : 'public' }}</span>
-						</div>
-					</li>
-				{% endfor %}
-			</ul>
-		</div>
+			{% if conversations is empty %}
+				<p class="text-muted">Aucune conversation disponible.</p>
+			{% else %}
+				<div class="conv-list">
+					{% for conversation in conversations %}
+						<a href="{{ path("messages_browse", {'groupConversation': conversation.id}) }}" class="conv-item">
 
+							<span class="conv-item-id">#{{ conversation.id }}</span>
+
+							<span class="conv-item-name">{{ conversation.name }}</span>
+
+							<div class="conv-badges">
+								<span class="badge-conv badge-messages">
+									💬
+									{{ conversation.messages|length }}
+								</span>
+								<span class="badge-conv badge-members">
+									👥
+									{{ conversation.users|length }}
+								</span>
+								<span class="badge-conv {{ conversation.private ? 'badge-private' : 'badge-public' }}">
+									{{ conversation.private ? '🔒 Privé' : '🌐 Public' }}
+								</span>
+							</div>
+
+							<span class="conv-arrow">→</span>
+
+						</a>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
 	</div>
 {% endblock %}

@@ -3,86 +3,71 @@
 {% block body %}
 	{% if app.user %}
 		<div class="connected-user">
-			<p>Connecté en tant que :
-				{{ app.user.getUsername }}
-				<a class="btn btn-danger" href="{{ path("app_logout") }}">Déconnexion</a>
+			<p>
+				Connecté en tant que :
+				<strong style="color:#ca525e;">{{ app.user.getUsername }}</strong>
 			</p>
+			<a class="btn btn-danger btn-sm" href="{{ path("app_logout") }}">Déconnexion</a>
 		</div>
 	{% endif %}
+
 	<div class="messages-list col-12">
 		<div class="container my-3">
 			{% if conversation is defined %}
-				<a class="btn btn-primary" href="{{ path("conversation_browse") }}">Liste des Conversations</a>
-				<a class="btn btn-success" href="{{ path("messages_ping", {'id' : conversation.id}) }}">Ping Mercure (EventSource)</a>
-				<h2>Conversation :
-					{{ conversation.name }}</h2>
-				{% if conversation.admin.getId == app.user.getId %}
-					<a class="btn btn-danger" href="{{ path("conversation_delete", {'id' : conversation.id}) }}">supprimer</a>
-				{% endif %}
+				<div class="chat-header">
+					<h2>💬
+						<span>{{ conversation.name }}</span>
+					</h2>
+					<div class="chat-header-actions">
+						<a class="btn btn-primary btn-sm" href="{{ path("conversation_browse") }}">← Conversations</a>
+						<a class="btn btn-success btn-sm" href="{{ path("messages_ping", {'id': conversation.id}) }}">Ping</a>
+						{% if conversation.admin.getId == app.user.getId %}
+							<form method="post" action="{{ path("conversation_delete", {'id': conversation.id}) }}" onsubmit="return confirm('Supprimer cette conversation ?')">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ conversation.id) }}">
+								<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+							</form>
+						{% endif %}
+					</div>
+				</div>
 			{% endif %}
 		</div>
 
-		<div class="container ">
-			{% if(conversation.admin.getUsername) %}
-				<div class="connected-user">
-					<p>Administrateur :
-						{{ conversation.admin.getUsername }}</p>
+		<div class="container">
+			{% if conversation.admin.getUsername is defined %}
+				<div class="admin-badge">
+					👑 Admin :
+					{{ conversation.admin.getUsername }}
 				</div>
 			{% endif %}
-			<div class="conversation">
+
+			<div class="conversation" id="conversation">
 				{% if messages is empty %}
-					<div class="row">
-						<div class="media mr-auto mb-3">
-							<div class="col-12 media-body">
-								Envoyez le premier message.
-							</div>
-						</div>
+					<div class="chat-empty">
+						<span class="chat-empty-icon">💬</span>
+						<span>Envoyez le premier message !</span>
 					</div>
 				{% else %}
-					{% for key, message in messages %}
-						{% if message.getMine %}
-							<!-- Sender Message-->
-							<div class="chat--message ">
-								<div class="d-flex flex-row-reverse">
-									<div class="content bg-info p-1">
-										<p class="text-white mb-0">{{ message.getUser.username }}
-											:
-											{{ message.getContent }}</p>
-									</div>
-								</div>
-								<div class="d-flex flex-row-reverse mb-2">
-									<div class="message--info--right">
-										<div class="message--date">{{ message.created | date("H:i") }}</div>
-									</div>
-								</div>
+					{% for message in messages %}
+						{% set isMine = message.getMine %}
+						<div class="chat--message {{ isMine ? 'mine' : 'theirs' }}">
+							<div class="bubble">
+								<span class="sender">{{ message.getUser.username }}</span>
+								{{ message.getContent }}
 							</div>
-						{% else %}
-							<!-- Reciever Message-->
-							<div class="chat--message">
-								<div class="d-flex flex-row">
-									<div class="content bg-secondary p-1">
-										<p class="text-white mb-0">{{ message.getUser.username }}
-											:
-											{{ message.getContent }}</p>
-									</div>
-								</div>
-								<div class="d-flex flex-row mb-2">
-									<div class="message--info--left">
-										<div class="message--date">{{ message.created | date("H:i") }}</div>
-									</div>
-								</div>
-							</div>
-						{% endif %}
+							<div class="message--date">{{ message.created|date("H:i") }}</div>
+						</div>
 					{% endfor %}
 				{% endif %}
 			</div>
+
 			<div id="bottom"></div>
-			<div class="controls d-flex justify-content-between">
+
+			<div class="controls">
 				{% if conversation is defined %}
 					<div class="control--input">
-						<textarea id="message-box" name="message-box" aria-describedby="button-send" class="input--controls" placeholder="Saisir un message"></textarea>
+						<textarea id="message-box" name="message-box" aria-describedby="button-send" class="input--controls" placeholder="Saisir un message… (Entrée pour envoyer)" rows="1"></textarea>
 					</div>
-					<input id="button-send" type="submit" class="btn-send btn btn-primary" value="Envoyer"/>
+					<input id="button-send" type="submit" class="btn-send" value="Envoyer"/>
 				{% endif %}
 			</div>
 		</div>
@@ -90,5 +75,9 @@
 {% endblock %}
 
 {% block javascripts %}
+	<script>
+		const currentUsername = "{{ app.user.username | e('js') }}";
+		const mercureHubUrl = "{{ mercure_publish_url }}";
+	</script>
 	{{ encore_entry_script_tags('messages') }}
 {% endblock %}

@@ -1,16 +1,36 @@
 {% extends 'base.html.twig' %}
-
 {% form_theme form 'bootstrap_5_horizontal_layout.html.twig' %}
 
 {% block body %}
-
 	<div class="conversation-add">
-		{{ form_start(form) }}
-		<div class="errors">
-			{{ form_errors(form) }}
-		</div>
-		{{ form_widget(form) }}
-		{{ form_end(form) }}
-	</div>
+		<div class="conv-add-card">
 
+			<div class="conv-add-header">
+				<div class="conv-add-header-icon">💬</div>
+				<div>
+					<h2>Nouvelle conversation</h2>
+					<p>Remplissez les informations ci-dessous</p>
+				</div>
+			</div>
+
+			{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+			<div class="conv-add-body">
+				<div class="errors">
+					{{ form_errors(form) }}
+				</div>
+				{{ form_widget(form) }}
+			</div>
+
+			<div class="conv-add-footer">
+				<a href="{{ path("conversation_browse") }}" class="btn-cancel">← Annuler</a>
+				<button type="submit" class="btn-submit">
+					Créer la conversation
+				</button>
+			</div>
+
+			{{ form_end(form) }}
+
+		</div>
+	</div>
 {% endblock %}

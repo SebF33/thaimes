@@ -8,6 +8,7 @@
 // Styles
 import './styles/app.scss';
 import './styles/button.scss';
+import './styles/conversation.scss';
 import './styles/footer.scss';
 import './styles/light.scss';
 import './styles/neon.scss';
